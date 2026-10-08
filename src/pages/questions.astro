@@ -32,7 +32,10 @@ import formHtml from '../components/questions-form.html?raw';
 
       <div class="send stack">
         <h2>Send your answers to Mitch</h2>
-        <button type="button" class="btn" id="send">Send my answers</button>
+        <div class="btn-row">
+          <button type="button" class="btn" id="send">Send my answers</button>
+          <button type="button" class="btn ghost" id="reset">Clear the form</button>
+        </div>
         <p id="status" role="status" aria-live="polite"></p>
         <div id="fallback" hidden class="stack">
           <p>Sending did not work. You can copy your answers and paste them into a text or email to Mitch instead.</p>
@@ -135,6 +138,12 @@ import formHtml from '../components/questions-form.html?raw';
       var done = function () { out.focus(); out.select(); };
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(out.value).then(function () { status.textContent = 'Copied. Paste into a text or email to Mitch.'; }, done);
       else done();
+    });
+    document.getElementById('reset').addEventListener('click', function () {
+      fields.forEach(function (f) { if (f.type === 'checkbox' || f.type === 'radio') f.checked = false; else f.value = ''; });
+      try { localStorage.removeItem(KEY); } catch (e) {}
+      status.textContent = 'Form cleared.';
+      window.scrollTo(0, 0);
     });
     load();
   })();

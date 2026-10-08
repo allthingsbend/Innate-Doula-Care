@@ -2,6 +2,11 @@
 // Extensions > Apps Script, replace everything, then Deploy > New deployment > Web app.
 // Each questionnaire submission becomes one row. The header row writes itself.
 
+// Opening the web app URL in a browser shows this line, a quick way to confirm the deployment works.
+function doGet() {
+  return ContentService.createTextOutput('Sheet connection is live.');
+}
+
 function doPost(e) {
   try {
     var data = JSON.parse(e.postData.contents);

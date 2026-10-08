@@ -37,16 +37,31 @@ export async function onRequestPost({ request, env }) {
     } catch {}
   }
 
+  // Forward to the Google Sheet. Apps Script answers a POST with a redirect to the
+  // real response, so follow that one hop by hand.
+  let sheetNote = 'SHEET_WEBHOOK_URL is not set in Cloudflare';
   if (env.SHEET_WEBHOOK_URL) {
     try {
-      const r = await fetch(env.SHEET_WEBHOOK_URL, {
+      let r = await fetch(env.SHEET_WEBHOOK_URL.trim(), {
         method: 'POST',
-        headers: { 'content-type': 'application/json' },
+        headers: { 'content-type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(record),
-        redirect: 'follow',
+        redirect: 'manual',
       });
+      if (r.status >= 300 && r.status < 400 && r.headers.get('location')) {
+        r = await fetch(r.headers.get('location'), { redirect: 'follow' });
+      }
       const text = await r.text();
-      sheet = r.ok && text.includes('"ok":true');
+      sheet = text.includes('"ok":true');
+      sheetNote = sheet ? 'ok' : `HTTP ${r.status}: ${text.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 300)}`;
+    } catch (err) {
+      sheetNote = `request failed: ${String(err).slice(0, 200)}`;
+    }
+  }
+  // Leave a note for the results page so a broken sheet connection is easy to spot.
+  if (env.ANSWERS) {
+    try {
+      await env.ANSWERS.put('status:sheet', JSON.stringify({ at, ok: sheet, note: sheetNote }));
     } catch {}
   }
 
