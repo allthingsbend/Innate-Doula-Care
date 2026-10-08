@@ -1,0 +1,72 @@
+---
+// A fine-line elevation profile of the Cascade skyline west of Bend, with summit heights.
+const PROFILES = {
+  bachelor: [[0, 0], [0.22, 0.42], [0.4, 0.84], [0.5, 1], [0.6, 0.85], [0.8, 0.4], [1, 0]],
+  broken: [[0, 0], [0.18, 0.46], [0.3, 0.76], [0.37, 0.68], [0.44, 0.95], [0.5, 0.78], [0.57, 1], [0.64, 0.72], [0.71, 0.8], [0.86, 0.34], [1, 0]],
+  south: [[0, 0], [0.18, 0.46], [0.36, 0.88], [0.46, 1], [0.56, 0.97], [0.7, 0.6], [1, 0]],
+  middle: [[0, 0], [0.28, 0.58], [0.46, 1], [0.53, 0.97], [0.72, 0.5], [1, 0]],
+  north: [[0, 0], [0.24, 0.54], [0.37, 0.85], [0.43, 0.79], [0.5, 1], [0.55, 0.87], [0.61, 0.93], [0.76, 0.5], [1, 0]],
+};
+const peaks = [
+  { p: 'bachelor', cx: 250, w: 440, h: 118, name: 'Mt. Bachelor', ft: '9,068 ft' },
+  { p: 'broken', cx: 610, w: 420, h: 124, name: 'Broken Top', ft: '9,177 ft' },
+  { p: 'south', cx: 930, w: 500, h: 176, name: 'South Sister', ft: '10,358 ft' },
+  { p: 'middle', cx: 1225, w: 380, h: 152, name: 'Middle Sister', ft: '10,047 ft' },
+  { p: 'north', cx: 1465, w: 400, h: 156, name: 'North Sister', ft: '10,085 ft' },
+];
+const BASE = 250;
+const heightAt = (pk, x) => {
+  const fx = (x - (pk.cx - pk.w / 2)) / pk.w;
+  if (fx <= 0 || fx >= 1) return 0;
+  const pr = PROFILES[pk.p];
+  for (let i = 0; i < pr.length - 1; i++) {
+    if (fx >= pr[i][0] && fx <= pr[i + 1][0]) {
+      const t = (fx - pr[i][0]) / (pr[i + 1][0] - pr[i][0]);
+      return (pr[i][1] + t * (pr[i + 1][1] - pr[i][1])) * pk.h;
+    }
+  }
+  return 0;
+};
+const foot = (x, a, f, ph) => a * (Math.sin(x * f + ph) + 0.5 * Math.sin(x * f * 2.3 + ph * 2)) ;
+let outline = '', hills = '', hills2 = '';
+for (let x = 0; x <= 1600; x += 4) {
+  const h = Math.max(...peaks.map((pk) => heightAt(pk, x)), 14 + foot(x, 5, 0.012, 1));
+  outline += `${x},${(BASE - h).toFixed(1)} `;
+  hills += `${x},${(BASE - 18 - foot(x, 7, 0.009, 2.2)).toFixed(1)} `;
+  hills2 += `${x},${(BASE - 4 - foot(x, 5, 0.006, 0.4)).toFixed(1)} `;
+}
+---
+<figure class="ridgeline">
+  <svg viewBox="0 0 1600 270" role="img" aria-label="Elevation profile of the Cascade skyline west of Bend: Mt. Bachelor, Broken Top, and the South, Middle and North Sister">
+    <polygon points={`0,270 ${outline} 1600,270`} fill="var(--fg)" opacity="0.035" />
+    <polyline points={outline} fill="none" stroke="var(--fg)" stroke-width="1.6" stroke-linejoin="round" />
+    <polyline points={hills} fill="none" stroke="var(--fg)" stroke-width="1" opacity="0.45" />
+    <polyline points={hills2} fill="none" stroke="var(--fg)" stroke-width="1" opacity="0.25" />
+    <g class="ridge-labels">
+      {peaks.map((pk) => {
+        const top = BASE - pk.h;
+        const sx = pk.cx - pk.w / 2 + pk.w * PROFILES[pk.p].reduce((a, b) => (b[1] > a[1] ? b : a))[0];
+        return (
+          <g>
+            <line x1={sx} y1={top - 6} x2={sx} y2={top - 26} stroke="var(--fg)" stroke-width="1" opacity="0.5" />
+            <text x={sx} y={top - 48} text-anchor="middle" class="rl-name">{pk.name}</text>
+            <text x={sx} y={top - 33} text-anchor="middle" class="rl-ft">{pk.ft}</text>
+          </g>
+        );
+      })}
+    </g>
+  </svg>
+  <figcaption>The Cascades from Bend: Mt. Bachelor, Broken Top and the Three Sisters</figcaption>
+</figure>
+
+<style>
+  .ridgeline { margin: 0; }
+  .ridgeline svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .rl-name { font-family: var(--body); font-size: 12.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; fill: var(--fg); }
+  .rl-ft { font-family: var(--body); font-size: 11.5px; fill: var(--soft); letter-spacing: 0.04em; }
+  .ridgeline figcaption { display: none; text-align: center; font-size: 13px; color: var(--soft); padding: 6px 20px 0; }
+  @media (max-width: 760px) {
+    .ridge-labels { display: none; }
+    .ridgeline figcaption { display: block; }
+  }
+</style>

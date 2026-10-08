@@ -5,7 +5,7 @@ A preview site for Innate Doula Care (Bend, Oregon), built with Astro and deploy
 ## What is here
 
 - `src/data/site.js` - business details, services, prices and FAQs. Edit copy here.
-- `src/pages/` - home, one page per service (`[slug].astro`), about, service area, and `/questions/`.
+- `src/pages/` - home, about, service area, `/questions/`, and `[slug].astro`, which builds one page per service and one page per town (for example `/doula-redmond-oregon/`).
 - `src/components/questions-form.html` - the questionnaire for Aleah.
 - `functions/api/answers.js` - saves questionnaire answers to Cloudflare KV and forwards them to a Google Sheet.
 - `google-sheet-script.gs` - the script to paste into the Google Sheet (Extensions > Apps Script).
@@ -31,6 +31,7 @@ npm run dev
 ## Before this could ever go live
 
 - Aleah confirms every price and detail in `src/data/site.js`.
-- Replace the illustration placeholders with real photos.
+- Add real photos where the photo slots are (home and about).
+- Aleah adds a line or two of real local detail to each town page.
 - Remove the `noindex` tag in `src/layouts/Base.astro` and the `Disallow` in `public/robots.txt`.
 - Set the real domain in `astro.config.mjs`.

@@ -1,55 +1,41 @@
 ---
 import Base from '../layouts/Base.astro';
 import AreaMap from '../components/AreaMap.astro';
-import CarSeat from '../components/CarSeat.astro';
-import { business, services, towns } from '../data/site.js';
-const away = towns.filter((t) => t.min > 0);
+import Ridgeline from '../components/Ridgeline.astro';
+import { business, services, townPages } from '../data/site.js';
 ---
 <Base
   title="Bend Doula | Innate Doula Care | Birth, Postpartum & Car Seat Help"
   description="Innate Doula Care is a full spectrum doula in Bend, Oregon: birth and postpartum doula care, lactation support, placenta services and in-home car seat installation help across Central Oregon."
 >
   <section class="home-hero">
-    <div class="wrap stack">
-      <p class="eyebrow">Bend, Oregon · Full spectrum doula</p>
-      <h1>Bend doula care for birth, postpartum and beyond</h1>
-      <p class="lead">You can do hard things, and I am here to support you every step of the way. In your home, at the hospital, or anywhere in Central Oregon.</p>
-      <div class="btn-row">
-        <a class="btn" href={business.booking}>Book a free consultation</a>
-        <a class="btn ghost" href="#services">See services and prices</a>
+    <div class="wrap hero-grid">
+      <div class="stack">
+        <p class="eyebrow">Full spectrum doula · Bend, Oregon</p>
+        <h1>Bend doula care for birth, postpartum and beyond</h1>
+        <p class="lead">You can do hard things, and I am here to support you every step of the way. In your home, at the hospital, or anywhere in Central Oregon.</p>
+        <div class="btn-row">
+          <a class="btn" href={business.booking}>Book a free consultation</a>
+          <a class="btn ghost" href="#services">Services and prices</a>
+        </div>
+        <p class="creds">OHP-approved doula · Certified Lactation Counselor · Child Passenger Safety Technician</p>
       </div>
+      <div class="photo-slot portrait"><span>Photo: a portrait of Aleah goes here</span></div>
     </div>
-    <figure class="scene natural">
-      <picture>
-        <source media="(max-width: 700px)" srcset="/img/skyline-m.jpg" />
-        <img src="/img/skyline.jpg" width="1920" height="680" alt="Illustrated Cascade skyline with Mt. Bachelor, Broken Top, and the South, Middle and North Sister labeled by hand" />
-      </picture>
-      <figcaption>The view west from Bend</figcaption>
-    </figure>
-  </section>
-
-  <section class="wrap">
-    <div class="facts">
-      <div><span>Oregon Health Plan</span><b>Birth doula care covered</b></div>
-      <div><span>For clients</span><b>On call 24 hours a day</b></div>
-      <div><span>Service area</span><b>{towns.length} Central Oregon towns</b></div>
-      <div><span>First step</span><b>A free consultation</b></div>
-    </div>
+    <Ridgeline />
   </section>
 
   <section class="section" id="services">
     <div class="wrap stack">
       <p class="eyebrow">Services</p>
       <h2>What I can help with</h2>
-      <ul class="svc-list">
+      <ul class="rows">
         {services.map((s) => (
           <li>
             <a href={`/${s.slug}/`}>
-              <img src={`/img/t-${s.image}.jpg`} alt="" width="480" height="300" loading="lazy" />
-              <div>
-                <h3>{s.nav} <small>{s.from}</small></h3>
-                <p>{s.summary}</p>
-              </div>
+              <h3>{s.nav}</h3>
+              <p>{s.summary}</p>
+              <span class="price">{s.from}</span>
             </a>
           </li>
         ))}
@@ -57,22 +43,18 @@ const away = towns.filter((t) => t.min > 0);
     </div>
   </section>
 
-  <section class="section alt">
+  <section class="section alt topo">
     <div class="wrap two" style="align-items:center">
-      <div class="seat-art">
-        <CarSeat />
-        <p class="hand seat-note">installed by you, checked by a certified tech</p>
-      </div>
       <div class="stack">
         <p class="eyebrow">Bringing a baby home soon?</p>
         <h2>Car seat checks in your own driveway</h2>
         <p class="lead">Most parents are not sure their seat is in right. In one visit you install it yourself, in your vehicle, with a certified Child Passenger Safety Technician guiding you.</p>
-        <div class="facts tight">
-          <div><span>Cost</span><b>$50</b></div>
-          <div><span>Takes</span><b>45 to 60 min</b></div>
-          <div><span>Where</span><b>Your home</b></div>
-        </div>
         <div class="btn-row"><a class="btn" href="/car-seat-installation-bend/">Car seat help in Bend</a></div>
+      </div>
+      <div class="facts stacked">
+        <div><span>Cost</span><b>$50</b></div>
+        <div><span>Takes</span><b>45 to 60 minutes</b></div>
+        <div><span>Where</span><b>Your home, your vehicle</b></div>
       </div>
     </div>
   </section>
@@ -80,13 +62,12 @@ const away = towns.filter((t) => t.min > 0);
   <section class="section">
     <div class="wrap two" style="align-items:center">
       <div class="stack">
-        <p class="eyebrow">Where I travel</p>
+        <p class="eyebrow">Areas served</p>
         <h2>Based in Bend. I come to you.</h2>
         <p class="lead">Visits happen in your home, at the hospital or at a birth center, across Central Oregon.</p>
-        <ul class="town-list">
-          {away.map((t) => <li><b>{t.name}</b><span>about {t.min} min from Bend</span></li>)}
+        <ul class="town-links">
+          {townPages.map((t) => <li><a href={`/${t.slug}/`}><b>{t.name}</b><small>about {t.min} min from Bend</small></a></li>)}
         </ul>
-        <p><a href="/service-area/">More about the service area</a></p>
       </div>
       <AreaMap />
     </div>
@@ -95,7 +76,7 @@ const away = towns.filter((t) => t.min > 0);
   <section class="section alt">
     <div class="wrap two">
       <div class="stack">
-        <p class="eyebrow">Hi, I'm Aleah</p>
+        <p class="eyebrow">About Aleah</p>
         <h2>A doula who has been on every side of birth</h2>
         <p class="lead">Mom of two. Two-time surrogate. Trained in early childhood development before any of it.</p>
         <p>I believe every experience is unique and deserves personal, inclusive and non-judgmental care. Whether you are getting ready for birth, finding your way through the first weeks, or facing another big life moment, my job is to help you feel informed and confident.</p>
@@ -106,17 +87,17 @@ const away = towns.filter((t) => t.min > 0);
         <ul class="checks">
           {business.credentials.map((c) => <li>{c}</li>)}
         </ul>
-        <div class="placeholder">
+        <div class="note-box">
           <p><b>Your Google reviews go here.</b> Two or three real reviews, with a link to the rest, are one of the quickest ways to build trust.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section cta">
+  <section class="section cta topo">
     <div class="wrap stack">
       <h2>Ready to talk?</h2>
-      <p class="lead">A free consultation is the easiest way to see if we are a good fit. Oregon Health Plan members can receive birth doula care at no out-of-pocket cost.</p>
+      <p class="lead" style="max-width:56ch">A free consultation is the easiest way to see if we are a good fit. Oregon Health Plan members can receive birth doula care at no out-of-pocket cost.</p>
       <div class="btn-row">
         <a class="btn" href={business.booking}>Book a free consultation</a>
         <span>or call or text <a href={business.phoneHref}>{business.phone}</a></span>
@@ -126,9 +107,15 @@ const away = towns.filter((t) => t.min > 0);
 </Base>
 
 <style>
-  .home-hero .wrap { padding-block: clamp(28px, 5vw, 64px) clamp(20px, 3vw, 36px); }
-  .home-hero h1 { max-width: 19ch; }
-  .home-hero .lead { max-width: 56ch; }
-  .seat-art { display: flex; flex-direction: column; align-items: center; gap: 4px; }
-  .seat-note { font-size: 26px; color: var(--rust); transform: rotate(-3deg); text-align: center; }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 72px); align-items: center; padding-block: clamp(36px, 6vw, 80px) clamp(28px, 4vw, 52px); }
+  .hero-grid h1 { max-width: 14ch; }
+  .hero-grid .lead { max-width: 50ch; }
+  .creds { font-size: 14.5px; color: var(--soft); border-top: 1px solid var(--line); padding-top: 16px; }
+  .portrait { aspect-ratio: 4 / 5; width: 100%; max-width: 400px; justify-self: end; }
+  .facts.stacked { grid-template-columns: 1fr; }
+  .facts.stacked > div + div { border-top: 1px solid var(--line); }
+  @media (max-width: 760px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .portrait { aspect-ratio: 16 / 10; max-width: none; justify-self: stretch; }
+  }
 </style>

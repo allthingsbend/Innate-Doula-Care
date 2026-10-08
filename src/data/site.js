@@ -313,3 +313,25 @@ export const towns = [
   { name: 'Culver', lat: 44.526, lon: -121.213, min: 50 },
   { name: 'Madras', lat: 44.634, lon: -121.13, min: 55 },
 ];
+
+// Town pages. Each note should say something true and specific to that town.
+// These are first drafts for Aleah to confirm and add to (families served, local partners).
+const townNotes = {
+  Redmond: {
+    where: 'north of Bend on Highway 97',
+    note: 'The hospital in Redmond stopped delivering babies in 2019, so most Redmond families give birth in Bend or Madras. I meet you wherever you deliver, and postpartum, lactation and car seat visits all happen at your home in Redmond.',
+    faq: { q: 'Where do Redmond families give birth?', a: 'St. Charles Redmond closed its Family Birthing Center in 2019. Most families deliver at St. Charles Bend, at a birth center, or at home. I support all of those.' },
+  },
+  Sisters: { where: 'northwest of Bend on Highway 20', note: 'Sisters has no hospital of its own, so planning the drive is part of planning the birth. We talk through timing, routes and winter roads at your prenatal visits.' },
+  Sunriver: { where: 'south of Bend off Highway 97', note: 'Whether you live in Sunriver year-round or are settling in before your due date, visits happen at your home, and I am a short drive away when labor starts.' },
+  'La Pine': { where: 'south of Bend on Highway 97', note: 'La Pine families often have the longest drive to give birth. We build that into your plan early, and postpartum and lactation visits come to you so you do not have to make the trip with a newborn.' },
+  Prineville: { where: 'east of Bend by way of Redmond', note: 'I travel to Prineville for prenatal, postpartum, lactation and car seat visits, and I meet you wherever you plan to give birth.' },
+  Terrebonne: { where: 'north of Redmond, near Smith Rock', note: 'Terrebonne sits between Redmond and Madras, so you have options in both directions. I come to your home for visits and meet you wherever you plan to deliver.' },
+  Culver: { where: 'north of Redmond in Jefferson County', note: 'I travel to Culver for home visits and meet you wherever you plan to give birth, whether that is north in Madras or south in Bend.' },
+  Madras: { where: 'the northern edge of my service area, on Highway 97', note: 'Madras is the farthest town I serve in person. For families here, we plan visits and on-call timing a little further ahead, and virtual check-ins fill the gaps.' },
+};
+towns.forEach((t) => {
+  t.slug = `doula-${t.name.toLowerCase().replace(/\s+/g, '-')}-oregon`;
+  Object.assign(t, townNotes[t.name] || {});
+});
+export const townPages = towns.filter((t) => t.min > 0);
