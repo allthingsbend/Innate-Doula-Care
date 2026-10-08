@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import AreaMap from '../components/AreaMap.astro';
 import Ridgeline from '../components/Ridgeline.astro';
-import { business, services, townPages } from '../data/site.js';
+import { business, services, townPages, svcUrl, photos, photoUrl } from '../data/site.js';
 ---
 <Base
   title="Bend Doula | Innate Doula Care | Birth, Postpartum & Car Seat Help"
@@ -20,7 +20,7 @@ import { business, services, townPages } from '../data/site.js';
         </div>
         <p class="creds">OHP-approved doula · Certified Lactation Counselor · Child Passenger Safety Technician</p>
       </div>
-      <div class="photo-slot portrait"><span>Photo: a portrait of Aleah goes here</span></div>
+      <img class="portrait" src={photoUrl(photos.hero, 900, 1100)} alt={photos.hero.alt} width="900" height="1100" />
     </div>
     <Ridgeline />
   </section>
@@ -32,7 +32,7 @@ import { business, services, townPages } from '../data/site.js';
       <ul class="rows">
         {services.map((s) => (
           <li>
-            <a href={`/${s.slug}/`}>
+            <a href={svcUrl(s)}>
               <h3>{s.nav}</h3>
               <p>{s.summary}</p>
               <span class="price">{s.from}</span>
@@ -43,13 +43,17 @@ import { business, services, townPages } from '../data/site.js';
     </div>
   </section>
 
+  <figure class="band">
+    <img src={photoUrl(photos.skyline, 2000, 700)} alt={photos.skyline.alt} width="2000" height="700" loading="lazy" />
+  </figure>
+
   <section class="section alt topo">
     <div class="wrap two" style="align-items:center">
       <div class="stack">
         <p class="eyebrow">Bringing a baby home soon?</p>
         <h2>Car seat checks in your own driveway</h2>
         <p class="lead">Most parents are not sure their seat is in right. In one visit you install it yourself, in your vehicle, with a certified Child Passenger Safety Technician guiding you.</p>
-        <div class="btn-row"><a class="btn" href="/car-seat-installation-bend/">Car seat help in Bend</a></div>
+        <div class="btn-row"><a class="btn" href="/bend/car-seat-installation/">Car seat help in Bend</a></div>
       </div>
       <div class="facts stacked">
         <div><span>Cost</span><b>$50</b></div>
@@ -72,6 +76,10 @@ import { business, services, townPages } from '../data/site.js';
       <AreaMap />
     </div>
   </section>
+
+  <figure class="band">
+    <img src={photoUrl(photos.river, 2000, 700)} alt={photos.river.alt} width="2000" height="700" loading="lazy" />
+  </figure>
 
   <section class="section alt">
     <div class="wrap two">
@@ -111,11 +119,13 @@ import { business, services, townPages } from '../data/site.js';
   .hero-grid h1 { max-width: 14ch; }
   .hero-grid .lead { max-width: 50ch; }
   .creds { font-size: 14.5px; color: var(--soft); border-top: 1px solid var(--line); padding-top: 16px; }
-  .portrait { aspect-ratio: 4 / 5; width: 100%; max-width: 400px; justify-self: end; }
+  .portrait { aspect-ratio: 4 / 5; width: 100%; max-width: 420px; justify-self: end; object-fit: cover; background: var(--panel); }
+  .band { margin: 0; }
+  .band img { width: 100%; height: clamp(200px, 30vw, 420px); object-fit: cover; background: var(--panel); }
   .facts.stacked { grid-template-columns: 1fr; }
   .facts.stacked > div + div { border-top: 1px solid var(--line); }
   @media (max-width: 760px) {
-    .hero-grid { grid-template-columns: 1fr; }
+    .hero-grid { grid-template-columns: minmax(0, 1fr); }
     .portrait { aspect-ratio: 16 / 10; max-width: none; justify-self: stretch; }
   }
 </style>

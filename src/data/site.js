@@ -335,3 +335,66 @@ towns.forEach((t) => {
   Object.assign(t, townNotes[t.name] || {});
 });
 export const townPages = towns.filter((t) => t.min > 0);
+
+// ---- URL structure: /town/ and /town/service/ ----
+// Bend gets every service. Other towns get a hub page, plus a service page only where
+// there is something specific to say (add to `townServices` to switch more on).
+const paths = {
+  'car-seat-installation-bend': ['car-seat-installation', 'Car seat installation help'],
+  'birth-doula-bend': ['birth-doula', 'Birth doula'],
+  'postpartum-doula-bend': ['postpartum-doula', 'Postpartum doula'],
+  'lactation-counselor-bend': ['lactation-support', 'Lactation support'],
+  'placenta-encapsulation-bend': ['placenta-encapsulation', 'Placenta encapsulation'],
+  'surrogacy-doula-bend': ['surrogacy-doula', 'Surrogacy doula'],
+  'pregnancy-loss-support-bend': ['pregnancy-loss-support', 'Pregnancy loss support'],
+  'abortion-doula-support-bend': ['abortion-doula-support', 'Abortion doula support'],
+};
+// Stock photos (Unsplash), placeholders until Aleah has her own. id, photographer, what it shows.
+const P = (id, by, alt) => ({ id, by, alt });
+const servicePhotos = {
+  'car-seat-installation': P('1687451225150-e25d21b013cc', 'Mick Haupt', 'A road leading toward a mountain'),
+  'birth-doula': P('1457342813143-a1ae27448a82', 'freestocks', 'A pregnant woman cradling her belly'),
+  'postpartum-doula': P('1582486225644-aeacf6aa0b1b', 'Nathan Dumlao', 'An adult hand holding a tiny baby hand'),
+  'lactation-support': P('1511948374796-056e8f289f34', 'Luma Pimentel', 'A baby wrapped in a white blanket'),
+  'placenta-encapsulation': P('1539457981288-ca69c8b06b48', 'Naresh Bojja', 'Green trees in daylight'),
+  'surrogacy-doula': P('1493894473891-10fc1e5dbd22', 'Suhyeon Choi', 'A person holding a pregnant belly'),
+  'pregnancy-loss-support': P('1724535225245-fd5d173c8623', 'James Sestric', 'The sun setting over a mountain range'),
+  'abortion-doula-support': P('1580615527048-c8e3915b1bb7', 'Caleb Kastein', 'Still water near a mountain'),
+};
+services.forEach((s) => {
+  [s.path, s.name] = paths[s.slug];
+  s.photo = servicePhotos[s.path];
+});
+export const photos = {
+  hero: P('1510154221590-ff63e90a136f', 'Omar Lopez', 'A parent holding a newborn\'s feet'),
+  skyline: P('1718927445954-b050d18bc135', 'Porter Raab', 'A mountain range with trees in the foreground'),
+  lake: P('1587656421406-273a011cad8d', 'Clay Banks', 'A lake with a mountain behind it'),
+  river: P('1637109716852-63355bcba580', 'Daniel Herron', 'A river running through green forest'),
+  rock: P('1599015358183-1491f78bd55b', 'josh ludahl', 'Rock cliffs beside a river'),
+  field: P('1566882526208-3856e4ac09d0', 'Dan Meyers', 'A green field with a mountain beyond'),
+  snow: P('1646528487362-962045c5eeb9', 'Rei Yamazaki', 'A snow covered mountain with trees in the foreground'),
+  desert: P('1568666062525-111347cc88e4', 'Derek Sears', 'Brown high desert mountains'),
+};
+export const photoUrl = (p, w = 1600, h) =>
+  `https://images.unsplash.com/photo-${p.id}?auto=format&fit=crop&w=${w}${h ? `&h=${h}` : ''}&q=70`;
+
+const townPhoto = { Bend: 'river', Redmond: 'rock', Terrebonne: 'rock', Sisters: 'snow', Sunriver: 'river', 'La Pine': 'lake', Prineville: 'desert', Culver: 'field', Madras: 'field' };
+towns.forEach((t) => {
+  t.slug = t.name.toLowerCase().replace(/\s+/g, '-');
+  t.photo = photos[townPhoto[t.name]];
+});
+
+export const townServices = {
+  redmond: {
+    'car-seat-installation': {
+      note: 'Redmond Fire & Rescue offers free car seat checks by appointment on set days. I offer a private session at your home in Redmond on a day that suits you, with as much time as you need to practice.',
+      faq: { q: 'How is this different from the free car seat checks in Redmond?', a: 'Redmond Fire & Rescue holds free car seat check days by appointment, and they are a great resource. My sessions are private, at your home, on a day you choose, and built around teaching you to do it yourself.' },
+    },
+    'birth-doula': {
+      note: 'The hospital in Redmond stopped delivering babies in 2019, so most Redmond families give birth in Bend or Madras. We plan the drive and the timing together, and I meet you wherever you deliver.',
+      faq: { q: 'Where do Redmond families give birth?', a: 'St. Charles Redmond closed its Family Birthing Center in 2019. Most families deliver at St. Charles Bend, at a birth center, or at home. I support all of those.' },
+    },
+  },
+};
+export const hasPage = (townSlug, path) => townSlug === 'bend' || Boolean(townServices[townSlug]?.[path]);
+export const svcUrl = (s, townSlug = 'bend') => `/${hasPage(townSlug, s.path) ? townSlug : 'bend'}/${s.path}/`;

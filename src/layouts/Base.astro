@@ -2,7 +2,7 @@
 import '@fontsource-variable/newsreader/opsz.css';
 import '@fontsource-variable/newsreader/opsz-italic.css';
 import '@fontsource-variable/dm-sans/index.css';
-import { business, services, townPages } from '../data/site.js';
+import { business, services, towns, svcUrl } from '../data/site.js';
 const { title, description, schema = [] } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const localBusiness = {
@@ -37,19 +37,22 @@ const allSchema = [localBusiness, ...schema];
     <p class="preview-bar">Preview site. A draft for Aleah to review, not the live website. <a href="/questions/">Aleah: quick questions for you</a></p>
     <header class="site-header">
       <div class="wrap header-row">
-        <a class="brand" href="/">{business.name}<small>Bend, Oregon</small></a>
+        <a class="brand" href="/">
+          <img src="/img/logo.png" alt="" width="129" height="138" />
+          <span>{business.name}<small>Bend, Oregon</small></span>
+        </a>
         <nav aria-label="Main">
           <details class="menu">
             <summary>Services</summary>
             <ul>
-              {services.map((s) => <li><a href={`/${s.slug}/`}>{s.nav}<small>{s.from}</small></a></li>)}
+              {services.map((s) => <li><a href={svcUrl(s)}>{s.nav}<small>{s.from}</small></a></li>)}
             </ul>
           </details>
           <details class="menu">
             <summary>Areas</summary>
             <ul>
               <li><a href="/service-area/">All of Central Oregon</a></li>
-              {townPages.map((t) => <li><a href={`/${t.slug}/`}>{t.name}<small>{t.min} min</small></a></li>)}
+              {towns.map((t) => <li><a href={`/${t.slug}/`}>{t.name}<small>{t.min ? `${t.min} min` : 'home base'}</small></a></li>)}
             </ul>
           </details>
           <a href="/about/">About</a>
@@ -63,24 +66,25 @@ const allSchema = [localBusiness, ...schema];
     <footer class="site-footer">
       <div class="wrap footer-grid">
         <div>
+          <img src="/img/logo.png" alt="Innate Doula Care logo: a tree with deep roots" width="129" height="138" class="footer-logo" />
           <p class="footer-brand">{business.name}</p>
           <p>Full spectrum doula care across Central Oregon. On call for clients 24 hours a day.</p>
           <p><a href={business.phoneHref}>{business.phone}</a><br /><a href={`mailto:${business.email}`}>{business.email}</a></p>
         </div>
         <div>
           <p class="label">Services</p>
-          <ul>{services.map((s) => <li><a href={`/${s.slug}/`}>{s.nav} in Bend</a></li>)}</ul>
+          <ul>{services.map((s) => <li><a href={svcUrl(s)}>{s.nav} in Bend</a></li>)}</ul>
         </div>
         <div>
           <p class="label">Areas served</p>
           <ul>
-            <li><a href="/">Bend</a></li>
-            {townPages.map((t) => <li><a href={`/${t.slug}/`}>{t.name}</a></li>)}
+            {towns.map((t) => <li><a href={`/${t.slug}/`}>{t.name}</a></li>)}
           </ul>
         </div>
         <div>
           <p class="label">Follow</p>
           <ul>{Object.entries(business.social).map(([k, v]) => <li><a href={v}>{k}</a></li>)}</ul>
+          <p class="soft" style="font-size:13.5px">Stock photos from Unsplash, standing in until Aleah's own.</p>
         </div>
       </div>
     </footer>
@@ -127,8 +131,11 @@ const allSchema = [localBusiness, ...schema];
   .preview-bar { background: var(--fg); color: var(--on-dark); font-size: 14px; text-align: center; padding: 7px 16px; }
   .preview-bar a { color: var(--on-dark); font-weight: 600; }
   .site-header { background: var(--bg); border-bottom: 1px solid var(--line); }
-  .header-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; padding-block: 16px; }
-  .brand { font-family: var(--display); font-size: 25px; line-height: 1.05; color: var(--fg); text-decoration: none; display: flex; flex-direction: column; letter-spacing: -0.01em; }
+  .header-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; padding-block: 10px; }
+  .brand { display: flex; align-items: center; gap: 12px; color: var(--fg); text-decoration: none; }
+  .brand img { height: 62px; width: auto; }
+  .brand span { font-family: var(--display); font-size: 25px; line-height: 1.05; display: flex; flex-direction: column; letter-spacing: -0.01em; }
+  .footer-logo { height: 96px; width: auto; }
   .brand small { font-family: var(--body); font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--soft); }
   nav { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 26px; font-weight: 500; font-size: 16.5px; }
   nav > a:not(.btn) { color: var(--fg); text-decoration: none; }

@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import AreaMap from '../components/AreaMap.astro';
 import Ridgeline from '../components/Ridgeline.astro';
-import { business, services, townPages } from '../data/site.js';
+import { business, services, towns, svcUrl, photos, photoUrl } from '../data/site.js';
 ---
 <Base
   title="Doula Serving Central Oregon | Bend, Redmond, Sisters & More | Innate Doula Care"
@@ -23,8 +23,7 @@ import { business, services, townPages } from '../data/site.js';
       <div class="stack">
         <h2>Towns I serve in person</h2>
         <ul class="town-links">
-          <li><a href="/"><b>Bend</b><small>home base</small></a></li>
-          {townPages.map((t) => <li><a href={`/${t.slug}/`}><b>{t.name}</b><small>about {t.min} min from Bend</small></a></li>)}
+          {towns.map((t) => <li><a href={`/${t.slug}/`}><b>{t.name}</b><small>{t.min ? `about ${t.min} min from Bend` : 'home base'}</small></a></li>)}
         </ul>
         <p>Visits happen in your home, at the hospital or at a birth center. Virtual support is available for families outside the area.</p>
         <p class="soft">Not sure if you are in range? Call or text <a href={business.phoneHref}>{business.phone}</a> and ask.</p>
@@ -32,12 +31,16 @@ import { business, services, townPages } from '../data/site.js';
     </div>
   </section>
 
+  <figure style="margin:0">
+    <img src={photoUrl(photos.lake, 2000, 700)} alt={photos.lake.alt} width="2000" height="700" loading="lazy" style="width:100%;height:clamp(200px,30vw,420px);object-fit:cover;background:var(--panel)" />
+  </figure>
+
   <section class="section alt">
     <div class="wrap stack">
       <p class="eyebrow">Available in every town</p>
       <ul class="rows">
         {services.map((s) => (
-          <li><a href={`/${s.slug}/`}><h3>{s.nav}</h3><p>{s.summary}</p><span class="price">{s.from}</span></a></li>
+          <li><a href={svcUrl(s)}><h3>{s.nav}</h3><p>{s.summary}</p><span class="price">{s.from}</span></a></li>
         ))}
       </ul>
       <div class="note-box">

@@ -1,0 +1,155 @@
+---
+// Service pages: /bend/birth-doula/, /bend/car-seat-installation/ and so on.
+// Other towns get a service page only where `townServices` in site.js has something specific to say.
+import Base from '../../layouts/Base.astro';
+import { business, services, towns, townPages, townServices, svcUrl, photoUrl } from '../../data/site.js';
+
+export function getStaticPaths() {
+  const out = [];
+  for (const t of towns) {
+    for (const s of services) {
+      if (t.slug === 'bend' || townServices[t.slug]?.[s.path]) {
+        out.push({ params: { town: t.slug, service: s.path }, props: { s, t } });
+      }
+    }
+  }
+  return out;
+}
+const { s, t } = Astro.props;
+const isBend = t.slug === 'bend';
+const local = townServices[t.slug]?.[s.path];
+const h1 = `${s.name} in ${t.name}, Oregon`;
+const description = isBend ? s.description : s.description.replace(/Bend/g, t.name);
+let faqs = s.faqs;
+if (local?.faq) {
+  // Swap the Bend-specific clinic question for the local one, or add it near the top.
+  const i = faqs.findIndex((f) => /fire department/i.test(f.q));
+  faqs = i >= 0 ? faqs.map((f, j) => (j === i ? local.faq : f)) : [faqs[0], local.faq, ...faqs.slice(1)];
+}
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: h1,
+  description,
+  provider: { '@type': 'LocalBusiness', name: business.name, telephone: business.phone },
+  areaServed: `${t.name}, Oregon`,
+};
+const crumbs = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: Astro.site.href },
+    { '@type': 'ListItem', position: 2, name: t.name, item: new URL(`/${t.slug}/`, Astro.site).href },
+    { '@type': 'ListItem', position: 3, name: s.name },
+  ],
+};
+const others = services.filter((o) => o.path !== s.path).slice(0, 4);
+const ordered = ['car-seat-installation', 'placenta-encapsulation', 'abortion-doula-support'].includes(s.path);
+---
+<Base title={`${h1} | ${business.name}`} description={description} schema={[serviceSchema, faqSchema, crumbs]}>
+  <section class="page-hero">
+    <div class="wrap hero-split">
+      <div class="stack">
+        <p class="eyebrow"><a href="/">Home</a> / <a href={`/${t.slug}/`}>{t.name}</a> / {s.nav}</p>
+        <h1>{h1}</h1>
+        <p class="lead">{s.summary}</p>
+        <div class="btn-row">
+          <a class="btn" href={business.booking}>Book a free consultation</a>
+          <span>or call or text <a href={business.phoneHref}>{business.phone}</a></span>
+        </div>
+      </div>
+      <img class="hero-photo" src={photoUrl(s.photo, 1100, 800)} alt={s.photo.alt} width="1100" height="800" />
+    </div>
+    <div class="wrap">
+      <div class="facts">
+        {s.facts.map(([k, v]) => <div><span>{k}</span><b>{v}</b></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap two">
+      <div class="stack">
+        {s.intro.map((p, i) => <p class={i === 0 ? 'lead' : ''}>{p}</p>)}
+        {!isBend && <p><b>In {t.name}:</b> {local?.note || `I travel to ${t.name}, about ${t.min} minutes from my home base in Bend.`}</p>}
+        <h2>{s.includesTitle}</h2>
+        <ul class={ordered ? 'steps' : 'plain-list'}>
+          {s.includes.map(([k, d]) => <li><b>{k}</b><span class="soft">{d}</span></li>)}
+        </ul>
+      </div>
+      <aside class="price-card sticky">
+        <p class="eyebrow">Pricing</p>
+        <table class="price-table">
+          <tbody>
+            {s.pricing.map(([name, price, note]) => (
+              <tr>
+                <td>{name}{note && <small>{note}</small>}</td>
+                <td>{price}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p class="soft" style="font-size:15.5px">HSA and FSA accepted. A superbill is available for insurance.</p>
+        <a class="btn" href={business.booking}>Book a free consultation</a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap two">
+      <div class="stack">
+        <p class="eyebrow">Good to know</p>
+        <h2>Common questions</h2>
+      </div>
+      <div class="faq">
+        {faqs.map((f, i) => (
+          <details open={i === 0}>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap stack">
+      <p class="eyebrow">Areas served</p>
+      <h2>{s.nav} across Central Oregon</h2>
+      <ul class="town-links">
+        {towns.map((x) => (
+          <li>
+            <a href={x.slug === t.slug ? `/${x.slug}/` : svcUrl(s, x.slug) === svcUrl(s) && x.slug !== 'bend' ? `/${x.slug}/` : svcUrl(s, x.slug)}>
+              <b>{x.name}</b><small>{x.min ? `about ${x.min} min from Bend` : 'home base'}</small>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap stack">
+      <p class="eyebrow">Other services in {t.name}</p>
+      <ul class="rows">
+        {others.map((o) => (
+          <li><a href={svcUrl(o, t.slug)}><h3>{o.nav}</h3><p>{o.summary}</p><span class="price">{o.from}</span></a></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .page-hero { border-bottom: 1px solid var(--line); padding-bottom: clamp(28px, 4vw, 48px); }
+  .hero-split { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); align-items: center; padding-block: clamp(32px, 5vw, 64px) clamp(24px, 3vw, 40px); }
+  .hero-split h1 { max-width: 16ch; }
+  .hero-photo { width: 100%; aspect-ratio: 11 / 8; object-fit: cover; background: var(--panel); }
+  .sticky { position: sticky; top: 20px; }
+  @media (max-width: 760px) { .hero-split { grid-template-columns: minmax(0, 1fr); } }
+</style>

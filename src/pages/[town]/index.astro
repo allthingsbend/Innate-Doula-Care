@@ -1,0 +1,112 @@
+---
+// Town hubs: /bend/, /redmond/, /sisters/ and so on.
+import Base from '../../layouts/Base.astro';
+import AreaMap from '../../components/AreaMap.astro';
+import { business, services, towns, svcUrl, photoUrl } from '../../data/site.js';
+
+export function getStaticPaths() {
+  return towns.map((t) => ({ params: { town: t.slug }, props: { t } }));
+}
+const { t } = Astro.props;
+const isBend = t.slug === 'bend';
+const faqs = [
+  isBend
+    ? { q: 'Where in Bend do you work?', a: 'Everywhere in Bend. Visits happen at your home, and I support births at home, at birth centers and at St. Charles Bend.' }
+    : { q: `Do you travel to ${t.name}?`, a: `Yes. ${t.name} is about ${t.min} minutes from my home base in Bend, and I come to you for prenatal, postpartum, lactation and car seat visits.` },
+  ...(t.faq ? [t.faq] : []),
+  { q: `Is doula care in ${t.name} covered by the Oregon Health Plan?`, a: 'Yes. I am an OHP-approved doula, and OHP members can receive birth doula care at no out-of-pocket cost. HSA and FSA are also accepted.' },
+  { q: 'Do you offer virtual support?', a: 'Yes. Virtual prenatal sessions, lactation visits and car seat checks are available if that suits you better.' },
+];
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+const nearby = towns.filter((x) => x.slug !== t.slug);
+const title = `Doula in ${t.name}, Oregon | Birth, Postpartum & Car Seat Help | ${business.name}`;
+const description = `Doula care in ${t.name}, Oregon from Innate Doula Care: birth and postpartum support, lactation help, placenta services and in-home car seat checks.${isBend ? '' : ` About ${t.min} minutes from Bend.`} OHP accepted.`;
+---
+<Base title={title} description={description} schema={[faqSchema]}>
+  <section class="town-hero">
+    <img src={photoUrl(t.photo, 2000, 760)} alt={t.photo.alt} width="2000" height="760" />
+    <div class="wrap">
+      <div class="town-card stack">
+        <p class="eyebrow"><a href="/">Home</a> / <a href="/service-area/">Areas served</a> / {t.name}</p>
+        <h1>Doula in {t.name}, Oregon</h1>
+        <p class="lead">Birth and postpartum doula care, lactation support and car seat help for {t.name} families{isBend ? ', from a state-certified doula who lives here.' : ', from a state-certified doula based in Bend.'}</p>
+        <div class="btn-row">
+          <a class="btn" href={business.booking}>Book a free consultation</a>
+          <span>or call or text <a href={business.phoneHref}>{business.phone}</a></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="facts">
+      <div><span>{isBend ? 'Based in' : 'From Bend'}</span><b>{isBend ? 'Bend, Oregon' : `About ${t.min} minutes`}</b></div>
+      <div><span>Visits</span><b>At your home in {t.name}</b></div>
+      <div><span>Oregon Health Plan</span><b>Accepted</b></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap stack">
+      <p class="eyebrow">Services in {t.name}</p>
+      <h2>What I offer {t.name} families</h2>
+      <ul class="rows">
+        {services.map((o) => (
+          <li><a href={svcUrl(o, t.slug)}><h3>{o.nav}</h3><p>{o.summary}</p><span class="price">{o.from}</span></a></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap two" style="align-items:center">
+      <div class="stack">
+        <p class="eyebrow">{t.name}</p>
+        <h2>{isBend ? 'Home base, and where most of my families are' : `Care that comes to you, ${t.where}`}</h2>
+        <p class="lead">{isBend ? 'I live and work in Bend, so I am close by when labor starts and for every visit before and after.' : t.note}</p>
+        <p>I am on call for birth clients 24 hours a day, and every prenatal and postpartum visit happens where you are most comfortable.</p>
+        <div class="note-box">
+          <p><b>Note for Aleah:</b> a sentence or two about families you have supported in {t.name}, or local providers you work with, would make this page much stronger.</p>
+        </div>
+      </div>
+      <AreaMap highlight={t.name} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap two">
+      <div class="stack">
+        <p class="eyebrow">Good to know</p>
+        <h2>Questions from {t.name} families</h2>
+      </div>
+      <div class="faq">
+        {faqs.map((f, i) => (
+          <details open={i === 0}>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap stack">
+      <p class="eyebrow">Other areas</p>
+      <ul class="town-links">
+        {nearby.map((x) => <li><a href={`/${x.slug}/`}><b>{x.name}</b><small>{x.min ? `about ${x.min} min from Bend` : 'home base'}</small></a></li>)}
+      </ul>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .town-hero { position: relative; }
+  .town-hero img { width: 100%; height: clamp(300px, 46vw, 520px); object-fit: cover; background: var(--panel); }
+  .town-card { background: var(--bg); padding: clamp(22px, 4vw, 44px); max-width: 720px; margin-top: clamp(-200px, -16vw, -80px); position: relative; border-top: 3px solid var(--fg); }
+  .town-card h1 { font-size: clamp(36px, 5vw, 60px); }
+</style>
