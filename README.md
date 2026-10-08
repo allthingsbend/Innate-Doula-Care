@@ -7,7 +7,9 @@ A preview site for Innate Doula Care (Bend, Oregon), built with Astro and deploy
 - `src/data/site.js` - business details, services, prices and FAQs. Edit copy here.
 - `src/pages/` - home, one page per service (`[slug].astro`), about, service area, and `/questions/`.
 - `src/components/questions-form.html` - the questionnaire for Aleah.
-- `functions/api/answers.js` - saves questionnaire answers to Cloudflare KV.
+- `functions/api/answers.js` - saves questionnaire answers to Cloudflare KV and forwards them to a Google Sheet.
+- `google-sheet-script.gs` - the script to paste into the Google Sheet (Extensions > Apps Script).
+- `src/components/AreaMap.astro` - the service-area map, drawn from the town coordinates in `site.js`.
 - `functions/results.js` - private page that shows the answers: `/results/?key=YOUR_KEY`.
 - `wrangler.toml` - Cloudflare Pages settings, including the KV storage binding.
 
@@ -16,7 +18,8 @@ A preview site for Innate Doula Care (Bend, Oregon), built with Astro and deploy
 - Framework preset: Astro
 - Build command: `npm run build`
 - Build output directory: `dist`
-- Secret to add: `RESULTS_KEY` (any long password you choose). This is what unlocks `/results/`.
+- Secret: `RESULTS_KEY` (any long password you choose). This is what unlocks `/results/`.
+- Secret: `SHEET_WEBHOOK_URL` (the web app URL from the Google Sheet's Apps Script deployment). This sends each submission to the sheet.
 
 ## Local development
 

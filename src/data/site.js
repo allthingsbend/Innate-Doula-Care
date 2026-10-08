@@ -287,3 +287,29 @@ export const services = [
     ],
   },
 ];
+
+// Look and feel per service: which illustration, its handwritten caption, and the quick facts row.
+const extras = {
+  'car-seat-installation-bend': { image: 'road', caption: 'The road west out of Bend', from: 'from $50', facts: [['Starts at', '$50'], ['Takes', '45 to 60 minutes'], ['Where', 'Your home, your vehicle']] },
+  'birth-doula-bend': { image: 'sunrise', caption: 'Sunrise over the Three Sisters', from: 'from $1,500', facts: [['Starts at', '$1,500'], ['On call', 'About 4 weeks around your due date'], ['Where', 'Home, hospital or birth center']] },
+  'postpartum-doula-bend': { image: 'cabin', caption: 'A quiet night in the pines', from: '$50 per hour', facts: [['Rate', '$50 per hour'], ['Visits', 'Day or evening, overnight case by case'], ['Where', 'Your home']] },
+  'lactation-counselor-bend': { image: 'lake', caption: 'Still morning on a Cascade lake', from: 'from $60', facts: [['Starts at', '$60'], ['Takes', '60 to 90 minutes'], ['Where', 'Your home or by video']] },
+  'placenta-encapsulation-bend': { image: 'tree', caption: 'A tree of life in a mountain meadow', from: 'from $25', facts: [['Starts at', '$25'], ['Book by', 'Your third trimester'], ['Includes', 'Pickup and delivery']] },
+  'surrogacy-doula-bend': { image: 'confluence', caption: 'Two streams becoming one river', from: 'from $150', facts: [['Starts at', '$150'], ['For', 'Surrogates and intended parents'], ['Where', 'In person or virtual']] },
+  'pregnancy-loss-support-bend': { image: 'dusk', caption: 'First star over the Cascades', from: 'sliding scale', facts: [['Cost', 'Flexible, sliding scale'], ['When', 'Before, during or after'], ['Where', 'In person or virtual']] },
+  'abortion-doula-support-bend': { image: 'night', caption: 'Moonrise over the Cascades', from: 'sliding scale', facts: [['Cost', 'Flexible, sliding scale'], ['When', 'Before, during and after'], ['Where', 'In person or virtual']] },
+};
+services.forEach((s) => Object.assign(s, extras[s.slug]));
+
+// Towns with real map positions and rough drive times from Bend (for the service-area map).
+export const towns = [
+  { name: 'Bend', lat: 44.058, lon: -121.315, min: 0 },
+  { name: 'Redmond', lat: 44.273, lon: -121.174, min: 25 },
+  { name: 'Sisters', lat: 44.291, lon: -121.549, min: 30 },
+  { name: 'Sunriver', lat: 43.884, lon: -121.439, min: 25 },
+  { name: 'Terrebonne', lat: 44.353, lon: -121.178, min: 30 },
+  { name: 'La Pine', lat: 43.67, lon: -121.504, min: 40 },
+  { name: 'Prineville', lat: 44.3, lon: -120.834, min: 50 },
+  { name: 'Culver', lat: 44.526, lon: -121.213, min: 50 },
+  { name: 'Madras', lat: 44.634, lon: -121.13, min: 55 },
+];

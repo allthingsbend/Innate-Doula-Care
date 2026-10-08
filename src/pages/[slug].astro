@@ -1,12 +1,12 @@
 ---
 import Base from '../layouts/Base.astro';
-import { business, services } from '../data/site.js';
+import CarSeat from '../components/CarSeat.astro';
+import { business, services, towns } from '../data/site.js';
 
 export function getStaticPaths() {
   return services.map((s) => ({ params: { slug: s.slug }, props: { s } }));
 }
 const { s } = Astro.props;
-const dark = s.image === 'cascades-twilight';
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -21,31 +21,42 @@ const serviceSchema = {
   areaServed: business.towns.map((t) => `${t}, Oregon`),
 };
 const others = services.filter((o) => o.slug !== s.slug).slice(0, 4);
+// Numbered steps only where the order is real.
+const ordered = ['car-seat-installation-bend', 'placenta-encapsulation-bend', 'abortion-doula-support-bend'].includes(s.slug);
+const isCarSeat = s.slug === 'car-seat-installation-bend';
 ---
 <Base title={`${s.title} | ${business.name}`} description={s.description} schema={[serviceSchema, faqSchema]}>
-  <section class={`hero ${dark ? 'dark' : ''}`}>
-    <img src={`/img/${s.image}.jpg`} alt="" width="1600" height="900" />
-    <div class="hero-text wrap">
-      <p class="eyebrow">{business.name} · Central Oregon</p>
+  <section class="svc-hero">
+    <div class="wrap stack">
+      <p class="eyebrow"><a href="/#services">Services</a> · Bend and Central Oregon</p>
       <h1>{s.h1}</h1>
       <p class="lead">{s.summary}</p>
+      <div class="facts">
+        {s.facts.map(([k, v]) => <div><span>{k}</span><b>{v}</b></div>)}
+      </div>
       <div class="btn-row">
         <a class="btn" href={business.booking}>Book a free consultation</a>
+        <span>or call or text <a href={business.phoneHref}>{business.phone}</a></span>
       </div>
     </div>
+    <figure class="scene">
+      <img src={`/img/${s.image}.jpg`} width="1920" height="720" alt={`Illustration: ${s.caption.toLowerCase()}`} />
+      <figcaption>{s.caption}</figcaption>
+    </figure>
   </section>
 
   <section class="section">
     <div class="wrap two">
       <div class="stack">
         {s.intro.map((p, i) => <p class={i === 0 ? 'lead' : ''}>{p}</p>)}
+        {isCarSeat && <div class="seat-spot"><CarSeat /></div>}
         <h2>{s.includesTitle}</h2>
-        <ul class="steps">
+        <ul class={ordered ? 'steps' : 'plain-list'}>
           {s.includes.map(([t, d]) => <li><b>{t}</b><span class="soft">{d}</span></li>)}
         </ul>
       </div>
-      <div class="stack">
-        <h2>Pricing</h2>
+      <aside class="menu-card">
+        <p class="eyebrow">Pricing</p>
         <table class="price-table">
           <tbody>
             {s.pricing.map(([name, price, note]) => (
@@ -58,17 +69,19 @@ const others = services.filter((o) => o.slug !== s.slug).slice(0, 4);
         </table>
         <p class="soft">HSA and FSA accepted. A superbill is available for insurance.</p>
         <a class="btn" href={business.booking}>Book a free consultation</a>
-        <p>Or call or text <a href={business.phoneHref}>{business.phone}</a></p>
-      </div>
+      </aside>
     </div>
   </section>
 
   <section class="section alt">
-    <div class="wrap narrow stack faq">
-      <h2>Common questions</h2>
-      <div>
-        {s.faqs.map((f) => (
-          <details>
+    <div class="wrap two">
+      <div class="stack">
+        <p class="eyebrow">Good to know</p>
+        <h2>Common questions</h2>
+      </div>
+      <div class="faq">
+        {s.faqs.map((f, i) => (
+          <details open={i === 0}>
             <summary>{f.q}</summary>
             <p>{f.a}</p>
           </details>
@@ -79,20 +92,39 @@ const others = services.filter((o) => o.slug !== s.slug).slice(0, 4);
 
   <section class="section">
     <div class="wrap stack">
-      <p class="eyebrow">Where I work</p>
-      <h2>Available across Central Oregon</h2>
-      <ul class="towns">
-        {business.towns.map((t) => <li>{t}</li>)}
+      <p class="eyebrow">Where</p>
+      <h2>{s.nav} across Central Oregon</h2>
+      <ul class="town-list">
+        {towns.map((t) => <li><b>{t.name}</b><span>{t.min ? `about ${t.min} min from Bend` : 'home base'}</span></li>)}
       </ul>
-      <p class="label" style="margin-top:16px">Other services</p>
-      <div class="cards">
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap stack">
+      <p class="eyebrow">Also from Innate Doula Care</p>
+      <ul class="svc-list">
         {others.map((o) => (
-          <div class="card">
-            <h3><a href={`/${o.slug}/`}>{o.nav}</a></h3>
-            <p class="soft">{o.summary}</p>
-          </div>
+          <li>
+            <a href={`/${o.slug}/`}>
+              <img src={`/img/t-${o.image}.jpg`} alt="" width="480" height="300" loading="lazy" />
+              <div>
+                <h3>{o.nav} <small>{o.from}</small></h3>
+                <p>{o.summary}</p>
+              </div>
+            </a>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   </section>
 </Base>
+
+<style>
+  .svc-hero .wrap { padding-block: clamp(24px, 4vw, 52px) clamp(24px, 3vw, 40px); }
+  .svc-hero h1 { max-width: 18ch; }
+  .svc-hero .lead { max-width: 56ch; }
+  .svc-hero .eyebrow a { color: inherit; }
+  .menu-card { position: sticky; top: 20px; }
+  .seat-spot { max-width: 300px; }
+</style>

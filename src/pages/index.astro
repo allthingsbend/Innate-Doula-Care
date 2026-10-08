@@ -1,100 +1,134 @@
 ---
 import Base from '../layouts/Base.astro';
-import { business, services } from '../data/site.js';
+import AreaMap from '../components/AreaMap.astro';
+import CarSeat from '../components/CarSeat.astro';
+import { business, services, towns } from '../data/site.js';
+const away = towns.filter((t) => t.min > 0);
 ---
 <Base
   title="Bend Doula | Innate Doula Care | Birth, Postpartum & Car Seat Help"
   description="Innate Doula Care is a full spectrum doula in Bend, Oregon: birth and postpartum doula care, lactation support, placenta services and in-home car seat installation help across Central Oregon."
 >
-  <section class="hero">
-    <img src="/img/cascades-dawn.jpg" alt="Illustration of the Cascade peaks reflected in a lake at dawn" width="1800" height="1012" />
-    <div class="hero-text wrap">
-      <p class="eyebrow">Full spectrum doula · Central Oregon</p>
+  <section class="home-hero">
+    <div class="wrap stack">
+      <p class="eyebrow">Bend, Oregon · Full spectrum doula</p>
       <h1>Bend doula care for birth, postpartum and beyond</h1>
-      <p class="lead">You can do hard things, and I am here to support you every step of the way.</p>
+      <p class="lead">You can do hard things, and I am here to support you every step of the way. In your home, at the hospital, or anywhere in Central Oregon.</p>
       <div class="btn-row">
         <a class="btn" href={business.booking}>Book a free consultation</a>
-        <a class="btn ghost" href="#services">See services</a>
+        <a class="btn ghost" href="#services">See services and prices</a>
+      </div>
+    </div>
+    <figure class="scene natural">
+      <picture>
+        <source media="(max-width: 700px)" srcset="/img/skyline-m.jpg" />
+        <img src="/img/skyline.jpg" width="1920" height="680" alt="Illustrated Cascade skyline with Mt. Bachelor, Broken Top, and the South, Middle and North Sister labeled by hand" />
+      </picture>
+      <figcaption>The view west from Bend</figcaption>
+    </figure>
+  </section>
+
+  <section class="wrap">
+    <div class="facts">
+      <div><span>Oregon Health Plan</span><b>Birth doula care covered</b></div>
+      <div><span>For clients</span><b>On call 24 hours a day</b></div>
+      <div><span>Service area</span><b>{towns.length} Central Oregon towns</b></div>
+      <div><span>First step</span><b>A free consultation</b></div>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="wrap stack">
+      <p class="eyebrow">Services</p>
+      <h2>What I can help with</h2>
+      <ul class="svc-list">
+        {services.map((s) => (
+          <li>
+            <a href={`/${s.slug}/`}>
+              <img src={`/img/t-${s.image}.jpg`} alt="" width="480" height="300" loading="lazy" />
+              <div>
+                <h3>{s.nav} <small>{s.from}</small></h3>
+                <p>{s.summary}</p>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap two" style="align-items:center">
+      <div class="seat-art">
+        <CarSeat />
+        <p class="hand seat-note">installed by you, checked by a certified tech</p>
+      </div>
+      <div class="stack">
+        <p class="eyebrow">Bringing a baby home soon?</p>
+        <h2>Car seat checks in your own driveway</h2>
+        <p class="lead">Most parents are not sure their seat is in right. In one visit you install it yourself, in your vehicle, with a certified Child Passenger Safety Technician guiding you.</p>
+        <div class="facts tight">
+          <div><span>Cost</span><b>$50</b></div>
+          <div><span>Takes</span><b>45 to 60 min</b></div>
+          <div><span>Where</span><b>Your home</b></div>
+        </div>
+        <div class="btn-row"><a class="btn" href="/car-seat-installation-bend/">Car seat help in Bend</a></div>
       </div>
     </div>
   </section>
 
   <section class="section">
+    <div class="wrap two" style="align-items:center">
+      <div class="stack">
+        <p class="eyebrow">Where I travel</p>
+        <h2>Based in Bend. I come to you.</h2>
+        <p class="lead">Visits happen in your home, at the hospital or at a birth center, across Central Oregon.</p>
+        <ul class="town-list">
+          {away.map((t) => <li><b>{t.name}</b><span>about {t.min} min from Bend</span></li>)}
+        </ul>
+        <p><a href="/service-area/">More about the service area</a></p>
+      </div>
+      <AreaMap />
+    </div>
+  </section>
+
+  <section class="section alt">
     <div class="wrap two">
       <div class="stack">
         <p class="eyebrow">Hi, I'm Aleah</p>
-        <h2>Your cozy corner of support in Bend</h2>
-        <p class="lead">Whether you are getting ready for birth, finding your way through the early days of parenthood, or facing another big life moment, you are in the right place.</p>
-        <p>As your Bend doula, I am here to cheer you on, hold your hand and make sure you feel informed and confident. I serve families across Central Oregon, in person and virtually.</p>
-        <p><a href="/about/">More about me</a></p>
+        <h2>A doula who has been on every side of birth</h2>
+        <p class="lead">Mom of two. Two-time surrogate. Trained in early childhood development before any of it.</p>
+        <p>I believe every experience is unique and deserves personal, inclusive and non-judgmental care. Whether you are getting ready for birth, finding your way through the first weeks, or facing another big life moment, my job is to help you feel informed and confident.</p>
+        <p><a href="/about/">More about Aleah</a></p>
       </div>
       <div class="stack">
         <p class="label">Training and credentials</p>
         <ul class="checks">
           {business.credentials.map((c) => <li>{c}</li>)}
         </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="section alt" id="services">
-    <div class="wrap stack">
-      <p class="eyebrow">Services</p>
-      <h2>How I can help</h2>
-      <div class="cards">
-        {services.map((s) => (
-          <div class="card">
-            <h3><a href={`/${s.slug}/`}>{s.nav}</a></h3>
-            <p class="soft">{s.summary}</p>
-            <p><a href={`/${s.slug}/`}>{s.nav} in Bend</a></p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap two">
-      <div class="stack">
-        <p class="eyebrow">New to doulas?</p>
-        <h2>What a doula does</h2>
-        <p>A doula is a trained professional who offers non-medical emotional, informational, physical and advocacy support during big health experiences: pregnancy, labor, birth and the weeks after, as well as surrogacy and loss.</p>
-        <ul class="checks">
-          <li><b>Emotional support:</b> reassurance, a listening ear and a calm presence.</li>
-          <li><b>Information:</b> clear explanations of your options and evidence-based resources.</li>
-          <li><b>Physical support:</b> comfort measures, positions for labor and help with newborn care.</li>
-          <li><b>Advocacy:</b> making sure your preferences are heard and your questions get answered.</li>
-        </ul>
-      </div>
-      <div class="stack">
-        <p class="eyebrow">Kind words</p>
-        <h2>What families say</h2>
         <div class="placeholder">
-          <p><b>Your Google reviews go here.</b> Showing two or three real reviews on the home page, with a link to the rest, is one of the quickest ways to build trust.</p>
+          <p><b>Your Google reviews go here.</b> Two or three real reviews, with a link to the rest, are one of the quickest ways to build trust.</p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="section alt">
-    <div class="wrap stack">
-      <p class="eyebrow">Where I work</p>
-      <h2>Serving all of Central Oregon</h2>
-      <ul class="towns">
-        {business.towns.map((t) => <li>{t}</li>)}
-      </ul>
-      <p><a href="/service-area/">See the full service area</a></p>
     </div>
   </section>
 
   <section class="section cta">
     <div class="wrap stack">
       <h2>Ready to talk?</h2>
-      <p class="lead" style="color:inherit">A free consultation is the easiest way to see if we are a good fit. Oregon Health Plan members can receive birth doula care at no out-of-pocket cost.</p>
+      <p class="lead">A free consultation is the easiest way to see if we are a good fit. Oregon Health Plan members can receive birth doula care at no out-of-pocket cost.</p>
       <div class="btn-row">
         <a class="btn" href={business.booking}>Book a free consultation</a>
+        <span>or call or text <a href={business.phoneHref}>{business.phone}</a></span>
       </div>
-      <p>Or call or text <a href={business.phoneHref}>{business.phone}</a></p>
     </div>
   </section>
 </Base>
+
+<style>
+  .home-hero .wrap { padding-block: clamp(28px, 5vw, 64px) clamp(20px, 3vw, 36px); }
+  .home-hero h1 { max-width: 19ch; }
+  .home-hero .lead { max-width: 56ch; }
+  .seat-art { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .seat-note { font-size: 26px; color: var(--rust); transform: rotate(-3deg); text-align: center; }
+</style>
