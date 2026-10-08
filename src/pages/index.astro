@@ -9,8 +9,9 @@ import { business, services, townPages, svcUrl, photos, photoUrl } from '../data
   description="Innate Doula Care is a full spectrum doula in Bend, Oregon: birth and postpartum doula care, lactation support, placenta services and in-home car seat installation help across Central Oregon."
 >
   <section class="home-hero">
-    <div class="wrap hero-grid">
-      <div class="stack">
+    <img class="hero-img" src={photoUrl(photos.lake, 2400, 1100)} alt={photos.lake.alt} width="2400" height="1100" fetchpriority="high" />
+    <div class="wrap">
+      <div class="hero-card stack">
         <p class="eyebrow">Full spectrum doula · Bend, Oregon</p>
         <h1>Bend doula care for birth, postpartum and beyond</h1>
         <p class="lead">You can do hard things, and I am here to support you every step of the way. In your home, at the hospital, or anywhere in Central Oregon.</p>
@@ -20,9 +21,16 @@ import { business, services, townPages, svcUrl, photos, photoUrl } from '../data
         </div>
         <p class="creds">OHP-approved doula · Certified Lactation Counselor · Child Passenger Safety Technician</p>
       </div>
-      <img class="portrait" src={photoUrl(photos.hero, 900, 1100)} alt={photos.hero.alt} width="900" height="1100" />
     </div>
-    <Ridgeline />
+  </section>
+
+  <section class="wrap">
+    <div class="facts">
+      <div><span>Oregon Health Plan</span><b>Birth doula care covered</b></div>
+      <div><span>For clients</span><b>On call 24 hours a day</b></div>
+      <div><span>Areas served</span><b>9 Central Oregon towns</b></div>
+      <div><span>First step</span><b>A free consultation</b></div>
+    </div>
   </section>
 
   <section class="section" id="services">
@@ -42,10 +50,6 @@ import { business, services, townPages, svcUrl, photos, photoUrl } from '../data
       </ul>
     </div>
   </section>
-
-  <figure class="band">
-    <img src={photoUrl(photos.skyline, 2000, 700)} alt={photos.skyline.alt} width="2000" height="700" loading="lazy" />
-  </figure>
 
   <section class="section alt topo">
     <div class="wrap two" style="align-items:center">
@@ -77,21 +81,18 @@ import { business, services, townPages, svcUrl, photos, photoUrl } from '../data
     </div>
   </section>
 
-  <figure class="band">
-    <img src={photoUrl(photos.river, 2000, 700)} alt={photos.river.alt} width="2000" height="700" loading="lazy" />
-  </figure>
+  <Ridgeline />
 
   <section class="section alt">
-    <div class="wrap two">
+    <div class="wrap two" style="align-items:center">
+      <img class="about-img" src={photoUrl(photos.hands, 1000, 1100)} alt={photos.hands.alt} width="1000" height="1100" loading="lazy" />
       <div class="stack">
         <p class="eyebrow">About Aleah</p>
         <h2>A doula who has been on every side of birth</h2>
         <p class="lead">Mom of two. Two-time surrogate. Trained in early childhood development before any of it.</p>
         <p>I believe every experience is unique and deserves personal, inclusive and non-judgmental care. Whether you are getting ready for birth, finding your way through the first weeks, or facing another big life moment, my job is to help you feel informed and confident.</p>
         <p><a href="/about/">More about Aleah</a></p>
-      </div>
-      <div class="stack">
-        <p class="label">Training and credentials</p>
+        <p class="label" style="margin-top:8px">Training and credentials</p>
         <ul class="checks">
           {business.credentials.map((c) => <li>{c}</li>)}
         </ul>
@@ -115,17 +116,13 @@ import { business, services, townPages, svcUrl, photos, photoUrl } from '../data
 </Base>
 
 <style>
-  .hero-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 72px); align-items: center; padding-block: clamp(36px, 6vw, 80px) clamp(28px, 4vw, 52px); }
-  .hero-grid h1 { max-width: 14ch; }
-  .hero-grid .lead { max-width: 50ch; }
+  .home-hero { position: relative; }
+  .hero-img { width: 100%; height: clamp(300px, 46vw, 600px); object-fit: cover; background: var(--panel); }
+  .hero-card { background: var(--bg); max-width: 760px; padding: clamp(22px, 4vw, 48px) clamp(20px, 4vw, 48px) clamp(20px, 3vw, 36px); margin-top: clamp(-220px, -17vw, -70px); position: relative; }
+  .hero-card h1 { max-width: 15ch; }
+  .hero-card .lead { max-width: 50ch; }
+  .about-img { width: 100%; max-width: 460px; aspect-ratio: 10 / 11; object-fit: cover; background: var(--panel); }
   .creds { font-size: 14.5px; color: var(--soft); border-top: 1px solid var(--line); padding-top: 16px; }
-  .portrait { aspect-ratio: 4 / 5; width: 100%; max-width: 420px; justify-self: end; object-fit: cover; background: var(--panel); }
-  .band { margin: 0; }
-  .band img { width: 100%; height: clamp(200px, 30vw, 420px); object-fit: cover; background: var(--panel); }
   .facts.stacked { grid-template-columns: 1fr; }
   .facts.stacked > div + div { border-top: 1px solid var(--line); }
-  @media (max-width: 760px) {
-    .hero-grid { grid-template-columns: minmax(0, 1fr); }
-    .portrait { aspect-ratio: 16 / 10; max-width: none; justify-self: stretch; }
-  }
 </style>

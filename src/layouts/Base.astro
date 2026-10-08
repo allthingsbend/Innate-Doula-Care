@@ -51,7 +51,7 @@ const allSchema = [localBusiness, ...schema];
           <details class="menu">
             <summary>Areas</summary>
             <ul>
-              <li><a href="/service-area/">All of Central Oregon</a></li>
+              <li><a href="/central-oregon/">All of Central Oregon</a></li>
               {towns.map((t) => <li><a href={`/${t.slug}/`}>{t.name}<small>{t.min ? `${t.min} min` : 'home base'}</small></a></li>)}
             </ul>
           </details>
@@ -95,14 +95,14 @@ const allSchema = [localBusiness, ...schema];
   /* Direction: quiet and professional. Warm paper, pine ink, one deep teal for actions, clay used sparingly.
      Central Oregon shows up as fine line work: an elevation profile of the Cascades, contour lines, a survey-style map. */
   :root {
-    --bg: #faf8f3; --panel: #f1ede4; --fg: #17302e; --soft: #4a5753; --line: #d9d2c3;
-    --river: #1e5a5e; --clay: #96502f; --field: #ffffff; --on-dark: #f6f3ec;
+    --bg: #fcfbf8; --panel: #f0f4ee; --fg: #223b38; --soft: #55625e; --line: #dfe3da;
+    --river: #2f7a74; --clay: #a05a36; --field: #ffffff; --on-dark: #ffffff; --tint: #e3ece6;
     --display: 'Newsreader Variable', 'Iowan Old Style', Georgia, serif;
     --body: 'DM Sans Variable', 'Helvetica Neue', Arial, sans-serif;
   }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 17.5px; line-height: 1.6; }
-  img { max-width: 100%; display: block; }
+  img { max-width: 100%; height: auto; display: block; }
   a { color: var(--river); text-underline-offset: 3px; text-decoration-thickness: 1px; }
   h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.1; margin: 0; text-wrap: balance; letter-spacing: -0.012em; }
   h1 { font-size: clamp(40px, 5.6vw, 68px); }
@@ -121,21 +121,21 @@ const allSchema = [localBusiness, ...schema];
   .lead { font-size: clamp(19px, 1.9vw, 21.5px); color: var(--soft); line-height: 1.55; }
   .soft { color: var(--soft); }
   .btn { display: inline-block; background: var(--river); color: var(--on-dark); text-decoration: none; font: inherit; font-weight: 600; padding: 13px 22px; border-radius: 6px; border: 1px solid var(--river); cursor: pointer; }
-  .btn:hover { background: var(--fg); border-color: var(--fg); }
+  .btn:hover { background: var(--fg); border-color: var(--fg); color: #fff; }
   .btn.small { padding: 8px 16px; font-size: 15.5px; }
   .btn.ghost { background: transparent; color: var(--fg); border-color: var(--fg); }
   .btn.ghost:hover { background: var(--fg); color: var(--bg); }
   .btn-row { display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: center; }
   a:focus-visible, .btn:focus-visible, summary:focus-visible { outline: 2px solid var(--clay); outline-offset: 3px; }
 
-  .preview-bar { background: var(--fg); color: var(--on-dark); font-size: 14px; text-align: center; padding: 7px 16px; }
-  .preview-bar a { color: var(--on-dark); font-weight: 600; }
+  .preview-bar { background: var(--tint); color: var(--fg); font-size: 14px; text-align: center; padding: 7px 16px; }
+  .preview-bar a { color: var(--fg); font-weight: 600; }
   .site-header { background: var(--bg); border-bottom: 1px solid var(--line); }
   .header-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; padding-block: 10px; }
   .brand { display: flex; align-items: center; gap: 12px; color: var(--fg); text-decoration: none; }
-  .brand img { height: 62px; width: auto; }
+  .brand img { width: 58px; height: auto; }
   .brand span { font-family: var(--display); font-size: 25px; line-height: 1.05; display: flex; flex-direction: column; letter-spacing: -0.01em; }
-  .footer-logo { height: 96px; width: auto; }
+  .footer-logo { width: 120px; height: auto; align-self: flex-start; }
   .brand small { font-family: var(--body); font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--soft); }
   nav { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 26px; font-weight: 500; font-size: 16.5px; }
   nav > a:not(.btn) { color: var(--fg); text-decoration: none; }
@@ -152,7 +152,7 @@ const allSchema = [localBusiness, ...schema];
   .topo { position: relative; isolation: isolate; }
   .topo::before { content: ''; position: absolute; inset: 0; z-index: -1; background: url('/img/topo.svg') center / cover no-repeat; opacity: 0.09; pointer-events: none; }
 
-  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); border-block: 1px solid var(--fg); }
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); border-block: 1px solid var(--line); }
   .facts.tight { grid-template-columns: repeat(3, 1fr); }
   .facts > div { padding: 16px 20px 16px 0; display: flex; flex-direction: column; gap: 3px; }
   .facts b { font-family: var(--display); font-weight: 400; font-size: 24px; line-height: 1.2; }
@@ -200,11 +200,8 @@ const allSchema = [localBusiness, ...schema];
 
   .photo-slot { background: var(--panel); border: 1px solid var(--line); display: flex; align-items: flex-end; padding: 20px; color: var(--soft); font-size: 14.5px; }
   .note-box { border: 1px dashed var(--line); padding: 18px 20px; color: var(--soft); font-size: 15.5px; }
-  .cta { background: var(--fg); color: var(--on-dark); }
-  .cta a:not(.btn) { color: var(--on-dark); }
-  .cta .btn { background: var(--on-dark); color: var(--fg); border-color: var(--on-dark); }
-  .cta .lead { color: var(--on-dark); opacity: 0.85; }
-  .cta.topo::before { filter: invert(1); opacity: 0.1; }
+  .cta { background: var(--tint); }
+  .cta .lead { color: var(--soft); }
 
   .site-footer { border-top: 1px solid var(--line); padding-block: 56px; font-size: 15.5px; }
   .footer-brand { font-family: var(--display); font-size: 25px; }

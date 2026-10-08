@@ -366,7 +366,8 @@ services.forEach((s) => {
   s.photo = servicePhotos[s.path];
 });
 export const photos = {
-  hero: P('1510154221590-ff63e90a136f', 'Omar Lopez', 'A parent holding a newborn\'s feet'),
+  feet: P('1510154221590-ff63e90a136f', 'Omar Lopez', 'A parent holding a newborn\'s feet'),
+  hands: P('1582486225644-aeacf6aa0b1b', 'Nathan Dumlao', 'An adult hand holding a tiny baby hand'),
   skyline: P('1718927445954-b050d18bc135', 'Porter Raab', 'A mountain range with trees in the foreground'),
   lake: P('1587656421406-273a011cad8d', 'Clay Banks', 'A lake with a mountain behind it'),
   river: P('1637109716852-63355bcba580', 'Daniel Herron', 'A river running through green forest'),
@@ -396,5 +397,19 @@ export const townServices = {
     },
   },
 };
-export const hasPage = (townSlug, path) => townSlug === 'bend' || Boolean(townServices[townSlug]?.[path]);
+// Towns that get a page for every service. Terrebonne and Culver keep a hub page only.
+export const serviceTowns = ['bend', 'redmond', 'sisters', 'sunriver', 'la-pine', 'prineville', 'madras'];
+export const hasPage = (townSlug, path) => serviceTowns.includes(townSlug) || Boolean(townServices[townSlug]?.[path]);
+
+// One honest, service-specific line per town page. Aleah should replace these with real local detail over time.
+export const localLine = (s, t) => ({
+  'car-seat-installation': `Car seat checks in ${t.name} happen in your own driveway, in your own vehicle. I drive up from Bend, about ${t.min} minutes away, so there is no clinic line to wait in.`,
+  'birth-doula': `For ${t.name} families, we plan the drive to your birth place and my on-call timing at your prenatal visits, so there are no surprises when labor starts.`,
+  'postpartum-doula': `Postpartum visits happen at your home in ${t.name}, so you do not have to pack up a newborn and make the drive to Bend.`,
+  'lactation-support': `Lactation visits come to you in ${t.name}, and virtual visits are available on days when a home visit is not practical.`,
+  'placenta-encapsulation': `I arrange pickup after your birth and deliver your finished preparation to your home in ${t.name}.`,
+  'surrogacy-doula': `I support surrogates and intended parents in ${t.name} in person, with virtual check-ins between visits.`,
+  'pregnancy-loss-support': `Support is available at your home in ${t.name} or virtually, whichever feels right to you.`,
+  'abortion-doula-support': `Support is available in person for ${t.name} families, or by phone, text and video.`,
+}[s.path]);
 export const svcUrl = (s, townSlug = 'bend') => `/${hasPage(townSlug, s.path) ? townSlug : 'bend'}/${s.path}/`;
