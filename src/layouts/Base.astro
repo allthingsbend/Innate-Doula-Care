@@ -1,0 +1,166 @@
+---
+import { business, services } from '../data/site.js';
+const { title, description, schema = [], hideChrome = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const localBusiness = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: business.name,
+  telephone: business.phone,
+  email: business.email,
+  url: Astro.site.href,
+  founder: { '@type': 'Person', name: business.owner },
+  areaServed: business.towns.map((t) => ({ '@type': 'City', name: `${t}, Oregon` })),
+  sameAs: Object.values(business.social),
+};
+const allSchema = [localBusiness, ...schema];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <!-- Test site: keep it out of Google so it never competes with the live site. -->
+    <meta name="robots" content="noindex, nofollow" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={new URL('/img/cascades-dawn.jpg', Astro.site).href} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400..700&family=DM+Serif+Display&display=swap" />
+    {allSchema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
+  </head>
+  <body>
+    <p class="preview-bar">Preview site. A draft for Aleah to review, not the live website. <a href="/questions/">Aleah: quick questions for you</a></p>
+    {!hideChrome && (
+      <header class="site-header">
+        <div class="wrap header-row">
+          <a class="brand" href="/">{business.name}</a>
+          <nav aria-label="Main">
+            <details class="menu">
+              <summary>Services</summary>
+              <ul>
+                {services.map((s) => <li><a href={`/${s.slug}/`}>{s.nav}</a></li>)}
+              </ul>
+            </details>
+            <a href="/service-area/">Service Area</a>
+            <a href="/about/">About</a>
+            <a class="btn small" href={business.booking}>Free consultation</a>
+          </nav>
+        </div>
+      </header>
+    )}
+    <main>
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="wrap footer-grid">
+        <div>
+          <p class="brand">{business.name}</p>
+          <p>Full spectrum doula care across Central Oregon.</p>
+          <p><a href={business.phoneHref}>{business.phone}</a><br /><a href={`mailto:${business.email}`}>{business.email}</a></p>
+        </div>
+        <div>
+          <p class="label">Services</p>
+          <ul>{services.map((s) => <li><a href={`/${s.slug}/`}>{s.nav}</a></li>)}</ul>
+        </div>
+        <div>
+          <p class="label">Serving</p>
+          <p>{business.towns.join(', ')}</p>
+          <p class="label">Follow</p>
+          <p>{Object.entries(business.social).map(([k, v], i) => <>{i > 0 && ' · '}<a href={v}>{k}</a></>)}</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --bg: #f7f2e8; --panel: #ede4d3; --fg: #10312f; --soft: #3f4e4a; --line: #cfc4ac;
+    --river: #1f6f78; --rust: #a8481f; --field: #fffdf8; --pine: #10312f; --on-dark: #f7f2e8;
+    --display: 'DM Serif Display', Georgia, serif; --body: 'DM Sans', 'Trebuchet MS', Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 18px; line-height: 1.6; }
+  img { max-width: 100%; display: block; }
+  a { color: var(--river); }
+  h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.12; margin: 0; text-wrap: balance; }
+  h1 { font-size: clamp(38px, 6vw, 64px); }
+  h2 { font-size: clamp(28px, 4vw, 40px); }
+  h3 { font-size: 24px; }
+  p { margin: 0; }
+  ul { margin: 0; padding-left: 20px; }
+  .wrap { max-width: 1100px; margin-inline: auto; padding-inline: 20px; }
+  .narrow { max-width: 760px; }
+  .stack { display: flex; flex-direction: column; gap: 20px; }
+  .section { padding-block: 64px; }
+  .section.alt { background: var(--panel); }
+  .eyebrow, .label { font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rust); }
+  .lead { font-size: 21px; color: var(--soft); }
+  .soft { color: var(--soft); }
+  .btn { display: inline-block; background: var(--river); color: var(--on-dark); text-decoration: none; font-weight: 700; padding: 14px 22px; border-radius: 10px; border: 0; font: inherit; font-weight: 700; cursor: pointer; }
+  .btn.small { padding: 9px 16px; font-size: 16px; }
+  .btn.ghost { background: transparent; color: var(--fg); box-shadow: inset 0 0 0 2px var(--fg); }
+  .btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  a:focus-visible, .btn:focus-visible, summary:focus-visible { outline: 3px solid var(--rust); outline-offset: 2px; }
+
+  .preview-bar { background: var(--rust); color: #fff; font-size: 15px; text-align: center; padding: 8px 16px; }
+  .preview-bar a { color: #fff; font-weight: 700; }
+  .site-header { border-bottom: 1px solid var(--line); background: var(--bg); position: sticky; top: 0; z-index: 5; }
+  .header-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; padding-block: 14px; }
+  .brand { font-family: var(--display); font-size: 24px; color: var(--fg); text-decoration: none; }
+  nav { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 22px; font-weight: 500; }
+  nav > a:not(.btn) { color: var(--fg); text-decoration: none; }
+  .menu { position: relative; }
+  .menu summary { cursor: pointer; list-style: none; }
+  .menu summary::after { content: ' ▾'; }
+  .menu summary::-webkit-details-marker { display: none; }
+  .menu ul { position: absolute; left: 0; top: calc(100% + 10px); background: var(--field); border: 1px solid var(--line); border-radius: 10px; list-style: none; padding: 8px; min-width: 240px; box-shadow: 0 10px 30px rgba(16, 49, 47, 0.15); }
+  .menu li a { display: block; padding: 8px 12px; color: var(--fg); text-decoration: none; border-radius: 6px; }
+  .menu li a:hover { background: var(--panel); }
+
+  /* Hero: text sits on the page background, illustration runs as a band underneath. Nothing overlaps. */
+  .hero { display: flex; flex-direction: column-reverse; }
+  .hero img { width: 100%; height: clamp(200px, 34vw, 420px); object-fit: cover; object-position: center 78%; }
+  .hero .hero-text { width: 100%; display: flex; flex-direction: column; gap: 16px; padding-block: clamp(36px, 6vw, 72px) clamp(28px, 4vw, 48px); }
+  .hero .lead { max-width: 620px; }
+  .hero h1 { max-width: 820px; }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 28px 32px; }
+  .card { border-top: 3px solid var(--river); padding-top: 16px; display: flex; flex-direction: column; gap: 6px; }
+  .card h3 a { color: var(--fg); text-decoration: none; }
+  .card h3 a:hover { color: var(--river); }
+  .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: start; }
+  .checks { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .checks li { padding-left: 28px; position: relative; }
+  .checks li::before { content: ''; position: absolute; left: 0; top: 0.5em; width: 14px; height: 8px; border-left: 3px solid var(--river); border-bottom: 3px solid var(--river); transform: rotate(-45deg); }
+  .steps { list-style: none; padding: 0; display: flex; flex-direction: column; }
+  .steps li { border-top: 1px solid var(--line); padding-block: 14px; display: flex; flex-direction: column; gap: 2px; }
+  .steps b { font-size: 19px; }
+  .price-table { width: 100%; border-collapse: collapse; }
+  .price-table td { padding: 14px 0; border-top: 1px solid var(--line); vertical-align: top; }
+  .price-table td:last-child { text-align: right; font-weight: 700; white-space: nowrap; padding-left: 16px; font-variant-numeric: tabular-nums; }
+  .price-table small { display: block; color: var(--soft); font-size: 15px; }
+  .faq details { border-top: 1px solid var(--line); padding-block: 14px; }
+  .faq summary { cursor: pointer; font-weight: 700; font-size: 19px; }
+  .faq p { margin-top: 8px; color: var(--soft); }
+  .towns { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; }
+  .towns li { border: 1px solid var(--fg); border-radius: 999px; padding: 6px 14px; }
+  .placeholder { border: 2px dashed var(--line); border-radius: 12px; padding: 24px; color: var(--soft); }
+  .cta { background: var(--pine); color: var(--on-dark); }
+  .cta a:not(.btn) { color: var(--on-dark); }
+  .cta .btn { background: var(--on-dark); color: var(--pine); }
+
+  .site-footer { background: var(--panel); padding-block: 48px; font-size: 16px; }
+  .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; }
+  .footer-grid > div { display: flex; flex-direction: column; gap: 10px; }
+  .site-footer ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+  .site-footer a { color: var(--fg); }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>

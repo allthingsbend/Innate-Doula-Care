@@ -1,0 +1,141 @@
+---
+import Base from '../layouts/Base.astro';
+import formHtml from '../components/questions-form.html?raw';
+---
+<Base title="Questions for Aleah | Innate Doula Care preview" description="A short summary of the plan and a few questions for Aleah.">
+  <section class="section">
+    <div class="wrap narrow stack" style="gap:40px">
+      <div class="stack">
+        <p class="eyebrow">For Aleah, from Mitch</p>
+        <h1>Getting Innate Doula Care found online</h1>
+        <p class="lead">The short version of the plan, and a few questions. About 10 minutes. Skip anything you are not sure about.</p>
+      </div>
+
+      <div class="stack">
+        <h2>The short version</h2>
+        <ul class="steps">
+          <li><b>Your site already does a lot right.</b><span class="soft">Clear prices, real credentials, and "Bend" in the headings of your birth, postpartum and surrogacy pages.</span></li>
+          <li><b>The quickest win is car seat help.</b><span class="soft">Your car seat page never says "Bend" or "installation", so parents searching for it are unlikely to find you. The free fire station clinic only runs six days in 2026. You are the any-day, at-home option.</span></li>
+          <li><b>The plan, in order.</b><span class="soft">Rework the pages you already have, tie each service to a place, fill out your Google Business listing, reply to your five reviews, and get other local sites linking to you. I will start with All Things Bend.</span></li>
+          <li><b>Search is more than Google now.</b><span class="soft">People also ask ChatGPT, Instagram and YouTube. The same work helps you show up in all of them.</span></li>
+          <li><b>No charge to get started.</b><span class="soft">If inquiries pick up and we can see they came from Google or ChatGPT, we work out fair pay together.</span></li>
+        </ul>
+        <p class="soft">This preview site is a rough example of what your pages could look like. Click around.</p>
+      </div>
+
+      <div class="stack qform">
+        <h2>A few questions</h2>
+        <p class="note">Short answers are perfect. Your answers save on this device as you go, so you can come back to it.</p>
+        <Fragment set:html={formHtml} />
+        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px" />
+      </div>
+
+      <div class="send stack">
+        <h2>Send your answers to Mitch</h2>
+        <button type="button" class="btn" id="send">Send my answers</button>
+        <p id="status" role="status" aria-live="polite"></p>
+        <div id="fallback" hidden class="stack">
+          <p>Sending did not work. You can copy your answers and paste them into a text or email to Mitch instead.</p>
+          <button type="button" class="btn ghost" id="copy">Copy my answers</button>
+          <textarea id="out" readonly aria-label="Your answers, ready to copy"></textarea>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style is:global>
+  .qform form > div { display: flex; flex-direction: column; gap: 36px; }
+  .note { background: var(--panel); border-radius: 12px; padding: 16px 18px; color: var(--soft); }
+  .group { display: flex; flex-direction: column; gap: 22px; border-top: 3px solid var(--river); padding-top: 18px; }
+  .group > h3 { margin: 0; font-family: var(--body); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--river); }
+  .q { display: flex; flex-direction: column; gap: 8px; border: 0; padding: 0; margin: 0; min-width: 0; }
+  .q > label:not(.hint), .q > legend { font-weight: 700; font-size: 19px; padding: 0; }
+  .hint { font-size: 16px; color: var(--soft); }
+  textarea, input[type='text'] { font: inherit; color: var(--fg); background: var(--field); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; width: 100%; }
+  textarea { min-height: 84px; resize: vertical; }
+  textarea:focus-visible, input:focus-visible, .chip:has(input:focus-visible) { outline: 3px solid var(--river); outline-offset: 2px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); background: var(--field); border-radius: 999px; padding: 8px 14px; cursor: pointer; font-size: 17px; }
+  .chip input { accent-color: var(--river); margin: 0; width: 17px; height: 17px; }
+  .chip:has(input:checked) { border-color: var(--river); box-shadow: inset 0 0 0 1px var(--river); }
+  .send { background: var(--panel); border-radius: 14px; padding: 24px 22px; }
+  .send .btn { align-self: flex-start; }
+  #status { min-height: 1.5em; font-weight: 700; }
+  #out { min-height: 200px; font-size: 15px; }
+</style>
+
+<script is:inline>
+  (function () {
+    var KEY = 'idc-kickoff-v1';
+    var form = document.getElementById('form');
+    var out = document.getElementById('out');
+    var status = document.getElementById('status');
+    var sendBtn = document.getElementById('send');
+    var fields = Array.prototype.slice.call(form.querySelectorAll('input, textarea'));
+
+    function load() {
+      try {
+        var saved = JSON.parse(localStorage.getItem(KEY) || '{}');
+        fields.forEach(function (f) {
+          if (!(f.id in saved)) return;
+          if (f.type === 'checkbox' || f.type === 'radio') f.checked = !!saved[f.id];
+          else f.value = saved[f.id];
+        });
+      } catch (e) {}
+    }
+    function save() {
+      try {
+        var data = {};
+        fields.forEach(function (f) { data[f.id] = f.type === 'checkbox' || f.type === 'radio' ? f.checked : f.value; });
+        localStorage.setItem(KEY, JSON.stringify(data));
+      } catch (e) {}
+    }
+    function collect() {
+      return Array.prototype.map.call(form.querySelectorAll('.q'), function (q) {
+        var picked = Array.prototype.map.call(q.querySelectorAll('input:checked'), function (i) { return i.value; });
+        var typed = Array.prototype.map.call(q.querySelectorAll('textarea, input[type="text"]'), function (i) { return i.value.trim(); }).filter(Boolean);
+        var answer = picked.join(', ');
+        if (typed.length) answer += (answer ? '\n' : '') + typed.join('\n');
+        return { q: q.getAttribute('data-q'), a: answer };
+      });
+    }
+    function asText(items) {
+      return ['Innate Doula Care - answers for Mitch', ''].concat(items.map(function (i) { return i.q + ':\n' + (i.a || '(skipped)') + '\n'; })).join('\n').trim();
+    }
+    function showFallback(items) {
+      out.value = asText(items);
+      document.getElementById('fallback').hidden = false;
+      status.textContent = '';
+    }
+    form.addEventListener('input', save);
+    form.addEventListener('change', save);
+    form.addEventListener('submit', function (e) { e.preventDefault(); });
+
+    sendBtn.addEventListener('click', function () {
+      var items = collect();
+      if (!items.some(function (i) { return i.a; })) { status.textContent = 'Nothing to send yet. Answer at least one question first.'; return; }
+      sendBtn.disabled = true;
+      status.textContent = 'Sending...';
+      fetch('/api/answers', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ answers: items, website: document.getElementById('website').value }),
+      }).then(function (r) {
+        if (!r.ok) throw new Error('bad status');
+        status.textContent = 'Sent. Thank you, Aleah! Mitch has your answers.';
+        sendBtn.textContent = 'Send again';
+        sendBtn.disabled = false;
+      }).catch(function () {
+        sendBtn.disabled = false;
+        showFallback(items);
+      });
+    });
+    document.getElementById('copy').addEventListener('click', function () {
+      var done = function () { out.focus(); out.select(); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(out.value).then(function () { status.textContent = 'Copied. Paste into a text or email to Mitch.'; }, done);
+      else done();
+    });
+    load();
+  })();
+</script>

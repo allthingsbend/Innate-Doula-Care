@@ -1,0 +1,33 @@
+# Innate Doula Care - test site
+
+A preview site for Innate Doula Care (Bend, Oregon), built with Astro and deployed on Cloudflare Pages. It is a draft for Aleah to review. It is not the live website, and every page is marked `noindex` so it stays out of Google.
+
+## What is here
+
+- `src/data/site.js` - business details, services, prices and FAQs. Edit copy here.
+- `src/pages/` - home, one page per service (`[slug].astro`), about, service area, and `/questions/`.
+- `src/components/questions-form.html` - the questionnaire for Aleah.
+- `functions/api/answers.js` - saves questionnaire answers to Cloudflare KV.
+- `functions/results.js` - private page that shows the answers: `/results/?key=YOUR_KEY`.
+- `wrangler.toml` - Cloudflare Pages settings, including the KV storage binding.
+
+## Cloudflare Pages settings
+
+- Framework preset: Astro
+- Build command: `npm run build`
+- Build output directory: `dist`
+- Secret to add: `RESULTS_KEY` (any long password you choose). This is what unlocks `/results/`.
+
+## Local development
+
+```
+npm install
+npm run dev
+```
+
+## Before this could ever go live
+
+- Aleah confirms every price and detail in `src/data/site.js`.
+- Replace the illustration placeholders with real photos.
+- Remove the `noindex` tag in `src/layouts/Base.astro` and the `Disallow` in `public/robots.txt`.
+- Set the real domain in `astro.config.mjs`.

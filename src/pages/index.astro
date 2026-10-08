@@ -1,0 +1,100 @@
+---
+import Base from '../layouts/Base.astro';
+import { business, services } from '../data/site.js';
+---
+<Base
+  title="Bend Doula | Innate Doula Care | Birth, Postpartum & Car Seat Help"
+  description="Innate Doula Care is a full spectrum doula in Bend, Oregon: birth and postpartum doula care, lactation support, placenta services and in-home car seat installation help across Central Oregon."
+>
+  <section class="hero">
+    <img src="/img/cascades-dawn.jpg" alt="Illustration of the Cascade peaks reflected in a lake at dawn" width="1800" height="1012" />
+    <div class="hero-text wrap">
+      <p class="eyebrow">Full spectrum doula · Central Oregon</p>
+      <h1>Bend doula care for birth, postpartum and beyond</h1>
+      <p class="lead">You can do hard things, and I am here to support you every step of the way.</p>
+      <div class="btn-row">
+        <a class="btn" href={business.booking}>Book a free consultation</a>
+        <a class="btn ghost" href="#services">See services</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap two">
+      <div class="stack">
+        <p class="eyebrow">Hi, I'm Aleah</p>
+        <h2>Your cozy corner of support in Bend</h2>
+        <p class="lead">Whether you are getting ready for birth, finding your way through the early days of parenthood, or facing another big life moment, you are in the right place.</p>
+        <p>As your Bend doula, I am here to cheer you on, hold your hand and make sure you feel informed and confident. I serve families across Central Oregon, in person and virtually.</p>
+        <p><a href="/about/">More about me</a></p>
+      </div>
+      <div class="stack">
+        <p class="label">Training and credentials</p>
+        <ul class="checks">
+          {business.credentials.map((c) => <li>{c}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="services">
+    <div class="wrap stack">
+      <p class="eyebrow">Services</p>
+      <h2>How I can help</h2>
+      <div class="cards">
+        {services.map((s) => (
+          <div class="card">
+            <h3><a href={`/${s.slug}/`}>{s.nav}</a></h3>
+            <p class="soft">{s.summary}</p>
+            <p><a href={`/${s.slug}/`}>{s.nav} in Bend</a></p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap two">
+      <div class="stack">
+        <p class="eyebrow">New to doulas?</p>
+        <h2>What a doula does</h2>
+        <p>A doula is a trained professional who offers non-medical emotional, informational, physical and advocacy support during big health experiences: pregnancy, labor, birth and the weeks after, as well as surrogacy and loss.</p>
+        <ul class="checks">
+          <li><b>Emotional support:</b> reassurance, a listening ear and a calm presence.</li>
+          <li><b>Information:</b> clear explanations of your options and evidence-based resources.</li>
+          <li><b>Physical support:</b> comfort measures, positions for labor and help with newborn care.</li>
+          <li><b>Advocacy:</b> making sure your preferences are heard and your questions get answered.</li>
+        </ul>
+      </div>
+      <div class="stack">
+        <p class="eyebrow">Kind words</p>
+        <h2>What families say</h2>
+        <div class="placeholder">
+          <p><b>Your Google reviews go here.</b> Showing two or three real reviews on the home page, with a link to the rest, is one of the quickest ways to build trust.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap stack">
+      <p class="eyebrow">Where I work</p>
+      <h2>Serving all of Central Oregon</h2>
+      <ul class="towns">
+        {business.towns.map((t) => <li>{t}</li>)}
+      </ul>
+      <p><a href="/service-area/">See the full service area</a></p>
+    </div>
+  </section>
+
+  <section class="section cta">
+    <div class="wrap stack">
+      <h2>Ready to talk?</h2>
+      <p class="lead" style="color:inherit">A free consultation is the easiest way to see if we are a good fit. Oregon Health Plan members can receive birth doula care at no out-of-pocket cost.</p>
+      <div class="btn-row">
+        <a class="btn" href={business.booking}>Book a free consultation</a>
+      </div>
+      <p>Or call or text <a href={business.phoneHref}>{business.phone}</a></p>
+    </div>
+  </section>
+</Base>

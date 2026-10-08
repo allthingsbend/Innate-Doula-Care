@@ -1,0 +1,98 @@
+---
+import Base from '../layouts/Base.astro';
+import { business, services } from '../data/site.js';
+
+export function getStaticPaths() {
+  return services.map((s) => ({ params: { slug: s.slug }, props: { s } }));
+}
+const { s } = Astro.props;
+const dark = s.image === 'cascades-twilight';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: s.faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: s.title,
+  description: s.description,
+  provider: { '@type': 'LocalBusiness', name: business.name, telephone: business.phone },
+  areaServed: business.towns.map((t) => `${t}, Oregon`),
+};
+const others = services.filter((o) => o.slug !== s.slug).slice(0, 4);
+---
+<Base title={`${s.title} | ${business.name}`} description={s.description} schema={[serviceSchema, faqSchema]}>
+  <section class={`hero ${dark ? 'dark' : ''}`}>
+    <img src={`/img/${s.image}.jpg`} alt="" width="1600" height="900" />
+    <div class="hero-text wrap">
+      <p class="eyebrow">{business.name} · Central Oregon</p>
+      <h1>{s.h1}</h1>
+      <p class="lead">{s.summary}</p>
+      <div class="btn-row">
+        <a class="btn" href={business.booking}>Book a free consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap two">
+      <div class="stack">
+        {s.intro.map((p, i) => <p class={i === 0 ? 'lead' : ''}>{p}</p>)}
+        <h2>{s.includesTitle}</h2>
+        <ul class="steps">
+          {s.includes.map(([t, d]) => <li><b>{t}</b><span class="soft">{d}</span></li>)}
+        </ul>
+      </div>
+      <div class="stack">
+        <h2>Pricing</h2>
+        <table class="price-table">
+          <tbody>
+            {s.pricing.map(([name, price, note]) => (
+              <tr>
+                <td>{name}{note && <small>{note}</small>}</td>
+                <td>{price}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p class="soft">HSA and FSA accepted. A superbill is available for insurance.</p>
+        <a class="btn" href={business.booking}>Book a free consultation</a>
+        <p>Or call or text <a href={business.phoneHref}>{business.phone}</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap narrow stack faq">
+      <h2>Common questions</h2>
+      <div>
+        {s.faqs.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap stack">
+      <p class="eyebrow">Where I work</p>
+      <h2>Available across Central Oregon</h2>
+      <ul class="towns">
+        {business.towns.map((t) => <li>{t}</li>)}
+      </ul>
+      <p class="label" style="margin-top:16px">Other services</p>
+      <div class="cards">
+        {others.map((o) => (
+          <div class="card">
+            <h3><a href={`/${o.slug}/`}>{o.nav}</a></h3>
+            <p class="soft">{o.summary}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

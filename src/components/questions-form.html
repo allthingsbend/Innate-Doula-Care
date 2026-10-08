@@ -1,0 +1,129 @@
+<form id="form" novalidate>
+    <div class="wrap-groups" style="display:flex;flex-direction:column;gap:36px">
+
+      <div class="group">
+        <h3>How families find you</h3>
+        <fieldset class="q" data-q="Where new clients come from">
+          <legend>Where do most new clients come from?</legend>
+          <div class="chips">
+            <label class="chip"><input type="checkbox" id="src-wom" value="Word of mouth">Word of mouth</label>
+            <label class="chip"><input type="checkbox" id="src-prov" value="Provider referrals">Midwife, OB or clinic referrals</label>
+            <label class="chip"><input type="checkbox" id="src-google" value="Google">Google</label>
+            <label class="chip"><input type="checkbox" id="src-ig" value="Instagram">Instagram</label>
+            <label class="chip"><input type="checkbox" id="src-fb" value="Facebook">Facebook</label>
+            <label class="chip"><input type="checkbox" id="src-ohp" value="OHP or insurance lists">OHP or insurance lists</label>
+            <label class="chip"><input type="checkbox" id="src-unsure" value="Not sure">Not sure</label>
+          </div>
+          <input type="text" id="src-other" placeholder="Anything else, or a rough split" aria-label="Other sources or a rough split">
+        </fieldset>
+        <fieldset class="q" data-q="How you track it">
+          <legend>Do you keep track of how people found you?</legend>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="track" id="track-no" value="Not really">Not really</label>
+            <label class="chip"><input type="radio" name="track" id="track-ask" value="I ask people">I ask people</label>
+            <label class="chip"><input type="radio" name="track" id="track-notes" value="Notes or a spreadsheet">Notes or a spreadsheet</label>
+            <label class="chip"><input type="radio" name="track" id="track-soft" value="Analytics software">Analytics software</label>
+          </div>
+        </fieldset>
+        <fieldset class="q" data-q="Marketing you use">
+          <legend>Which of these do you actively use?</legend>
+          <div class="chips">
+            <label class="chip"><input type="checkbox" id="mk-ig" value="Instagram">Instagram</label>
+            <label class="chip"><input type="checkbox" id="mk-fb" value="Facebook">Facebook</label>
+            <label class="chip"><input type="checkbox" id="mk-yt" value="YouTube">YouTube</label>
+            <label class="chip"><input type="checkbox" id="mk-tt" value="TikTok">TikTok</label>
+            <label class="chip"><input type="checkbox" id="mk-li" value="LinkedIn">LinkedIn</label>
+            <label class="chip"><input type="checkbox" id="mk-email" value="Email newsletter">Email newsletter</label>
+            <label class="chip"><input type="checkbox" id="mk-ads" value="Paid ads">Paid ads</label>
+            <label class="chip"><input type="checkbox" id="mk-none" value="None right now">None right now</label>
+            <label class="chip"><input type="checkbox" id="mk-other" value="Other">Other</label>
+          </div>
+          <input type="text" id="mk-other-text" placeholder="If other, what?" aria-label="Other marketing you use">
+        </fieldset>
+      </div>
+
+      <div class="group">
+        <h3>Your services</h3>
+        <div class="q" data-q="Every service you offer">
+          <label for="services">Can you list every service you offer?</label>
+          <p class="hint">Including anything that is not on the website yet.</p>
+          <textarea id="services"></textarea>
+        </div>
+        <div class="q" data-q="Services you want more of">
+          <label for="more">Which do you most want more of?</label>
+          <textarea id="more"></textarea>
+        </div>
+        <div class="q" data-q="Towns">
+          <label for="towns">Which towns do you most want clients from?</label>
+          <p class="hint">And any you would rather not travel to.</p>
+          <input type="text" id="towns">
+        </div>
+      </div>
+
+      <div class="group">
+        <h3>Website and accounts</h3>
+        <div class="q" data-q="Who built the site, past SEO work">
+          <label for="built">Who built your website? Has anyone done search engine optimization (SEO) work on it before?</label>
+          <input type="text" id="built">
+        </div>
+        <fieldset class="q" data-q="Google accounts you have access to">
+          <legend>Do you have access to all of these?</legend>
+          <p class="hint">Tick the ones you can log in to.</p>
+          <div class="chips">
+            <label class="chip"><input type="checkbox" id="g-gsc" value="Search Console">Search Console</label>
+            <label class="chip"><input type="checkbox" id="g-ga" value="Analytics">Analytics</label>
+            <label class="chip"><input type="checkbox" id="g-gtm" value="Tag Manager">Tag Manager</label>
+            <label class="chip"><input type="checkbox" id="g-gbp" value="Google Business listing">Google Business listing</label>
+            <label class="chip"><input type="checkbox" id="g-unsure" value="Not sure">Not sure</label>
+          </div>
+        </fieldset>
+        <fieldset class="q" data-q="Sharing access">
+          <legend>How would you like to share what is in those accounts?</legend>
+          <p class="hint">You do not have to give me access. Any answer is fine. Seeing any historical website analytics data would be very helpful, though, even as screenshots.</p>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="access" id="acc-add" value="Happy to add you">Happy to add you</label>
+            <label class="chip"><input type="radio" name="access" id="acc-nums" value="I would rather send numbers or screenshots">I would rather send numbers or screenshots</label>
+            <label class="chip"><input type="radio" name="access" id="acc-talk" value="Let's talk about it first">Let's talk about it first</label>
+          </div>
+        </fieldset>
+        <fieldset class="q" data-q="Client accounts and bookings on the site">
+          <legend>Do clients use the Sign In and Bookings features on your site?</legend>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="accounts" id="ac-lot" value="A lot">A lot</label>
+            <label class="chip"><input type="radio" name="accounts" id="ac-little" value="A little">A little</label>
+            <label class="chip"><input type="radio" name="accounts" id="ac-no" value="Not at all">Not at all</label>
+            <label class="chip"><input type="radio" name="accounts" id="ac-unsure" value="Not sure">Not sure</label>
+          </div>
+          <label class="hint" for="accounts-detail">I am wondering how much it gets used, how complicated it is, and whether GoDaddy created and hosts it or it is something separate.</label>
+          <textarea id="accounts-detail"></textarea>
+        </fieldset>
+        <fieldset class="q" data-q="GoDaddy">
+          <legend>How do you feel about staying on GoDaddy?</legend>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="godaddy" id="gd-stay" value="Happy to stay">Happy to stay</label>
+            <label class="chip"><input type="radio" name="godaddy" id="gd-open" value="Open to switching">Open to switching</label>
+            <label class="chip"><input type="radio" name="godaddy" id="gd-unsure" value="Not sure yet">Not sure yet</label>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="group">
+        <h3>Your local world</h3>
+        <div class="q" data-q="Competitors">
+          <label for="competitors">Who do you think of as your competitors?</label>
+          <p class="hint">Or who families tend to compare you with.</p>
+          <textarea id="competitors"></textarea>
+        </div>
+        <div class="q" data-q="Relationships that could mention or link to you">
+          <label for="partners">Who do you have good relationships with locally?</label>
+          <p class="hint">Midwives, birth centers, clinics, baby shops, photographers. When other websites mention you or link to yours, it helps you rank better in search, so these relationships are worth a lot.</p>
+          <textarea id="partners"></textarea>
+        </div>
+        <div class="q" data-q="Anything else">
+          <label for="else">Anything else that might be helpful to add?</label>
+          <textarea id="else"></textarea>
+        </div>
+      </div>
+
+    </div>
+    </form>

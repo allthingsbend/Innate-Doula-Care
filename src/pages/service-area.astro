@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro';
+import { business, services } from '../data/site.js';
+---
+<Base
+  title="Doula Serving Central Oregon | Bend, Redmond, Sisters & More | Innate Doula Care"
+  description="Innate Doula Care provides in-home doula care, lactation support and car seat help across Central Oregon: Bend, Redmond, Sisters, Sunriver, La Pine, Prineville, Terrebonne, Culver and Madras."
+>
+  <section class="hero">
+    <img src="/img/desert.jpg" alt="Illustration of high desert rock spires above a river" width="1600" height="900" />
+    <div class="hero-text wrap">
+      <p class="eyebrow">Service area</p>
+      <h1>Doula care across Central Oregon</h1>
+      <p class="lead">Based in Bend. I come to you.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap two">
+      <div class="stack">
+        <h2>Towns I serve in person</h2>
+        <ul class="towns">
+          {business.towns.map((t) => <li>{t}</li>)}
+        </ul>
+        <p>Visits happen in your home, at the hospital or at a birth center. Virtual support is available for families outside the area.</p>
+        <p class="soft">Not sure if you are in range? Call or text <a href={business.phoneHref}>{business.phone}</a> and ask.</p>
+      </div>
+      <div class="stack">
+        <h2>Services available in every town</h2>
+        <ul class="steps">
+          {services.map((s) => <li><b><a href={`/${s.slug}/`}>{s.nav}</a></b><span class="soft">{s.summary}</span></li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="section alt">
+    <div class="wrap narrow stack">
+      <div class="placeholder">
+        <p><b>Note for Aleah and Mitch:</b> this one page covers every town for now. Once we decide between town-by-town pages and one Central Oregon page per service, this is where that structure will grow from.</p>
+      </div>
+    </div>
+  </section>
+</Base>

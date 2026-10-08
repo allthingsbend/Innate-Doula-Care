@@ -1,0 +1,9 @@
+# Cloudflare Pages settings for this site.
+name = "innate-doula-care"
+pages_build_output_dir = "./dist"
+compatibility_date = "2026-01-01"
+
+# Where questionnaire answers are stored.
+[[kv_namespaces]]
+binding = "ANSWERS"
+id = "4a96807f989d46adaf92a172128b0f10"
