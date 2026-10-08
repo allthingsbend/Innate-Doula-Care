@@ -41,7 +41,8 @@ const allSchema = [localBusiness, ...schema];
           <img src="/img/logo.png" alt="" width="129" height="138" />
           <span>{business.name}<small>Bend, Oregon</small></span>
         </a>
-        <nav aria-label="Main">
+        <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="main-nav">Menu</button>
+        <nav aria-label="Main" id="main-nav">
           <details class="menu">
             <summary>Services</summary>
             <ul>
@@ -56,10 +57,25 @@ const allSchema = [localBusiness, ...schema];
             </ul>
           </details>
           <a href="/about/">About</a>
+          <a href="/resources/">Resources</a>
           <a class="btn small" href={business.booking}>Free consultation</a>
         </nav>
       </div>
     </header>
+    <script is:inline>
+      (function () {
+        var b = document.getElementById('burger'), n = document.getElementById('main-nav');
+        b.addEventListener('click', function () {
+          var open = n.classList.toggle('open');
+          b.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+        // Close an open dropdown when another opens or when clicking elsewhere.
+        var menus = n.querySelectorAll('details');
+        document.addEventListener('click', function (e) {
+          menus.forEach(function (m) { if (!m.contains(e.target)) m.removeAttribute('open'); });
+        });
+      })();
+    </script>
     <main>
       <slot />
     </main>
@@ -84,6 +100,8 @@ const allSchema = [localBusiness, ...schema];
         <div>
           <p class="label">Follow</p>
           <ul>{Object.entries(business.social).map(([k, v]) => <li><a href={v}>{k}</a></li>)}</ul>
+          <p class="label" style="margin-top:10px">More</p>
+          <ul><li><a href="/about/">About Aleah</a></li><li><a href="/resources/">Resources</a></li><li><a href="/#contact">Contact</a></li></ul>
           <p class="soft" style="font-size:13.5px">Stock photos from Unsplash, standing in until Aleah's own.</p>
         </div>
       </div>
@@ -130,7 +148,8 @@ const allSchema = [localBusiness, ...schema];
 
   .preview-bar { background: var(--tint); color: var(--fg); font-size: 14px; text-align: center; padding: 7px 16px; }
   .preview-bar a { color: var(--fg); font-weight: 600; }
-  .site-header { background: var(--bg); border-bottom: 1px solid var(--line); }
+  .site-header { background: var(--bg); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 30; }
+  html { scroll-padding-top: 100px; }
   .header-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; padding-block: 10px; }
   .brand { display: flex; align-items: center; gap: 12px; color: var(--fg); text-decoration: none; }
   .brand img { width: 58px; height: auto; }
@@ -148,6 +167,18 @@ const allSchema = [localBusiness, ...schema];
   .menu li a { display: flex; justify-content: space-between; gap: 16px; padding: 9px 12px; color: var(--fg); text-decoration: none; }
   .menu li a small { color: var(--soft); white-space: nowrap; }
   .menu li a:hover { background: var(--panel); }
+  .burger { display: none; font: inherit; font-weight: 600; background: none; border: 1px solid var(--fg); border-radius: 6px; padding: 8px 14px; color: var(--fg); cursor: pointer; }
+  @media (max-width: 860px) {
+    .header-row { flex-wrap: wrap; padding-block: 8px; }
+    .brand img { width: 44px; }
+    .brand span { font-size: 21px; }
+    .burger { display: block; }
+    nav { display: none; flex-basis: 100%; flex-direction: column; align-items: stretch; gap: 0; padding-bottom: 10px; max-height: 70vh; overflow-y: auto; }
+    nav.open { display: flex; }
+    nav > a:not(.btn), .menu summary { padding: 12px 2px; border-top: 1px solid var(--line); display: block; }
+    nav .btn { margin-top: 10px; text-align: center; }
+    .menu ul { position: static; box-shadow: none; border: 0; min-width: 0; padding: 0 0 8px 10px; background: transparent; }
+  }
 
   .topo { position: relative; isolation: isolate; }
   .topo::before { content: ''; position: absolute; inset: 0; z-index: -1; background: url('/img/topo.svg') center / cover no-repeat; opacity: 0.09; pointer-events: none; }
@@ -161,6 +192,7 @@ const allSchema = [localBusiness, ...schema];
   .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: clamp(32px, 5vw, 76px); align-items: start; }
   .checks { list-style: none; padding: 0; display: flex; flex-direction: column; }
   .checks li { padding: 11px 0 11px 26px; position: relative; border-top: 1px solid var(--line); }
+  .checks.small li { font-size: 16px; padding-block: 8px; }
   .checks li::before { content: ''; position: absolute; left: 2px; top: 1.15em; width: 11px; height: 6px; border-left: 1.5px solid var(--river); border-bottom: 1.5px solid var(--river); transform: rotate(-45deg); }
   .steps, .plain-list { list-style: none; padding: 0; display: flex; flex-direction: column; counter-reset: step; }
   .steps li { border-top: 1px solid var(--line); padding-block: 16px; display: grid; grid-template-columns: 40px 1fr; gap: 2px 8px; counter-increment: step; }

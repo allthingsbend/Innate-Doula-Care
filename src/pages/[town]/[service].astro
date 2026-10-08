@@ -94,6 +94,19 @@ const ordered = ['car-seat-installation', 'placenta-encapsulation', 'abortion-do
         <ul class={ordered ? 'steps' : 'plain-list'}>
           {s.includes.map(([k, d]) => <li><b>{k}</b><span class="soft">{d}</span></li>)}
         </ul>
+        {(s.sections || []).map((sec) => (
+          <>
+            <h2 style="margin-top:20px">{sec.title}</h2>
+            {sec.pairs && <ul class="plain-list">{sec.pairs.map(([k, d]) => <li><b>{k}</b><span class="soft">{d}</span></li>)}</ul>}
+            {sec.groups && sec.groups.map((g) => (
+              <div class="stack" style="gap:6px">
+                <h3 style="font-size:21px;margin-top:10px">{g.h}</h3>
+                <ul class="checks small">{g.items.map((i) => <li>{i}</li>)}</ul>
+              </div>
+            ))}
+            {sec.list && <ul class="checks small cols">{sec.list.map((i) => <li>{i}</li>)}</ul>}
+          </>
+        ))}
       </div>
       <aside class="price-card sticky">
         <p class="eyebrow">Pricing</p>
@@ -166,7 +179,8 @@ const ordered = ['car-seat-installation', 'placenta-encapsulation', 'abortion-do
   .hero-split { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); align-items: center; padding-block: clamp(32px, 5vw, 64px) clamp(24px, 3vw, 40px); }
   .hero-split h1 { max-width: 16ch; }
   .hero-photo { width: 100%; aspect-ratio: 11 / 8; object-fit: cover; background: var(--panel); }
-  .sticky { position: sticky; top: 20px; }
+  .sticky { position: sticky; top: 104px; }
+  .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 0 28px; }
   .local { background: var(--panel); padding: 20px 22px; gap: 10px; }
   @media (max-width: 760px) { .hero-split { grid-template-columns: minmax(0, 1fr); } }
 </style>

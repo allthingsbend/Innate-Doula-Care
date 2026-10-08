@@ -1,0 +1,47 @@
+---
+import Base from '../layouts/Base.astro';
+import { resources, photos, photoUrl } from '../data/site.js';
+---
+<Base
+  title="Pregnancy, Birth & Postpartum Resources | Innate Doula Care"
+  description="Apps, websites and handouts Aleah recommends to Central Oregon families preparing for birth and the weeks after."
+>
+  <section>
+    <div class="wrap two" style="align-items:center; padding-block: clamp(36px, 6vw, 76px)">
+      <div class="stack">
+        <p class="eyebrow"><a href="/">Home</a> / Resources</p>
+        <h1>Resources</h1>
+        <p class="lead">Apps, websites and handouts I often share with families.</p>
+        <p class="soft" style="font-size:15px">These are third-party tools shared for information. I am not affiliated with or endorsed by them and do not control their content, policies or services.</p>
+      </div>
+      <img src={photoUrl(photos.couch, 1000, 720)} alt={photos.couch.alt} width="1000" height="720" style="width:100%;aspect-ratio:10/7;object-fit:cover;background:var(--panel)" />
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap stack">
+      <h2>Apps</h2>
+      <ul class="rows">
+        {resources.apps.map((r) => <li><a href={r.url} rel="noopener"><h3>{r.name}</h3><p>{r.note}</p><span class="price">Get the app</span></a></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap stack">
+      <h2>Websites</h2>
+      <ul class="rows">
+        {resources.sites.map((r) => <li><a href={r.url} rel="noopener"><h3>{r.name}</h3><p>{r.note}</p><span class="price">Visit</span></a></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap stack">
+      <h2>Handouts</h2>
+      <ul class="rows">
+        {resources.handouts.map((r) => <li><a href={r.url} rel="noopener"><h3 style="font-size:21px">{r.name}</h3><p>PDF</p><span class="price">Download</span></a></li>)}
+      </ul>
+    </div>
+  </section>
+</Base>

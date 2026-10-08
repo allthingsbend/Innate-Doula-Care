@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import AreaMap from '../components/AreaMap.astro';
 import Ridgeline from '../components/Ridgeline.astro';
-import { business, services, townPages, svcUrl, photos, photoUrl } from '../data/site.js';
+import { business, services, towns, svcUrl, photos, photoUrl, whatIsADoula, doulaDoes } from '../data/site.js';
 ---
 <Base
   title="Bend Doula | Innate Doula Care | Birth, Postpartum & Car Seat Help"
@@ -12,11 +12,11 @@ import { business, services, townPages, svcUrl, photos, photoUrl } from '../data
     <img class="hero-img" src={photoUrl(photos.lake, 2400, 1100)} alt={photos.lake.alt} width="2400" height="1100" fetchpriority="high" />
     <div class="wrap">
       <div class="hero-card stack">
-        <p class="eyebrow">Full spectrum doula · Bend, Oregon</p>
+        <p class="eyebrow">Full spectrum doula serving Central Oregon</p>
         <h1>Bend doula care for birth, postpartum and beyond</h1>
-        <p class="lead">You can do hard things, and I am here to support you every step of the way. In your home, at the hospital, or anywhere in Central Oregon.</p>
+        <p class="lead">You can do hard things, and I am here to support you every step of the way.</p>
         <div class="btn-row">
-          <a class="btn" href={business.booking}>Book a free consultation</a>
+          <a class="btn" href={business.booking}>Get started with a free consultation</a>
           <a class="btn ghost" href="#services">Services and prices</a>
         </div>
         <p class="creds">OHP-approved doula · Certified Lactation Counselor · Child Passenger Safety Technician</p>
@@ -24,27 +24,55 @@ import { business, services, townPages, svcUrl, photos, photoUrl } from '../data
     </div>
   </section>
 
-  <section class="wrap">
-    <div class="facts">
-      <div><span>Oregon Health Plan</span><b>Birth doula care covered</b></div>
-      <div><span>For clients</span><b>On call 24 hours a day</b></div>
-      <div><span>Areas served</span><b>9 Central Oregon towns</b></div>
-      <div><span>First step</span><b>A free consultation</b></div>
+  <section class="section">
+    <div class="wrap two" style="align-items:center">
+      <div class="stack">
+        <p class="eyebrow">Hey there!</p>
+        <h2>Welcome to your cozy corner of support</h2>
+        {business.welcome.map((p, i) => <p class={i === 0 ? 'lead' : ''}>{p}</p>)}
+        <p><a href="/about/">More about Aleah</a></p>
+      </div>
+      <img class="tall-img" src={photoUrl(photos.mother, 1000, 1150)} alt={photos.mother.alt} width="1000" height="1150" loading="lazy" />
     </div>
   </section>
 
-  <section class="section" id="services">
+  <section class="section alt" id="services">
     <div class="wrap stack">
       <p class="eyebrow">Services</p>
       <h2>What I can help with</h2>
-      <ul class="rows">
+      <ul class="svc-cards">
         {services.map((s) => (
           <li>
             <a href={svcUrl(s)}>
-              <h3>{s.nav}</h3>
-              <p>{s.summary}</p>
-              <span class="price">{s.from}</span>
+              <img src={photoUrl(s.photo, 800, 560)} alt={s.photo.alt} width="800" height="560" loading="lazy" />
+              <div>
+                <h3>{s.nav}</h3>
+                <p>{s.summary}</p>
+                <span class="price">{s.from}</span>
+              </div>
             </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap stack">
+      <div class="stack narrow">
+        <p class="eyebrow">New to doulas?</p>
+        <h2>What is a doula?</h2>
+        <p class="lead">{whatIsADoula}</p>
+      </div>
+      <h2 style="margin-top:28px">What does a doula do?</h2>
+      <ul class="does">
+        {doulaDoes.map((d) => (
+          <li>
+            <img src={photoUrl(d.photo, 700, 480)} alt={d.photo.alt} width="700" height="480" loading="lazy" />
+            <h3>{d.title}</h3>
+            <ul class="checks small">
+              {d.items.map((i) => <li>{i}</li>)}
+            </ul>
           </li>
         ))}
       </ul>
@@ -53,16 +81,17 @@ import { business, services, townPages, svcUrl, photos, photoUrl } from '../data
 
   <section class="section alt topo">
     <div class="wrap two" style="align-items:center">
+      <img class="tall-img" src={photoUrl(services[0].photo, 1000, 900)} alt={services[0].photo.alt} width="1000" height="900" loading="lazy" style="aspect-ratio:10/9" />
       <div class="stack">
         <p class="eyebrow">Bringing a baby home soon?</p>
         <h2>Car seat checks in your own driveway</h2>
         <p class="lead">Most parents are not sure their seat is in right. In one visit you install it yourself, in your vehicle, with a certified Child Passenger Safety Technician guiding you.</p>
+        <div class="facts tight">
+          <div><span>Cost</span><b>$50</b></div>
+          <div><span>Takes</span><b>45 to 60 min</b></div>
+          <div><span>Where</span><b>Your home</b></div>
+        </div>
         <div class="btn-row"><a class="btn" href="/bend/car-seat-installation/">Car seat help in Bend</a></div>
-      </div>
-      <div class="facts stacked">
-        <div><span>Cost</span><b>$50</b></div>
-        <div><span>Takes</span><b>45 to 60 minutes</b></div>
-        <div><span>Where</span><b>Your home, your vehicle</b></div>
       </div>
     </div>
   </section>
@@ -71,10 +100,10 @@ import { business, services, townPages, svcUrl, photos, photoUrl } from '../data
     <div class="wrap two" style="align-items:center">
       <div class="stack">
         <p class="eyebrow">Areas served</p>
-        <h2>Based in Bend. I come to you.</h2>
-        <p class="lead">Visits happen in your home, at the hospital or at a birth center, across Central Oregon.</p>
+        <h2>Serving all of Central Oregon</h2>
+        <p class="lead">Based in Bend. Visits happen in your home, at the hospital or at a birth center.</p>
         <ul class="town-links">
-          {townPages.map((t) => <li><a href={`/${t.slug}/`}><b>{t.name}</b><small>about {t.min} min from Bend</small></a></li>)}
+          {towns.map((t) => <li><a href={`/${t.slug}/`}><b>{t.name}</b><small>{t.min ? `about ${t.min} min from Bend` : 'home base'}</small></a></li>)}
         </ul>
       </div>
       <AreaMap />
@@ -85,17 +114,16 @@ import { business, services, townPages, svcUrl, photos, photoUrl } from '../data
 
   <section class="section alt">
     <div class="wrap two" style="align-items:center">
-      <img class="about-img" src={photoUrl(photos.hands, 1000, 1100)} alt={photos.hands.alt} width="1000" height="1100" loading="lazy" />
+      <img class="tall-img" src={photoUrl(photos.hands, 1000, 1100)} alt={photos.hands.alt} width="1000" height="1100" loading="lazy" />
       <div class="stack">
         <p class="eyebrow">About Aleah</p>
         <h2>A doula who has been on every side of birth</h2>
         <p class="lead">Mom of two. Two-time surrogate. Trained in early childhood development before any of it.</p>
-        <p>I believe every experience is unique and deserves personal, inclusive and non-judgmental care. Whether you are getting ready for birth, finding your way through the first weeks, or facing another big life moment, my job is to help you feel informed and confident.</p>
-        <p><a href="/about/">More about Aleah</a></p>
-        <p class="label" style="margin-top:8px">Training and credentials</p>
+        <p>I believe every experience is unique and deserves personal, inclusive and non-judgmental care. My job is to help you feel informed and confident in your choices.</p>
         <ul class="checks">
           {business.credentials.map((c) => <li>{c}</li>)}
         </ul>
+        <p><a href="/about/">More about Aleah</a></p>
         <div class="note-box">
           <p><b>Your Google reviews go here.</b> Two or three real reviews, with a link to the rest, are one of the quickest ways to build trust.</p>
         </div>
@@ -103,14 +131,27 @@ import { business, services, townPages, svcUrl, photos, photoUrl } from '../data
     </div>
   </section>
 
-  <section class="section cta topo">
-    <div class="wrap stack">
-      <h2>Ready to talk?</h2>
-      <p class="lead" style="max-width:56ch">A free consultation is the easiest way to see if we are a good fit. Oregon Health Plan members can receive birth doula care at no out-of-pocket cost.</p>
-      <div class="btn-row">
-        <a class="btn" href={business.booking}>Book a free consultation</a>
-        <span>or call or text <a href={business.phoneHref}>{business.phone}</a></span>
+  <section class="section" id="contact">
+    <div class="wrap two">
+      <div class="stack">
+        <p class="eyebrow">Connect with me</p>
+        <h2>I would love to hear from you</h2>
+        <p class="lead">Send a note, or book a free consultation and we can talk it through.</p>
+        <p><b>{business.owner}</b>, {business.name}<br /><a href={business.phoneHref}>{business.phone}</a><br /><a href={`mailto:${business.email}`}>{business.email}</a></p>
+        <p class="soft">{business.hours}</p>
+        <div class="btn-row"><a class="btn ghost" href={business.booking}>Book a free consultation</a></div>
       </div>
+      <form class="contact stack" id="contact-form" novalidate>
+        <label>Name<input type="text" id="c-name" name="name" required autocomplete="name" /></label>
+        <label>Phone<input type="tel" id="c-phone" name="phone" autocomplete="tel" /></label>
+        <label>Email<input type="email" id="c-email" name="email" required autocomplete="email" /></label>
+        <label>Estimated due date, if applicable<input type="text" id="c-due" name="due" /></label>
+        <label>Message<textarea id="c-message" name="message" rows="4"></textarea></label>
+        <input type="text" id="c-website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px" />
+        <button type="submit" class="btn">Send</button>
+        <p id="c-status" role="status" aria-live="polite" hidden></p>
+        <p class="soft" style="font-size:14px">Preview site: messages sent here go to Mitch, not to Aleah.</p>
+      </form>
     </div>
   </section>
 </Base>
@@ -118,11 +159,52 @@ import { business, services, townPages, svcUrl, photos, photoUrl } from '../data
 <style>
   .home-hero { position: relative; }
   .hero-img { width: 100%; height: clamp(300px, 46vw, 600px); object-fit: cover; background: var(--panel); }
-  .hero-card { background: var(--bg); max-width: 760px; padding: clamp(22px, 4vw, 48px) clamp(20px, 4vw, 48px) clamp(20px, 3vw, 36px); margin-top: clamp(-220px, -17vw, -70px); position: relative; }
+  .hero-card { background: var(--bg); max-width: 780px; padding: clamp(22px, 4vw, 48px) clamp(20px, 4vw, 48px) clamp(8px, 2vw, 16px); margin-top: clamp(-220px, -17vw, -70px); position: relative; }
   .hero-card h1 { max-width: 15ch; }
-  .hero-card .lead { max-width: 50ch; }
-  .about-img { width: 100%; max-width: 460px; aspect-ratio: 10 / 11; object-fit: cover; background: var(--panel); }
   .creds { font-size: 14.5px; color: var(--soft); border-top: 1px solid var(--line); padding-top: 16px; }
-  .facts.stacked { grid-template-columns: 1fr; }
-  .facts.stacked > div + div { border-top: 1px solid var(--line); }
+  .tall-img { width: 100%; max-width: 480px; aspect-ratio: 10 / 11; object-fit: cover; background: var(--panel); justify-self: center; }
+
+  .svc-cards { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 28px 24px; }
+  .svc-cards a { display: flex; flex-direction: column; height: 100%; background: var(--field); color: var(--fg); text-decoration: none; border: 1px solid var(--line); }
+  .svc-cards img { width: 100%; aspect-ratio: 10 / 7; object-fit: cover; background: var(--tint); }
+  .svc-cards div { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+  .svc-cards p { color: var(--soft); font-size: 16px; line-height: 1.5; flex: 1; }
+  .svc-cards .price { font-size: 14.5px; font-weight: 600; color: var(--clay); }
+  .svc-cards a:hover { border-color: var(--river); }
+  .svc-cards a:hover h3 { color: var(--river); }
+
+  .does { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 32px 28px; }
+  .does > li { display: flex; flex-direction: column; gap: 12px; }
+  .does img { width: 100%; aspect-ratio: 7 / 5; object-fit: cover; background: var(--panel); }
+  .checks.small li { font-size: 16px; padding-block: 8px; }
+
+  .contact { background: var(--panel); padding: clamp(20px, 3vw, 32px); gap: 14px; }
+  .contact label { display: flex; flex-direction: column; gap: 5px; font-weight: 600; font-size: 15.5px; }
+  .contact input, .contact textarea { font: inherit; font-weight: 400; color: var(--fg); background: var(--field); border: 1px solid var(--line); border-radius: 4px; padding: 11px 13px; width: 100%; }
+  .contact input:focus-visible, .contact textarea:focus-visible { outline: 2px solid var(--river); outline-offset: 1px; }
+  .contact .btn { align-self: flex-start; }
+  #c-status { font-weight: 600; }
 </style>
+
+<script is:inline>
+  (function () {
+    var form = document.getElementById('contact-form');
+    var status = document.getElementById('c-status');
+    function say(t) { status.textContent = t; status.hidden = !t; }
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var v = function (id) { return document.getElementById(id).value.trim(); };
+      if (!v('c-name') || !v('c-email')) { say('Please add your name and email so I can reply.'); return; }
+      say('Sending...');
+      fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ name: v('c-name'), phone: v('c-phone'), email: v('c-email'), due: v('c-due'), message: v('c-message'), website: v('c-website') }),
+      }).then(function (r) {
+        if (!r.ok) throw new Error('bad');
+        form.reset();
+        say('Thank you! Your message was sent.');
+      }).catch(function () { say('That did not send. Please call or text (541) 280-4048 instead.'); });
+    });
+  })();
+</script>

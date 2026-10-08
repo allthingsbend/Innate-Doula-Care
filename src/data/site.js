@@ -413,3 +413,200 @@ export const localLine = (s, t) => ({
   'abortion-doula-support': `Support is available in person for ${t.name} families, or by phone, text and video.`,
 }[s.path]);
 export const svcUrl = (s, townSlug = 'bend') => `/${hasPage(townSlug, s.path) ? townSlug : 'bend'}/${s.path}/`;
+
+// =====================================================================================
+// Fuller content carried over from innatedoulacare.com (October 2026), lightly edited.
+// =====================================================================================
+business.hours = 'Office hours 8:00 am to 5:00 pm. On call for clients 24 hours a day.';
+business.welcome = [
+  'Whether you are gearing up for the adventure of childbirth, navigating the early days of parenthood or exploring other big life moments, you have come to the right place.',
+  'As your Bend doula, I am here to cheer you on, hold your hand (literally or figuratively) and make sure you feel empowered every step of the way. Let\'s do this together. You\'ve got this, and I\'ve got you!',
+];
+export const whatIsADoula = 'A doula is a trained professional who offers non-medical emotional, informational, physical and advocacy support to individuals or families during transformative health experiences. Doulas can provide care through pregnancy, labor, birth and the postpartum period, and can also support individuals or families navigating experiences such as surrogacy, miscarriage, abortion, stillbirth or end-of-life transitions.';
+
+Object.assign(photos, {
+  heart: P('1688053579473-51af77337561', 'Leo_Visions', 'Hands making a heart shape'),
+  couch: P('1705746401439-cefe49abb9cd', 'Febe Vanermen', 'A couple sitting together on a couch'),
+  holding: P('1651083230817-481f3c3895a4', 'Olivia Anne Snyder', 'A person holding a baby'),
+  hold2: P('1564020435666-f67ed5319a32', 'Nguyen Tan', 'Two people holding hands'),
+  mother: P('1560707854-fb9a10eeaace', 'Jonathan Borba', 'A smiling woman carrying a baby'),
+});
+export const doulaDoes = [
+  { title: 'Emotional support', photo: photos.heart, items: ['Encouraging words and reassurance', 'A listening ear for concerns and feelings', 'Creating a calm and positive environment', 'Helping build confidence in decisions', 'Support during unexpected changes'] },
+  { title: 'Informational support', photo: photos.couch, items: ['Explaining pregnancy, birth and postpartum options', 'Sharing evidence-based resources', 'Helping you understand medical procedures and terms', 'Tips for newborn care and feeding', 'Guidance in creating birth and postpartum plans'] },
+  { title: 'Physical support', photo: photos.holding, items: ['Massage and comfort measures during labor', 'Suggesting and demonstrating positions for labor and birth', 'Help with newborn care techniques', 'Light household tasks in the postpartum period', 'Nourishment and hydration reminders'] },
+  { title: 'Advocacy support', photo: photos.hold2, items: ['Making sure your preferences reach your providers', 'Encouraging informed decision-making', 'Helping you navigate discussions with medical staff', 'Supporting your right to ask questions', 'Affirming your role as the decision-maker in your care'] },
+];
+
+Object.assign(servicePhotos, {
+  'car-seat-installation': P('1665578325705-cfe6de3ae2eb', 'Silverius Trandafir', 'A baby sleeping in a car seat'),
+  'postpartum-doula': P('1542385151-efd9000785a0', 'Kelly Sikkema', 'A mother carrying her baby'),
+  'lactation-support': P('1567073931033-07972e6081bd', 'Fanny Renaud', 'A mother breastfeeding her baby'),
+  'placenta-encapsulation': P('1664956618021-73c47736845e', 'Supliful', 'Capsules beside green pine needles'),
+  'surrogacy-doula': P('1532706302136-347336b002ec', 'John Looy', 'A hand resting on a pregnant belly'),
+  'pregnancy-loss-support': P('1604881991720-f91add269bed', 'Priscilla Du Preez', 'Two people holding hands across a table'),
+  'abortion-doula-support': P('1610986719243-7cdf28a29772', 'Zoe', 'One person holding another person\'s hand'),
+});
+services.forEach((s) => { s.photo = servicePhotos[s.path]; });
+
+const start = { q: 'How do I get started?', a: 'Book a free consultation, or call or text (541) 280-4048. We will talk through what you need and how I can best support you.' };
+const choose = 'Choosing a doula is a personal decision, and most Bend doulas offer free consultations so you can meet a few. Start early, ask friends and your provider for recommendations, interview more than one, ask for references, and trust your instincts about who you feel comfortable with.';
+const more = {
+  'birth-doula': {
+    sections: [
+      { title: 'What each package includes', pairs: [
+        ['Birth Package · $2,100', 'On-call support, two prenatal meetings, continuous labor and birth support, a backup doula, and one or two postpartum follow-up visits.'],
+        ['Birth & Postpartum Package · $2,600', 'Everything in the Birth Package plus 12 hours of postpartum care, used in 2, 3 or 4 hour shifts during the day or evening: recovery support, newborn care education, infant feeding support, light household tasks, emotional support and resource referrals.'],
+        ['Birth Support Only · $1,500', 'For families who feel confident in their preparation: one 45 minute consultation, on-call availability 24/7 from 38 weeks, continuous labor and birth support, and a backup doula.'],
+        ['OHP Birth Package · Covered', 'The Oregon Health Plan covers doula services in Central Oregon. As an OHP-approved doula, I provide everything in the Birth Package at no out-of-pocket cost.'],
+      ] },
+      { title: 'What happens at prenatal and postpartum visits', groups: [
+        { h: 'Prenatal: two visits at your home, 2 to 3 hours each', items: ['Birth plan: your hopes, preferences, concerns and questions', 'Education: the physiology of birth, hospital and home birth procedures, interventions and feeding', 'Practical preparation: positions and comfort techniques with your partner or support person', 'Postpartum planning: recovery, newborn care, visitors, meals and extra care'] },
+        { h: 'Postpartum: two visits at your home, 1 to 2 hours each', items: ['Emotional support: processing the birth and checking in on feeding, sleep and recovery', 'Newborn care: answers to your questions and help with newborn tasks', 'Household help: dishes, laundry, tidying and pet support', 'Resources: classes, specialists, therapists and more'] },
+      ] },
+    ],
+    faqs: [
+      { q: 'Why should I hire a birth doula?', a: 'Research summarized by Evidence Based Birth links continuous doula support with shorter labors, more spontaneous vaginal births, less use of pain medication, fewer cesareans and more satisfaction with the birth experience.' },
+      { q: 'What is the difference between a midwife and a birth doula?', a: 'A midwife is medically trained and provides clinical care, including delivering the baby and monitoring health. A doula offers non-medical support focused on emotional well-being, comfort and advocacy. The roles are distinct and work well together.' },
+      { q: 'When should I hire a birth doula?', a: 'It is never too early or too late. Many families book early in pregnancy, but I am happy to work with you at any stage.' },
+      { q: 'How do I choose the right birth doula?', a: choose },
+      { q: 'Do you offer virtual support?', a: 'Yes. Virtual doula services include video calls, virtual prenatal sessions and real-time guidance during labor, and are available nationwide.' },
+      start,
+    ],
+  },
+  'postpartum-doula': {
+    includes: [['Sibling and pet support', 'A hand with older children and pets so you can focus on the baby.'], ['A calm environment', 'A steady, reassuring presence in the house.']],
+    faqs: [
+      { q: 'What is a postpartum doula?', a: 'A trained professional who provides physical, emotional and informational support to families after a baby arrives, with hands-on help, guidance and reassurance.' },
+      { q: 'Why hire a postpartum doula?', a: 'The postpartum period can be overwhelming. Families who work with a postpartum doula often report feeling more supported, less stressed and better able to enjoy the newborn stage.' },
+      { q: 'How long does a postpartum doula provide support?', a: 'It depends on your family. Some hire a doula for a few weeks, others for several months. You choose the frequency and length of visits.' },
+      { q: 'Do you offer overnight support?', a: 'On a case by case basis. During overnight shifts I care for your baby while you sleep and help with feeding and diaper changes. Overnight support is billed at a higher rate, so please reach out to discuss.' },
+      { q: 'Are postpartum doulas only for first-time parents?', a: 'No. Postpartum doulas support families with any number of children, and can be especially helpful with multiples, after a difficult birth, or when older children need attention too.' },
+      { q: 'How do I find the right postpartum doula?', a: choose },
+      start,
+    ],
+  },
+  'surrogacy-doula': {
+    faqs: [
+      { q: 'Who do you support during the surrogacy process?', a: 'Both gestational surrogates and intended parents, and sometimes their families.' },
+      { q: 'When should I hire a surrogacy doula?', a: 'At any point. Many clients start early in the surrogacy process, and others reach out during pregnancy or shortly before delivery.' },
+      { q: 'How do you support intended parents?', a: 'I help you prepare for your baby\'s arrival, understand the birth process and navigate your relationship with your surrogate, and I am available for questions throughout.' },
+      { q: 'How do you support surrogates?', a: 'With guidance through every stage of pregnancy, from preparing for medical procedures to postpartum recovery. I am here to listen, support and advocate for your needs.' },
+      { q: 'Do you offer postpartum support?', a: 'Yes. For surrogates, support with physical and emotional recovery. For intended parents, help with the transition to parenthood.' },
+      start,
+    ],
+  },
+  'lactation-support': {
+    sections: [
+      { title: 'Ways to work together', pairs: [
+        ['Prenatal education', 'A personal session before your baby arrives: breastfeeding basics, feeding cues, latch and positioning, milk production, pumping, partner support and what to expect in the early days.'],
+        ['In-home, hands-on support', 'We work on latch and positioning, observe and assess a full feeding, do pre- and post-feed weight checks when appropriate, address pain or discomfort and build a feeding plan that fits you.'],
+        ['Virtual support', 'We talk through your concerns, observe a feeding when possible and work on latch, positioning, pumping and milk supply from wherever you are.'],
+        ['Lactation package', 'One virtual prenatal session and two in-home visits, for consistent support through pregnancy and postpartum. More sessions can be added at standard rates.'],
+      ] },
+      { title: 'A Certified Lactation Counselor can help with', list: ['Prenatal breastfeeding education', 'Latch and positioning', 'Painful breastfeeding and nipple discomfort', 'Low supply or oversupply', 'Pumping and flange sizing', 'Exclusive pumping', 'Combination feeding', 'Bottle feeding and paced feeding', 'Newborn feeding cues and patterns', 'Cluster feeding and developmental leaps', 'Feeding frequency and routines', 'Engorgement and common breast discomforts', 'Milk storage and handling', 'Returning to work or school', 'Weaning', 'Feeding multiples', 'NICU or early-term feeding transitions, within scope', 'Building confidence and realistic expectations', 'Referrals for medical concerns'] },
+    ],
+    faqs: [
+      { q: 'What is a Certified Lactation Counselor (CLC)?', a: 'A trained breastfeeding and infant feeding professional who has completed comprehensive education and demonstrated competency in lactation support, certified through the Academy of Lactation Policy and Practice (ALPP).' },
+      { q: 'Do I need a prenatal lactation consultation?', a: 'It is not required, but it can make a real difference. We cover what to expect after birth, normal newborn feeding behavior, hand expression and common challenges, so you feel prepared.' },
+      { q: 'What happens during a lactation visit?', a: 'We talk about your goals, review your health and feeding history, observe a feeding when appropriate, answer your questions and make a practical plan.' },
+      { q: 'What should I have ready for my appointment?', a: 'If possible, have your baby ready to feed around the time of our visit, and your pump and accessories if you are pumping. No need to clean the house. I am there to support you, not judge your home.' },
+      { q: 'How long are appointments?', a: 'Most lactation consultations last between one and two hours.' },
+      { q: 'Is everything we discuss confidential?', a: 'Yes. Everything shared during our visits is kept confidential.' },
+      { q: 'What if I need more than one visit?', a: 'Many families benefit from follow-up visits as feeding changes over time. We make a plan based on your needs, and more visits can always be scheduled.' },
+    ],
+  },
+  'placenta-encapsulation': {
+    sections: [
+      { title: 'Preparation options', pairs: [
+        ['Encapsulation', 'The placenta is steamed, dehydrated, ground into a powder and placed in easy-to-take capsules.'],
+        ['Powder', 'The dehydrated, ground placenta as a loose powder, to mix into food or smoothies.'],
+        ['Tincture', 'A portion of the placenta steeped in alcohol for extended use.'],
+        ['Prints and keepsakes', 'A placenta print made with natural, non-toxic methods, or a dried umbilical cord keepsake.'],
+      ] },
+    ],
+    faqs: [
+      { q: 'What is placenta consumption?', a: 'Preparing and ingesting the placenta after delivery, most often through encapsulation, tinctures or powder. Many people choose it to support postpartum recovery.' },
+      { q: 'What are the potential benefits?', a: 'Scientific research is limited. Many parents report more energy, mood support, help with milk supply and a smoother recovery. Please talk with your healthcare provider about whether it is right for you.' },
+      { q: 'Can anyone consume their placenta?', a: 'Most healthy people can, but some conditions may make it unsafe, such as infections during labor or placenta abnormalities. I am happy to help you think it through.' },
+      { q: 'How long do capsules and powder last?', a: 'Stored in a cool, dry place, several months to a year. Some people freeze a portion for later.' },
+      { q: 'How do I use a placenta tincture?', a: 'Typically in small doses, a few drops under the tongue or in a drink. Stored in a cool, dark place, a tincture keeps for years.' },
+      { q: 'Are there risks to consuming raw placenta?', a: 'Yes. There is a higher risk of bacterial contamination with raw placenta than with encapsulation. Always consult your care provider first.' },
+      { q: 'What is a placenta print?', a: 'A keepsake made by pressing the placenta onto paper, which captures its "tree of life" shape.' },
+      { q: 'Can I keep a keepsake and still encapsulate?', a: 'Yes. You can have a print, a cord keepsake or a tincture and still encapsulate the rest.' },
+    ],
+  },
+  'pregnancy-loss-support': {
+    sections: [
+      { title: 'What support can look like', groups: [
+        { h: 'Before, during and after a loss', items: ['A safe, nonjudgmental space to talk through your experience', 'Guidance on your options for managing miscarriage or stillbirth', 'Support navigating medical systems, appointments and providers', 'Advocacy so your voice and needs are respected', 'Emotional support during procedures, induction or delivery if you want it', 'Comfort techniques for pain, anxiety and overwhelm', 'Referrals to grief therapists, loss specialists and peer support'] },
+        { h: 'After a loss', items: ['Follow-up within 24 to 72 hours, or when you are ready', 'What to expect physically after miscarriage or stillbirth', 'Support for processing grief, guilt, relief, confusion or numbness', 'Guidance on rituals, memory-making and honoring your baby', 'Resources for partners, family or children coping with loss'] },
+        { h: 'Additional support', items: ['Continued postpartum-style care, check-ins or home visits', 'Light household help', 'Help with practical logistics such as memorial planning', 'Support in returning to daily life, work or future pregnancy planning', 'Referrals to trauma-informed therapy, support groups or spiritual care'] },
+      ] },
+    ],
+  },
+  'abortion-doula-support': {
+    sections: [
+      { title: 'What support can look like', groups: [
+        { h: 'Before', items: ['A private, supportive space to discuss your feelings, options and logistics', 'Evidence-based information about medication and procedures', 'Help planning transportation, childcare and comfort measures', 'Help connecting to funds and practical support resources'] },
+        { h: 'During', items: ['A calming presence for in-clinic procedures or an at-home medication process', 'Virtual or text support for reassurance and check-ins', 'Comfort techniques, including breathwork and guided relaxation'] },
+        { h: 'After', items: ['A follow-up session within 24 to 72 hours', 'Personal guidance on recovery and self-care', 'Emotional support for processing your experience', 'Additional virtual or in-person check-ins'] },
+      ] },
+    ],
+  },
+};
+services.forEach((s) => {
+  const m = more[s.path];
+  if (!m) return;
+  s.sections = m.sections || [];
+  if (m.includes) s.includes = [...s.includes, ...m.includes];
+  if (m.faqs) {
+    const area = s.faqs.filter((f) => f.q === 'What areas do you serve?');
+    s.faqs = [...s.faqs.filter((f) => f.q !== 'What areas do you serve?'), ...m.faqs, ...area];
+  }
+});
+
+export const credentialsFull = [
+  'THW Certified Doula, Oregon Health Authority (current)',
+  'Certified Lactation Counselor (CLC), Academy of Lactation Policy and Practice',
+  'Certified Placenta Specialist, Brilliant Birth Academy (current)',
+  'Child Passenger Safety Technician, Safe Kids Worldwide (current)',
+  'BLS certified: adult and pediatric CPR/AED, American Red Cross (current)',
+  'Oregon Doula Association member (current)',
+  'OSHA Bloodborne Pathogens training, Biologix (current)',
+  'Oregon Food Handler certification (current)',
+  'DONA-approved Birth Doula Workshop, Doula Love, 2023',
+  'DONA-approved Postpartum Doula Workshop, Los Angeles Doula, 2023',
+  'Six month Birth Doula Mentorship, Doula Love, 2023 to 2024',
+  'VBAC trained, Blossoming Bellies, 2024',
+  'Trauma Informed Care for Birthworkers, Mother Tree, 2024',
+  'Trauma Informed Care advanced training for doulas, Mother Tree, 2024',
+  'Cultural Sensitivity Training for Doulas, Mother Tree, 2024',
+  'Inter-professional Collaborative Practice and HIPAA training, Mother Tree, 2024',
+  'Oral Health Training for THW, Oregon Health Authority, 2023',
+];
+
+const pdf = (id, file) => `https://img1.wsimg.com/blobby/go/acc61bdb-dc0d-4e3c-846a-f7946ebecbb4/downloads/${id}/${file}`;
+export const resources = {
+  apps: [
+    { name: 'Count the Kicks', note: 'Kick counter. Records how long it takes your baby to reach 10 movements and tracks changes over time.', url: 'https://countthekicks.org/download-app/' },
+    { name: 'Full Term', note: 'Contraction timer.', url: 'http://www.fulltermapp.com/' },
+    { name: 'Huckleberry', note: 'Sleep help, from short naps to sleep transitions.', url: 'https://huckleberrycare.com/pricing' },
+  ],
+  sites: [
+    { name: 'Evidence Based Birth', note: 'Research-backed information, classes and support for expecting parents.', url: 'https://evidencebasedbirth.com/' },
+    { name: 'The VBAC Link', note: 'Education, support and community for vaginal birth after cesarean.', url: 'https://www.thevbaclink.com/' },
+    { name: 'Our Milky Way', note: 'Breastfeeding blog from the Healthy Children Project.', url: 'https://www.ourmilkyway.org/' },
+    { name: 'ACOG', note: 'The American College of Obstetricians and Gynecologists: guidelines and patient information.', url: 'https://www.acog.org/' },
+    { name: 'National Child Passenger Safety Board', note: 'Help installing car seats and boosters correctly.', url: 'https://www.cpsboard.org/' },
+    { name: 'CDC: Pregnancy', note: 'Steps to take before, during and after pregnancy.', url: 'https://www.cdc.gov/pregnancy/index.html' },
+  ],
+  handouts: [
+    { name: 'Questions to ask during a consultation: birth doula', url: pdf('7a462d31-3e4e-405d-9956-574018b4c83d', 'Questions%20To%20Ask%20During%20A%20Consultation%20-%20Birth.pdf') },
+    { name: 'Questions to ask during a consultation: postpartum doula', url: pdf('1340ecd8-cf5c-467e-afae-c1d0a5a4a1c2', 'Questions%20To%20Ask%20During%20A%20Consultation%20-%20Postp.pdf') },
+    { name: 'DONA International interview guide for parents', url: pdf('d949afef-5b81-479b-bcfa-3ee0b4a5a823', 'DONA%20International%20-%20Interview%20Guide%20for%20Paren.pdf') },
+    { name: 'DONA International interview guide: postpartum doula', url: pdf('22ec7f28-1321-4d31-8855-ce3d9e7c3886', 'DONA%20International%20-%20Interview%20Guide%20for%20Paren.pdf') },
+    { name: 'St. Charles Mommy and Me breastfeeding support group', url: pdf('d9659fb1-197b-4bac-a2d4-f1fa85b0fdac', 'St%20Charles%20Mommy%20and%20Me%20Breastfeeding%20Support%20.pdf') },
+    { name: 'Summary of perinatal mental health conditions', url: pdf('6dc96b62-9d2f-42e2-8aae-2eb90cd4fb5e', 'Summary%20of%20Perinatal%20Mental%20Health%20Conditions.pdf') },
+  ],
+};

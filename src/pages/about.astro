@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { business } from '../data/site.js';
+import { business, credentialsFull } from '../data/site.js';
 ---
 <Base
   title="About Aleah Hancock | Bend Doula | Innate Doula Care"
@@ -21,17 +21,8 @@ import { business } from '../data/site.js';
       <div class="stack">
         <div class="photo-slot portrait"><span>Photo: a portrait of Aleah goes here. People hire a person, so this is the most important image on the site.</span></div>
         <p class="label">Certification, training and education</p>
-        <ul class="checks">
-          <li>THW Certified Doula, Oregon Health Authority</li>
-          <li>Certified Lactation Counselor (CLC), ALPP</li>
-          <li>Child Passenger Safety Technician, Safe Kids Worldwide</li>
-          <li>Certified Placenta Specialist, Brilliant Birth Academy</li>
-          <li>BLS certified: adult and pediatric CPR/AED, American Red Cross</li>
-          <li>Oregon Doula Association member</li>
-          <li>DONA-approved birth and postpartum doula workshops, 2023</li>
-          <li>Six month birth doula mentorship, Doula Love, 2023 to 2024</li>
-          <li>VBAC trained, 2024</li>
-          <li>Trauma-informed care training for birth workers, 2024</li>
+        <ul class="checks small">
+          {credentialsFull.map((c) => <li>{c}</li>)}
         </ul>
       </div>
     </div>
