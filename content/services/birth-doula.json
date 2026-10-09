@@ -1,10 +1,31 @@
 {
-  "order": 2,
   "nav": "Birth Doula",
   "name": "Birth doula",
-  "summary": "Steady support through pregnancy, labor and birth, wherever you plan to deliver.",
-  "description": "Birth doula support in Bend and Central Oregon for hospital, birth center and home births. Packages from $1,500. OHP covered. Free consultation.",
+  "order": 2,
+  "summary": "Steady support through pregnancy, labor and birth, wherever you plan to deliver. TEST",
   "from": "from $1,500",
+  "pricing": [
+    {
+      "name": "Birth Package",
+      "price": "$2,100",
+      "note": "Everything listed above"
+    },
+    {
+      "name": "Birth & Postpartum Package",
+      "price": "$2,600",
+      "note": "The Birth Package plus 12 hours of postpartum care"
+    },
+    {
+      "name": "Birth Support Only",
+      "price": "$1,500",
+      "note": "One consultation, on call from 38 weeks, labor and birth support"
+    },
+    {
+      "name": "OHP Birth Package",
+      "price": "Covered",
+      "note": "No out-of-pocket cost for Oregon Health Plan members"
+    }
+  ],
   "facts": [
     {
       "label": "Starts at",
@@ -66,13 +87,10 @@
           "title": "OHP Birth Package · Covered",
           "text": "The Oregon Health Plan covers doula services in Central Oregon. As an OHP-approved doula, I provide everything in the Birth Package at no out-of-pocket cost."
         }
-      ],
-      "groups": [],
-      "list": []
+      ]
     },
     {
       "title": "What happens at prenatal and postpartum visits",
-      "items": [],
       "groups": [
         {
           "heading": "Prenatal: two visits at your home, 2 to 3 hours each",
@@ -92,30 +110,7 @@
             "Resources: classes, specialists, therapists and more"
           ]
         }
-      ],
-      "list": []
-    }
-  ],
-  "pricing": [
-    {
-      "name": "Birth Package",
-      "price": "$2,100",
-      "note": "Everything listed above"
-    },
-    {
-      "name": "Birth & Postpartum Package",
-      "price": "$2,600",
-      "note": "The Birth Package plus 12 hours of postpartum care"
-    },
-    {
-      "name": "Birth Support Only",
-      "price": "$1,500",
-      "note": "One consultation, on call from 38 weeks, labor and birth support"
-    },
-    {
-      "name": "OHP Birth Package",
-      "price": "Covered",
-      "note": "No out-of-pocket cost for Oregon Health Plan members"
+      ]
     }
   ],
   "faqs": [
@@ -166,29 +161,26 @@
   ],
   "townLine": "For {town} families, we plan the drive to your birth place and my on-call timing at your prenatal visits, so there are no surprises when labor starts.",
   "photo": {
-    "image": "",
-    "stock": "https://images.unsplash.com/photo-1457342813143-a1ae27448a82",
     "alt": "A pregnant woman cradling her belly",
+    "stock": "https://images.unsplash.com/photo-1457342813143-a1ae27448a82",
     "credit": "freestocks"
   },
   "gallery": [
     {
-      "image": "",
-      "stock": "https://images.unsplash.com/photo-1538678867871-8a43e7487746",
       "alt": "A pregnant woman in a sunlit field",
+      "stock": "https://images.unsplash.com/photo-1538678867871-8a43e7487746",
       "credit": "Devon Divine"
     },
     {
-      "image": "",
-      "stock": "https://images.unsplash.com/photo-1586102728466-46b99b3bc411",
       "alt": "A pregnant woman standing by a crib in a sunlit nursery",
+      "stock": "https://images.unsplash.com/photo-1586102728466-46b99b3bc411",
       "credit": "Omurden Cengiz"
     },
     {
-      "image": "",
-      "stock": "https://images.unsplash.com/photo-1568043625493-2b0633c7c491",
       "alt": "A pregnant woman in a green dress holding her belly",
+      "stock": "https://images.unsplash.com/photo-1568043625493-2b0633c7c491",
       "credit": "Camylla Battani"
     }
-  ]
+  ],
+  "description": "Birth doula support in Bend and Central Oregon for hospital, birth center and home births. Packages from $1,500. OHP covered. Free consultation."
 }
