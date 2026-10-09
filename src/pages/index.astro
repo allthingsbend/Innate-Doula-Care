@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import AreaMap from '../components/AreaMap.astro';
 import Ridgeline from '../components/Ridgeline.astro';
-import { business, services, towns, svcUrl, photos, photoUrl, whatIsADoula, doulaDoes } from '../data/site.js';
+import { business, services, towns, svcUrl, photos, photoUrl, whatIsADoula, doulaDoes, serviceTowns } from '../data/site.js';
 const svc = (path) => services.find((s) => s.path === path);
 // The hero collage: one photo per main service, plus the place.
 const collage = [
@@ -14,19 +14,20 @@ const collage = [
 ];
 ---
 <Base
-  title="Bend Doula | Innate Doula Care | Birth, Postpartum & Car Seat Help"
-  description="Innate Doula Care is a full spectrum doula in Bend, Oregon: birth and postpartum doula care, lactation support, placenta services and in-home car seat installation help across Central Oregon."
+  title="Central Oregon Doula | Innate Doula Care | Bend, Redmond, Sisters & Beyond"
+  description="Innate Doula Care is a full spectrum doula serving all of Central Oregon: birth and postpartum doula care, lactation support, placenta services and in-home car seat help in Bend, Redmond, Sisters, Sunriver, La Pine, Prineville and Madras."
 >
   <section class="home-hero">
     <div class="wrap hero-grid">
       <div class="hero-copy stack">
-        <p class="eyebrow">Full spectrum doula · Bend, Oregon</p>
-        <h1>Bend doula care for birth, postpartum and beyond</h1>
+        <p class="eyebrow">Full spectrum doula · Serving all of Central Oregon</p>
+        <h1>Central Oregon doula care for birth, postpartum and beyond</h1>
         <p class="lead">You can do hard things, and I am here to support you every step of the way.</p>
         <div class="hero-cta">
           <a class="btn big" href={business.booking}>Book a free consultation</a>
           <a class="btn big ghost" href={business.phoneHref}>Call or text {business.phone}</a>
         </div>
+        <p class="hero-towns">In-home visits in {towns.filter((t) => serviceTowns.includes(t.slug)).map((t, i, a) => <><a href={`/${t.slug}/`}>{t.name}</a>{i < a.length - 2 ? ', ' : i === a.length - 2 ? ' and ' : '.'}</>)}</p>
         <p class="hero-note">Free, with no obligation. Or <a href="#contact">send a message</a>.</p>
         <ul class="trust">
           <li>State-certified, OHP-approved doula</li>
@@ -120,7 +121,7 @@ const collage = [
           <div><span>Takes</span><b>45 to 60 min</b></div>
           <div><span>Where</span><b>Your home</b></div>
         </div>
-        <div class="btn-row"><a class="btn" href="/bend/car-seat-installation/">Car seat help in Bend</a></div>
+        <div class="btn-row"><a class="btn" href="/central-oregon/car-seat-installation/">Car seat help in Central Oregon</a></div>
       </div>
     </div>
   </section>
@@ -129,8 +130,8 @@ const collage = [
     <div class="wrap two" style="align-items:center">
       <div class="stack">
         <p class="eyebrow">Areas served</p>
-        <h2>Serving all of Central Oregon</h2>
-        <p class="lead">Based in Bend. Visits happen in your home, at the hospital or at a birth center.</p>
+        <h2>One doula for all of Central Oregon</h2>
+        <p class="lead">From La Pine up to Madras. I am based in Bend, and visits happen in your home, at the hospital or at a birth center.</p>
         <ul class="town-links">
           {towns.map((t) => <li><a href={`/${t.slug}/`}><b>{t.name}</b><small>{t.min ? `about ${t.min} min from Bend` : 'home base'}</small></a></li>)}
         </ul>
@@ -191,7 +192,9 @@ const collage = [
   .hero-copy h1 { font-size: clamp(36px, 5vw, 62px); max-width: 14ch; }
   .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; }
   .btn.big { padding: 16px 26px; font-size: 18px; }
-  .hero-note { font-size: 15px; color: var(--soft); margin-top: -8px; }
+  .hero-towns { font-size: 16px; margin-top: -4px; }
+  .hero-towns a { color: var(--fg); }
+  .hero-note { font-size: 15px; color: var(--soft); margin-top: -8px; order: 0; }
   .trust { list-style: none; padding: 16px 0 0; margin: 0; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: 15px; color: var(--soft); }
   .trust li::before { content: ''; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--river); margin-right: 9px; vertical-align: middle; }
 

@@ -33,7 +33,7 @@ const description = `Doula care in ${t.name}, Oregon from Innate Doula Care: bir
       <div class="town-card stack">
         <p class="eyebrow"><a href="/">Home</a> / <a href="/central-oregon/">Central Oregon</a> / {t.name}</p>
         <h1>Doula in {t.name}, Oregon</h1>
-        <p class="lead">Birth and postpartum doula care, lactation support and car seat help for {t.name} families{isBend ? ', from a state-certified doula who lives here.' : ', from a state-certified doula based in Bend.'}</p>
+        <p class="lead">Birth and postpartum doula care, lactation support and car seat help for {t.name} families{isBend ? ', from a Central Oregon doula who lives here.' : ', from a Central Oregon doula who comes to you.'}</p>
         <div class="btn-row">
           <a class="btn" href={business.booking}>Book a free consultation</a>
           <span>or call or text <a href={business.phoneHref}>{business.phone}</a></span>
@@ -62,7 +62,13 @@ const description = `Doula care in ${t.name}, Oregon from Innate Doula Care: bir
     </div>
   </section>
 
-  <section class="section alt">
+  <section class="wrap">
+    <div class="photo-row">
+      {t.gallery.map((ph) => <img src={photoUrl(ph, 800, 600)} alt={ph.alt} width="800" height="600" loading="lazy" />)}
+    </div>
+  </section>
+
+  <section class="section alt" style="margin-top:clamp(48px,7vw,88px)">
     <div class="wrap two" style="align-items:center">
       <div class="stack">
         <p class="eyebrow">{t.name}</p>

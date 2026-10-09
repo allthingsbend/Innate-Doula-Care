@@ -3,11 +3,11 @@
 // Which towns get service pages is set by `serviceTowns` in site.js.
 import Base from '../../layouts/Base.astro';
 import AreaMap from '../../components/AreaMap.astro';
-import { business, services, towns, townServices, serviceTowns, hasPage, localLine, svcUrl, photoUrl } from '../../data/site.js';
+import { business, services, towns, townServices, region, hasPage, localLine, svcUrl, photoUrl } from '../../data/site.js';
 
 export function getStaticPaths() {
   const out = [];
-  for (const t of towns) {
+  for (const t of [region, ...towns]) {
     for (const s of services) {
       if (hasPage(t.slug, s.path)) {
         out.push({ params: { town: t.slug, service: s.path }, props: { s, t } });
@@ -17,19 +17,23 @@ export function getStaticPaths() {
   return out;
 }
 const { s, t } = Astro.props;
+// /central-oregon/<service>/ is the main page for each service. Town pages add a local note and a local question.
+const isRegion = Boolean(t.region);
 const isBend = t.slug === 'bend';
 const local = townServices[t.slug]?.[s.path];
-const h1 = `${s.name} in ${t.name}, Oregon`;
-const description = isBend ? s.description : s.description.replace(/Bend/g, t.name);
+const h1 = isRegion ? `${s.name} in Central Oregon` : `${s.name} in ${t.name}, Oregon`;
+const description = isRegion ? s.description.replace('in Bend and Central Oregon', 'across Central Oregon') : isBend ? s.description : s.description.replace(/Bend/g, t.name);
+const bendLine = 'Bend is my home base, so visits here are the easiest to schedule and I am close by when you need me.';
+const townLine = isBend ? bendLine : isRegion ? '' : localLine(s, t);
 let faqs = s.faqs;
 if (local?.faq) {
   // Swap the Bend-specific clinic question for the local one, or add it near the top.
   const i = faqs.findIndex((f) => /fire department/i.test(f.q));
   faqs = i >= 0 ? faqs.map((f, j) => (j === i ? local.faq : f)) : [faqs[0], local.faq, ...faqs.slice(1)];
 }
-if (!isBend) {
+if (!isRegion) {
   faqs = [
-    { q: `Do you offer ${s.name.toLowerCase()} in ${t.name}?`, a: `Yes. ${t.name} is about ${t.min} minutes from my home base in Bend. ${localLine(s, t)}` },
+    { q: `Do you offer ${s.name.toLowerCase()} in ${t.name}?`, a: isBend ? `Yes. ${bendLine}` : `Yes. ${t.name} is about ${t.min} minutes from my home base in Bend. ${townLine}` },
     ...faqs.filter((f) => f.q !== 'What areas do you serve?'),
   ];
 }
@@ -44,7 +48,7 @@ const serviceSchema = {
   name: h1,
   description,
   provider: { '@type': 'LocalBusiness', name: business.name, telephone: business.phone },
-  areaServed: `${t.name}, Oregon`,
+  areaServed: isRegion ? 'Central Oregon' : `${t.name}, Oregon`,
 };
 const crumbs = {
   '@context': 'https://schema.org',
@@ -83,13 +87,16 @@ const ordered = ['car-seat-installation', 'placenta-encapsulation', 'abortion-do
     <div class="wrap two">
       <div class="stack">
         {s.intro.map((p, i) => <p class={i === 0 ? 'lead' : ''}>{p}</p>)}
-        {!isBend && (
+        {!isRegion && (
           <div class="local stack">
             <p class="eyebrow">In {t.name}</p>
-            <p>{localLine(s, t)}</p>
+            <p>{townLine}</p>
             {local?.note && <p>{local.note}</p>}
           </div>
         )}
+        <div class="photo-row" style="margin-block:8px">
+          {s.gallery.slice(0, 2).map((ph) => <img src={photoUrl(ph, 800, 600)} alt={ph.alt} width="800" height="600" loading="lazy" />)}
+        </div>
         <h2>{s.includesTitle}</h2>
         <ul class={ordered ? 'steps' : 'plain-list'}>
           {s.includes.map(([k, d]) => <li><b>{k}</b><span class="soft">{d}</span></li>)}
@@ -131,6 +138,7 @@ const ordered = ['car-seat-installation', 'placenta-encapsulation', 'abortion-do
       <div class="stack">
         <p class="eyebrow">Good to know</p>
         <h2>Common questions</h2>
+        <img class="side-photo" src={photoUrl(s.gallery[2], 800, 600)} alt={s.gallery[2].alt} width="800" height="600" loading="lazy" />
       </div>
       <div class="faq">
         {faqs.map((f, i) => (
@@ -157,7 +165,7 @@ const ordered = ['car-seat-installation', 'placenta-encapsulation', 'abortion-do
             </li>
           ))}
         </ul>
-        <AreaMap highlight={t.name} />
+        <AreaMap highlight={isRegion ? undefined : t.name} />
       </div>
     </div>
   </section>

@@ -5,7 +5,7 @@ A preview site for Innate Doula Care (Bend, Oregon), built with Astro and deploy
 ## What is here
 
 - `src/data/site.js` - business details, services, prices and FAQs. Edit copy here.
-- `src/pages/` - home, about, service area, `/questions/`, and the `[town]/` folder: `[town]/index.astro` builds a hub per town (`/bend/`, `/redmond/`) and `[town]/[service].astro` builds the service pages (`/bend/birth-doula/`). The towns listed in `serviceTowns` in `site.js` get a page for every service. `/central-oregon/` is the regional hub.
+- `src/pages/` - home, about, service area, `/questions/`, and the `[town]/` folder: `[town]/index.astro` builds a hub per town (`/bend/`, `/redmond/`) and `[town]/[service].astro` builds the service pages (`/bend/birth-doula/`). The towns listed in `serviceTowns` in `site.js` get a page for every service. `/central-oregon/` is the areas hub, and `/central-oregon/birth-doula/` style pages are the main page for each service (the site is positioned as a Central Oregon doula, with town pages underneath).
 - `src/components/questions-form.html` - the questionnaire for Aleah.
 - `functions/api/answers.js` - saves questionnaire answers to Cloudflare KV and forwards them to a Google Sheet.
 - `google-sheet-script.gs` - the script to paste into the Google Sheet (Extensions > Apps Script).

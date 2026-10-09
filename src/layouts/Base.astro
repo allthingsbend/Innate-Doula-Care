@@ -45,14 +45,14 @@ const showBar = !Astro.url.pathname.startsWith('/questions');
       <div class="wrap header-row">
         <a class="brand" href="/">
           <img src="/img/logo.png" alt="" width="129" height="138" />
-          <span>{business.name}<small>Bend, Oregon</small></span>
+          <span>{business.name}<small>Central Oregon</small></span>
         </a>
         <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="main-nav">Menu</button>
         <nav aria-label="Main" id="main-nav">
           <details class="menu">
             <summary>Services</summary>
             <ul>
-              {services.map((s) => <li><a href={svcUrl(s)}>{s.nav}<small>{s.from}</small></a></li>)}
+              {services.map((s) => <li><a href={svcUrl(s)}>{s.nav}</a></li>)}
             </ul>
           </details>
           <details class="menu">
@@ -95,7 +95,7 @@ const showBar = !Astro.url.pathname.startsWith('/questions');
         </div>
         <div>
           <p class="label">Services</p>
-          <ul>{services.map((s) => <li><a href={svcUrl(s)}>{s.nav} in Bend</a></li>)}</ul>
+          <ul>{services.map((s) => <li><a href={svcUrl(s)}>{s.nav}</a></li>)}</ul>
         </div>
         <div>
           <p class="label">Areas served</p>
@@ -257,6 +257,9 @@ const showBar = !Astro.url.pathname.startsWith('/questions');
   .cta { background: var(--tint); }
   .cta .lead { color: var(--soft); }
 
+  .photo-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+  .photo-row img, .side-photo { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--tint); }
+  .side-photo { max-width: 420px; margin-top: 12px; }
   .mobile-bar { display: none; }
   @media (max-width: 860px) {
     .mobile-bar { display: grid; grid-template-columns: 1fr 1.25fr; gap: 10px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 25; background: var(--bg); border-top: 1px solid var(--line); padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); transform: translateY(110%); transition: transform 0.25s ease; }

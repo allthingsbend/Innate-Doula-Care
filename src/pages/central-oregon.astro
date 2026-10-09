@@ -2,16 +2,16 @@
 import Base from '../layouts/Base.astro';
 import AreaMap from '../components/AreaMap.astro';
 import Ridgeline from '../components/Ridgeline.astro';
-import { business, services, towns, svcUrl, photos, photoUrl } from '../data/site.js';
+import { business, services, towns, svcUrl, photos, photoUrl, scenery } from '../data/site.js';
 ---
 <Base
-  title="Doula Serving Central Oregon | Bend, Redmond, Sisters & More | Innate Doula Care"
+  title="Areas Served in Central Oregon | Bend, Redmond, Sisters & More | Innate Doula Care"
   description="Innate Doula Care provides in-home doula care, lactation support and car seat help across Central Oregon: Bend, Redmond, Sisters, Sunriver, La Pine, Prineville, Terrebonne, Culver and Madras."
 >
   <section>
     <div class="wrap stack" style="padding-block: clamp(36px, 6vw, 76px) clamp(20px, 3vw, 40px)">
       <p class="eyebrow"><a href="/">Home</a> / Central Oregon</p>
-      <h1 style="max-width:16ch">Doula care across Central Oregon</h1>
+      <h1 style="max-width:16ch">Where I work in Central Oregon</h1>
       <p class="lead" style="max-width:56ch">Based in Bend. I come to you, from La Pine in the south up to Madras in the north.</p>
     </div>
     <Ridgeline />
@@ -37,6 +37,9 @@ import { business, services, towns, svcUrl, photos, photoUrl } from '../data/sit
 
   <section class="section alt">
     <div class="wrap stack">
+      <div class="photo-row" style="margin-bottom:20px">
+        {scenery.slice(0, 3).map((ph) => <img src={photoUrl(ph, 800, 600)} alt={ph.alt} width="800" height="600" loading="lazy" />)}
+      </div>
       <p class="eyebrow">Available in every town</p>
       <ul class="rows">
         {services.map((s) => (

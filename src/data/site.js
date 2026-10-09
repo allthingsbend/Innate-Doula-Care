@@ -399,7 +399,9 @@ export const townServices = {
 };
 // Towns that get a page for every service. Terrebonne and Culver keep a hub page only.
 export const serviceTowns = ['bend', 'redmond', 'sisters', 'sunriver', 'la-pine', 'prineville', 'madras'];
-export const hasPage = (townSlug, path) => serviceTowns.includes(townSlug) || Boolean(townServices[townSlug]?.[path]);
+// The region itself has a page for every service: /central-oregon/birth-doula/ and so on. These are the main service pages.
+export const region = { slug: 'central-oregon', name: 'Central Oregon', min: 0, region: true };
+export const hasPage = (townSlug, path) => townSlug === region.slug || serviceTowns.includes(townSlug) || Boolean(townServices[townSlug]?.[path]);
 
 // One honest, service-specific line per town page. Aleah should replace these with real local detail over time.
 export const localLine = (s, t) => ({
@@ -412,7 +414,7 @@ export const localLine = (s, t) => ({
   'pregnancy-loss-support': `Support is available at your home in ${t.name} or virtually, whichever feels right to you.`,
   'abortion-doula-support': `Support is available in person for ${t.name} families, or by phone, text and video.`,
 }[s.path]);
-export const svcUrl = (s, townSlug = 'bend') => `/${hasPage(townSlug, s.path) ? townSlug : 'bend'}/${s.path}/`;
+export const svcUrl = (s, townSlug = region.slug) => `/${hasPage(townSlug, s.path) ? townSlug : region.slug}/${s.path}/`;
 
 // =====================================================================================
 // Fuller content carried over from innatedoulacare.com (October 2026), lightly edited.
@@ -420,7 +422,7 @@ export const svcUrl = (s, townSlug = 'bend') => `/${hasPage(townSlug, s.path) ? 
 business.hours = 'Office hours 8:00 am to 5:00 pm. On call for clients 24 hours a day.';
 business.welcome = [
   'Whether you are gearing up for the adventure of childbirth, navigating the early days of parenthood or exploring other big life moments, you have come to the right place.',
-  'As your Bend doula, I am here to cheer you on, hold your hand (literally or figuratively) and make sure you feel empowered every step of the way. Let\'s do this together. You\'ve got this, and I\'ve got you!',
+  'As your Central Oregon doula, I am here to cheer you on, hold your hand (literally or figuratively) and make sure you feel empowered every step of the way. Let\'s do this together. You\'ve got this, and I\'ve got you!',
 ];
 export const whatIsADoula = 'A doula is a trained professional who offers non-medical emotional, informational, physical and advocacy support to individuals or families during transformative health experiences. Doulas can provide care through pregnancy, labor, birth and the postpartum period, and can also support individuals or families navigating experiences such as surrogacy, miscarriage, abortion, stillbirth or end-of-life transitions.';
 
@@ -610,3 +612,35 @@ export const resources = {
     { name: 'Summary of perinatal mental health conditions', url: pdf('6dc96b62-9d2f-42e2-8aae-2eb90cd4fb5e', 'Summary%20of%20Perinatal%20Mental%20Health%20Conditions.pdf') },
   ],
 };
+
+// =====================================================================================
+// Extra stock photos (Unsplash) so each page has a few images. Placeholders until Aleah has her own.
+// =====================================================================================
+const gallery = {
+  'car-seat-installation': [P('1633111046443-13a0c30033ea', 'Sam Barber', 'A little boy sitting in a car seat'), P('1730577776817-4166006be437', 'Miah Dailey', 'A small child sitting in a car seat'), P('1619719287848-883c8f26efbc', 'Erik Mclean', 'A gray and black car seat')],
+  'birth-doula': [P('1538678867871-8a43e7487746', 'Devon Divine', 'A pregnant woman in a sunlit field'), P('1586102728466-46b99b3bc411', 'Omurden Cengiz', 'A pregnant woman standing by a crib in a sunlit nursery'), P('1568043625493-2b0633c7c491', 'Camylla Battani', 'A pregnant woman in a green dress holding her belly')],
+  'postpartum-doula': [P('1583710457367-47de0ea21fef', 'Hollie Santos', 'A woman in a white shirt carrying a baby'), P('1686668108595-3c2171a8fc78', 'Jennifer Kalenberg', 'A woman sitting on a bed holding a baby'), P('1620737007484-2d3bd3079a35', 'Apostolos Vamvouras', 'A woman lying on a bed beside a baby')],
+  'lactation-support': [P('1566906606688-642231fec1cf', 'Janko Ferlic', 'A woman breastfeeding her baby'), P('1509115429432-e9b549ffb669', 'Dave Clubb', 'A woman holding a baby while sitting under a tree'), P('1674637828373-3b8d7cded475', 'Alina Matveycheva', 'A woman holding a baby in her arms')],
+  'placenta-encapsulation': [P('1596252732610-fce5ac542f8e', 'Jill Sauve', 'A person holding a baby\'s hand'), P('1626856295349-6f21d6e6cfef', 'Bia Octavia', 'A baby lying on a white bed'), P('1651663303138-4dc283e15992', 'Taisiia Stupak', 'A pregnant woman touching her belly by a window')],
+  'surrogacy-doula': [P('1543342384-1f1350e27861', 'Kelly Sikkema', 'A woman holding a baby beside a smiling man'), P('1637184572364-a231e8b4c716', 'Taylor Gray', 'A man and woman holding a baby in their arms'), P('1541956799312-3f9df99e0006', 'Alicia Petresc', 'A person touching a pregnant belly')],
+  'pregnancy-loss-support': [P('1604881991575-dfb1003d8811', 'Priscilla Du Preez', 'Two people holding hands on a white table'), P('1580869318757-a6c605b061ed', 'Joshua Hoehne', 'Three pairs of hands held together in support'), P('1724536523240-1cfdf382f590', 'James Sestric', 'The sun setting over a mountain range')],
+  'abortion-doula-support': [P('1586324304780-c9a5031a3599', 'Nani Chavez', 'Two people holding hands'), P('1682352689072-7b2c0b8580c2', 'Saulo Meza', 'A close up of two people holding hands'), P('1574180436207-ac91a1675462', 'McKayla Crump', 'A lake in a forest')],
+};
+services.forEach((s) => { s.gallery = gallery[s.path]; });
+export const scenery = [
+  P('1574180436207-ac91a1675462', 'McKayla Crump', 'A lake in a forest'),
+  P('1599430985024-742530f383ab', 'Shawn', 'Green trees beside a river'),
+  P('1565070003762-00bee3f68666', 'Dan Meyers', 'A mountain range in daylight'),
+  P('1542425967-a2dd69fefbb9', 'McKayla Crump', 'Woodland with a mountain view'),
+];
+export const family = [
+  P('1637184572364-a231e8b4c716', 'Taylor Gray', 'A man and woman holding a baby in their arms'),
+  P('1583710457367-47de0ea21fef', 'Hollie Santos', 'A woman in a white shirt carrying a baby'),
+  P('1538678867871-8a43e7487746', 'Devon Divine', 'A pregnant woman in a sunlit field'),
+  P('1596252732610-fce5ac542f8e', 'Jill Sauve', 'A person holding a baby\'s hand'),
+];
+// Each town page gets one landscape and two family photos, rotated so neighbours differ.
+towns.forEach((t, i) => {
+  const sv = services[(i * 3 + 1) % services.length], sv2 = services[(i * 3 + 2) % services.length];
+  t.gallery = [scenery[i % scenery.length], sv.gallery[i % 2], sv2.gallery[(i + 1) % 2]];
+});
