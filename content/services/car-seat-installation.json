@@ -1,0 +1,112 @@
+{
+  "order": 1,
+  "nav": "Car Seat Help",
+  "name": "Car seat installation help",
+  "summary": "One-on-one, at your home. Learn to install and adjust your seat with confidence.",
+  "description": "In-home car seat installation help and safety checks in Bend and Central Oregon from a certified Child Passenger Safety Technician. $50, by appointment.",
+  "from": "from $50",
+  "facts": [
+    {
+      "label": "Starts at",
+      "value": "$50"
+    },
+    {
+      "label": "Takes",
+      "value": "45 to 60 minutes"
+    },
+    {
+      "label": "Where",
+      "value": "Your home, your vehicle"
+    }
+  ],
+  "intro": [
+    "As a certified Child Passenger Safety Technician (CPST), I come to your home and teach you how to install and adjust your car seat correctly, in your own vehicle. The goal is not for me to install it for you. It is for you to leave knowing how to do it yourself, every time.",
+    "Many car seats are installed incorrectly without the parent knowing. A session before your baby arrives, or any time you change seats or vehicles, takes the guesswork out."
+  ],
+  "includesTitle": "What happens in a session",
+  "includes": [
+    {
+      "title": "Review your manuals",
+      "text": "We go through the car seat manual and your vehicle manual together so placement and use match what the manufacturers require."
+    },
+    {
+      "title": "Hands-on installation practice",
+      "text": "You install the seat with both the seat belt and the LATCH system while I guide you step by step."
+    },
+    {
+      "title": "Common mistakes",
+      "text": "I show you the issues I see most often and how to avoid them."
+    },
+    {
+      "title": "Harness and fit check",
+      "text": "We adjust the seat for your child's age, height and weight."
+    },
+    {
+      "title": "Questions and follow-up",
+      "text": "You leave with answers and resources for later."
+    }
+  ],
+  "sections": [],
+  "pricing": [
+    {
+      "name": "Full car seat safety check and education session",
+      "price": "$50",
+      "note": "45 to 60 minutes, at your home"
+    },
+    {
+      "name": "Each additional seat, same appointment",
+      "price": "$15",
+      "note": ""
+    },
+    {
+      "name": "Virtual car seat check",
+      "price": "$40",
+      "note": "Education and guidance by video"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Where do you do car seat checks?",
+      "a": "At your home, in your own vehicle, anywhere in Central Oregon: Bend, Redmond, Sisters, Sunriver, La Pine, Prineville and nearby towns."
+    },
+    {
+      "q": "How is this different from the free fire department clinic?",
+      "a": "Bend Fire & Rescue hosts free drive-through car seat clinics on set dates through the year, and they are a great resource. I offer a private, by-appointment session at your home, on a day that works for you, with as much time as you need to practice."
+    },
+    {
+      "q": "Will you install the seat for me?",
+      "a": "I will guide you while you install it. Parents who do the installation themselves are far more likely to get it right the next time."
+    },
+    {
+      "q": "When should I book?",
+      "a": "Before your baby arrives is ideal, so the seat is ready for the ride home. It is also worth a check when you move to a new seat or a different vehicle."
+    }
+  ],
+  "townLine": "Car seat checks in {town} happen in your own driveway, in your own vehicle. I drive up from Bend, about {minutes} minutes away, so there is no clinic line to wait in.",
+  "photo": {
+    "image": "",
+    "stock": "https://images.unsplash.com/photo-1665578325705-cfe6de3ae2eb",
+    "alt": "A baby sleeping in a car seat",
+    "credit": "Silverius Trandafir"
+  },
+  "gallery": [
+    {
+      "image": "",
+      "stock": "https://images.unsplash.com/photo-1633111046443-13a0c30033ea",
+      "alt": "A little boy sitting in a car seat",
+      "credit": "Sam Barber"
+    },
+    {
+      "image": "",
+      "stock": "https://images.unsplash.com/photo-1730577776817-4166006be437",
+      "alt": "A small child sitting in a car seat",
+      "credit": "Miah Dailey"
+    },
+    {
+      "image": "",
+      "stock": "https://images.unsplash.com/photo-1619719287848-883c8f26efbc",
+      "alt": "A gray and black car seat",
+      "credit": "Erik Mclean"
+    }
+  ]
+}

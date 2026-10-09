@@ -1,0 +1,646 @@
+# Pages CMS setup (https://pagescms.org). This file tells the editor which parts of the site
+# Aleah can change and what each field is called. All content lives in the /content folder.
+# Photos she uploads go to public/img/uploads.
+media:
+  input: public/img/uploads
+  output: /img/uploads
+  categories:
+  - image
+  rename: true
+content:
+- name: settings
+  label: Business details
+  type: file
+  path: content/settings.json
+  format: json
+  fields:
+  - name: name
+    label: Business name
+    type: string
+  - name: owner
+    label: Your name
+    type: string
+  - name: phone
+    label: Phone number
+    type: string
+    description: Shown everywhere and used by the Call and Text buttons.
+  - name: email
+    label: Email
+    type: string
+  - name: booking
+    label: Booking link
+    type: string
+    description: Where the "Book a free consultation" buttons go.
+  - name: hours
+    label: Office hours
+    type: string
+  - name: social
+    label: Social links
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{label}'
+    fields:
+    - name: label
+      label: Name
+      type: string
+    - name: url
+      label: Link
+      type: string
+  - name: credentials
+    label: Short credentials list (home page)
+    type: string
+    list: true
+- name: home
+  label: Home page
+  type: file
+  path: content/home.json
+  format: json
+  fields:
+  - name: eyebrow
+    label: Small line above the headline
+    type: string
+  - name: headline
+    label: Headline
+    type: string
+  - name: lead
+    label: Line under the headline
+    type: text
+  - name: trust
+    label: Credentials under the buttons
+    type: string
+    list: true
+  - name: facts
+    label: Four quick facts under the photos
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{title}'
+    fields:
+    - name: title
+      label: Title
+      type: string
+    - name: text
+      label: Text
+      type: text
+  - name: welcomeEyebrow
+    label: 'Welcome: small line'
+    type: string
+  - name: welcomeHeading
+    label: 'Welcome: heading'
+    type: string
+  - name: welcome
+    label: 'Welcome: paragraphs'
+    type: text
+    list: true
+  - name: welcomePhoto
+    label: Welcome photo
+    type: object
+    fields:
+    - name: image
+      label: Your photo
+      type: image
+      description: Upload a photo here. When this is filled in, it replaces the stock photo.
+    - name: alt
+      label: Describe the photo in a few words
+      type: string
+      description: For people who cannot see the image, and for Google.
+    - name: stock
+      label: Stock photo link (placeholder)
+      type: string
+      description: Used only while "Your photo" is empty. You can leave this alone.
+    - name: credit
+      label: Stock photo credit
+      type: string
+  - name: whatIsADoula
+    label: What is a doula?
+    type: text
+  - name: doulaDoes
+    label: What does a doula do?
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{title}'
+    fields:
+    - name: title
+      label: Type of support
+      type: string
+    - name: items
+      label: What it includes
+      type: string
+      list: true
+    - name: photo
+      label: Photo
+      type: object
+      fields:
+      - name: image
+        label: Your photo
+        type: image
+        description: Upload a photo here. When this is filled in, it replaces the stock photo.
+      - name: alt
+        label: Describe the photo in a few words
+        type: string
+        description: For people who cannot see the image, and for Google.
+      - name: stock
+        label: Stock photo link (placeholder)
+        type: string
+        description: Used only while "Your photo" is empty. You can leave this alone.
+      - name: credit
+        label: Stock photo credit
+        type: string
+  - name: aboutPhoto
+    label: Photo beside "About Aleah"
+    type: object
+    fields:
+    - name: image
+      label: Your photo
+      type: image
+      description: Upload a photo here. When this is filled in, it replaces the stock photo.
+    - name: alt
+      label: Describe the photo in a few words
+      type: string
+      description: For people who cannot see the image, and for Google.
+    - name: stock
+      label: Stock photo link (placeholder)
+      type: string
+      description: Used only while "Your photo" is empty. You can leave this alone.
+    - name: credit
+      label: Stock photo credit
+      type: string
+  - name: regionPhoto
+    label: Central Oregon landscape photo
+    type: object
+    fields:
+    - name: image
+      label: Your photo
+      type: image
+      description: Upload a photo here. When this is filled in, it replaces the stock photo.
+    - name: alt
+      label: Describe the photo in a few words
+      type: string
+      description: For people who cannot see the image, and for Google.
+    - name: stock
+      label: Stock photo link (placeholder)
+      type: string
+      description: Used only while "Your photo" is empty. You can leave this alone.
+    - name: credit
+      label: Stock photo credit
+      type: string
+  - name: seoTitle
+    label: Google title
+    type: string
+    description: The blue link text in Google results.
+  - name: seoDescription
+    label: Google description
+    type: text
+- name: services
+  label: Services
+  type: collection
+  path: content/services
+  format: json
+  filename: '{primary}.json'
+  view:
+    fields:
+    - nav
+    - from
+    primary: nav
+  fields:
+  - name: nav
+    label: Service name (menus and cards)
+    type: string
+  - name: name
+    label: Service name inside a sentence
+    type: string
+    description: Used in headings like "Birth doula in Redmond, Oregon".
+  - name: order
+    label: Position in lists
+    type: number
+    description: 1 shows first.
+  - name: summary
+    label: One-line summary
+    type: string
+  - name: from
+    label: Starting price label
+    type: string
+    description: For example "from $50" or "sliding scale".
+  - name: pricing
+    label: Prices
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{name}: {price}'
+    fields:
+    - name: name
+      label: What it is
+      type: string
+    - name: price
+      label: Price
+      type: string
+    - name: note
+      label: Small note (optional)
+      type: string
+  - name: facts
+    label: Three quick facts at the top
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{label}: {value}'
+    fields:
+    - name: label
+      label: Label
+      type: string
+    - name: value
+      label: Value
+      type: string
+  - name: intro
+    label: Opening paragraphs
+    type: text
+    list: true
+  - name: includesTitle
+    label: Heading for the main list
+    type: string
+  - name: includes
+    label: Main list
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{title}'
+    fields:
+    - name: title
+      label: Title
+      type: string
+    - name: text
+      label: Text
+      type: text
+  - name: sections
+    label: Extra sections
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{title}'
+    description: Each section has a heading and then one kind of list. Fill in only the list you want.
+    fields:
+    - name: title
+      label: Section heading
+      type: string
+    - name: items
+      label: Titled items
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{title}'
+      fields:
+      - name: title
+        label: Title
+        type: string
+      - name: text
+        label: Text
+        type: text
+    - name: groups
+      label: Grouped checklists
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{heading}'
+      fields:
+      - name: heading
+        label: Group heading
+        type: string
+      - name: items
+        label: Checklist
+        type: string
+        list: true
+    - name: list
+      label: Simple checklist
+      type: string
+      list: true
+  - name: faqs
+    label: Questions and answers
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{q}'
+    fields:
+    - name: q
+      label: Question
+      type: string
+    - name: a
+      label: Answer
+      type: text
+  - name: townLine
+    label: Sentence used on town pages
+    type: text
+    description: Write {town} where the town name goes and {minutes} for the drive time.
+  - name: photo
+    label: Main photo
+    type: object
+    fields:
+    - name: image
+      label: Your photo
+      type: image
+      description: Upload a photo here. When this is filled in, it replaces the stock photo.
+    - name: alt
+      label: Describe the photo in a few words
+      type: string
+      description: For people who cannot see the image, and for Google.
+    - name: stock
+      label: Stock photo link (placeholder)
+      type: string
+      description: Used only while "Your photo" is empty. You can leave this alone.
+    - name: credit
+      label: Stock photo credit
+      type: string
+  - name: gallery
+    label: More photos (three are shown)
+    type: object
+    fields:
+    - name: image
+      label: Your photo
+      type: image
+      description: Upload a photo here. When this is filled in, it replaces the stock photo.
+    - name: alt
+      label: Describe the photo in a few words
+      type: string
+      description: For people who cannot see the image, and for Google.
+    - name: stock
+      label: Stock photo link (placeholder)
+      type: string
+      description: Used only while "Your photo" is empty. You can leave this alone.
+    - name: credit
+      label: Stock photo credit
+      type: string
+    list: true
+  - name: description
+    label: Google description
+    type: text
+- name: towns
+  label: Towns
+  type: collection
+  path: content/towns
+  format: json
+  filename: '{primary}.json'
+  view:
+    fields:
+    - name
+    - servicePages
+    primary: name
+  fields:
+  - name: name
+    label: Town name
+    type: string
+  - name: order
+    label: Position in lists
+    type: number
+  - name: servicePages
+    label: Give this town its own page for every service
+    type: boolean
+  - name: where
+    label: Where it is
+    type: string
+    description: Finishes the sentence "Care that comes to you, ...".
+  - name: note
+    label: About working in this town
+    type: text
+    description: A sentence or two of real local detail makes this page much stronger.
+  - name: faqQuestion
+    label: Local question (optional)
+    type: string
+  - name: faqAnswer
+    label: Answer to the local question
+    type: text
+  - name: serviceNotes
+    label: Notes for one service in this town
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{service}'
+    fields:
+    - name: service
+      label: Service
+      type: select
+      options:
+        values:
+        - car-seat-installation
+        - birth-doula
+        - postpartum-doula
+        - lactation-support
+        - placenta-encapsulation
+        - surrogacy-doula
+        - pregnancy-loss-support
+        - abortion-doula-support
+    - name: note
+      label: Note shown on that page
+      type: text
+    - name: faqQuestion
+      label: Local question (optional)
+      type: string
+    - name: faqAnswer
+      label: Answer
+      type: text
+  - name: photo
+    label: Main photo
+    type: object
+    fields:
+    - name: image
+      label: Your photo
+      type: image
+      description: Upload a photo here. When this is filled in, it replaces the stock photo.
+    - name: alt
+      label: Describe the photo in a few words
+      type: string
+      description: For people who cannot see the image, and for Google.
+    - name: stock
+      label: Stock photo link (placeholder)
+      type: string
+      description: Used only while "Your photo" is empty. You can leave this alone.
+    - name: credit
+      label: Stock photo credit
+      type: string
+  - name: gallery
+    label: More photos (three are shown)
+    type: object
+    fields:
+    - name: image
+      label: Your photo
+      type: image
+      description: Upload a photo here. When this is filled in, it replaces the stock photo.
+    - name: alt
+      label: Describe the photo in a few words
+      type: string
+      description: For people who cannot see the image, and for Google.
+    - name: stock
+      label: Stock photo link (placeholder)
+      type: string
+      description: Used only while "Your photo" is empty. You can leave this alone.
+    - name: credit
+      label: Stock photo credit
+      type: string
+    list: true
+  - name: minutes
+    label: Drive time from Bend, in minutes
+    type: number
+  - name: lat
+    label: 'Map position: latitude'
+    type: number
+  - name: lon
+    label: 'Map position: longitude'
+    type: number
+- name: about
+  label: About page
+  type: file
+  path: content/about.json
+  format: json
+  fields:
+  - name: heading
+    label: Heading
+    type: string
+  - name: lead
+    label: First line
+    type: text
+  - name: paragraphs
+    label: Paragraphs
+    type: text
+    list: true
+  - name: portrait
+    label: Your portrait
+    type: image
+  - name: credentials
+    label: Certifications, training and education
+    type: string
+    list: true
+  - name: photos
+    label: Photos at the bottom
+    type: object
+    fields:
+    - name: image
+      label: Your photo
+      type: image
+      description: Upload a photo here. When this is filled in, it replaces the stock photo.
+    - name: alt
+      label: Describe the photo in a few words
+      type: string
+      description: For people who cannot see the image, and for Google.
+    - name: stock
+      label: Stock photo link (placeholder)
+      type: string
+      description: Used only while "Your photo" is empty. You can leave this alone.
+    - name: credit
+      label: Stock photo credit
+      type: string
+    list: true
+  - name: seoTitle
+    label: Google title
+    type: string
+  - name: seoDescription
+    label: Google description
+    type: text
+- name: resources
+  label: Resources page
+  type: file
+  path: content/resources.json
+  format: json
+  fields:
+  - name: photo
+    label: Photo at the top
+    type: object
+    fields:
+    - name: image
+      label: Your photo
+      type: image
+      description: Upload a photo here. When this is filled in, it replaces the stock photo.
+    - name: alt
+      label: Describe the photo in a few words
+      type: string
+      description: For people who cannot see the image, and for Google.
+    - name: stock
+      label: Stock photo link (placeholder)
+      type: string
+      description: Used only while "Your photo" is empty. You can leave this alone.
+    - name: credit
+      label: Stock photo credit
+      type: string
+  - name: apps
+    label: Apps
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{name}'
+    fields:
+    - name: name
+      label: Name
+      type: string
+    - name: note
+      label: Short note
+      type: text
+    - name: url
+      label: Link
+      type: string
+  - name: sites
+    label: Websites
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{name}'
+    fields:
+    - name: name
+      label: Name
+      type: string
+    - name: note
+      label: Short note
+      type: text
+    - name: url
+      label: Link
+      type: string
+  - name: handouts
+    label: Handouts
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{name}'
+    fields:
+    - name: name
+      label: Name
+      type: string
+    - name: url
+      label: Link
+      type: string
+- name: areas
+  label: Areas page
+  type: file
+  path: content/areas.json
+  format: json
+  fields:
+  - name: photos
+    label: Landscape photos
+    type: object
+    fields:
+    - name: image
+      label: Your photo
+      type: image
+      description: Upload a photo here. When this is filled in, it replaces the stock photo.
+    - name: alt
+      label: Describe the photo in a few words
+      type: string
+      description: For people who cannot see the image, and for Google.
+    - name: stock
+      label: Stock photo link (placeholder)
+      type: string
+      description: Used only while "Your photo" is empty. You can leave this alone.
+    - name: credit
+      label: Stock photo credit
+      type: string
+    list: true

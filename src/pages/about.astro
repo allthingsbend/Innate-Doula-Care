@@ -1,36 +1,33 @@
 ---
 import Base from '../layouts/Base.astro';
 import Cta from '../components/Cta.astro';
-import { business, credentialsFull, family, scenery, photoUrl } from '../data/site.js';
+import { business, about, photoUrl } from '../data/site.js';
 ---
 <Base
-  title="About Aleah Hancock | Central Oregon Doula | Innate Doula Care"
-  description="Meet Aleah Hancock, a state-certified doula, lactation counselor and car seat technician serving Central Oregon from Bend, and a two-time surrogate."
+  title={about.seoTitle}
+  description={about.seoDescription}
 >
   <section class="section">
     <div class="wrap two">
       <div class="stack">
         <p class="eyebrow">About</p>
-        <h1>Hi, I'm Aleah</h1>
-        <p class="lead">Pronounced uh-lee-uh. I am a full spectrum doula serving all of Central Oregon from my home in Bend.</p>
-        <p>I was born and raised in the California Bay Area, and life brought me to Bend after having my two kids in my early twenties. Before starting my own family I studied Early Childhood Education and Development, which is where my passion for supporting families began.</p>
-        <p>My path changed when someone close to me faced fertility challenges. That led me into the world of third-party reproduction and to being a surrogate twice. One of those journeys brought the gift of new life. The other brought lessons in resilience and compassion through loss. Both shape how I support families today.</p>
-        <p>I believe every experience is unique and deserves personalized, inclusive and non-judgmental care. My job is to help you feel confident in your choices.</p>
-        <p>When I am not doing birth work, you can find me being "Aunt Nutsy" to nine nieces and nephews, camping, hiking, dancing, playing board games, puzzling or reading.</p>
+        <h1>{about.heading}</h1>
+        <p class="lead">{about.lead}</p>
+        {about.paragraphs.map((p) => <p>{p}</p>)}
         <Cta />
       </div>
       <div class="stack">
-        <div class="photo-slot portrait"><span>Photo: a portrait of Aleah goes here. People hire a person, so this is the most important image on the site.</span></div>
+        {about.portrait ? <img class="portrait" src={about.portrait} alt="Aleah Hancock" style="width:100%;object-fit:cover" /> : <div class="photo-slot portrait"><span>Photo: a portrait of Aleah goes here. People hire a person, so this is the most important image on the site.</span></div>}
         <p class="label">Certification, training and education</p>
         <ul class="checks small">
-          {credentialsFull.map((c) => <li>{c}</li>)}
+          {about.credentials.map((c) => <li>{c}</li>)}
         </ul>
       </div>
     </div>
   </section>
   <section class="section alt">
     <div class="wrap photo-row">
-      {[family[0], scenery[3], family[1]].map((ph) => <img src={photoUrl(ph, 800, 600)} alt={ph.alt} width="800" height="600" loading="lazy" />)}
+      {about.photos.map((ph) => <img src={photoUrl(ph, 800, 600)} alt={ph.alt} width="800" height="600" loading="lazy" />)}
     </div>
   </section>
 </Base>

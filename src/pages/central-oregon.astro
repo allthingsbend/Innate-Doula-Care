@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import AreaMap from '../components/AreaMap.astro';
 import Ridgeline from '../components/Ridgeline.astro';
 import Cta from '../components/Cta.astro';
-import { business, services, towns, svcUrl, photos, photoUrl, scenery } from '../data/site.js';
+import { business, services, towns, svcUrl, home, areas, photoUrl } from '../data/site.js';
 ---
 <Base
   title="Areas Served in Central Oregon | Bend, Redmond, Sisters & More | Innate Doula Care"
@@ -34,13 +34,13 @@ import { business, services, towns, svcUrl, photos, photoUrl, scenery } from '..
   </section>
 
   <figure style="margin:0">
-    <img src={photoUrl(photos.lake, 2000, 700)} alt={photos.lake.alt} width="2000" height="700" loading="lazy" style="width:100%;height:clamp(200px,30vw,420px);object-fit:cover;background:var(--panel)" />
+    <img src={photoUrl(home.regionPhoto, 2000, 700)} alt={home.regionPhoto.alt} width="2000" height="700" loading="lazy" style="width:100%;height:clamp(200px,30vw,420px);object-fit:cover;background:var(--panel)" />
   </figure>
 
   <section class="section alt">
     <div class="wrap stack">
       <div class="photo-row" style="margin-bottom:20px">
-        {scenery.slice(0, 3).map((ph) => <img src={photoUrl(ph, 800, 600)} alt={ph.alt} width="800" height="600" loading="lazy" />)}
+        {areas.photos.map((ph) => <img src={photoUrl(ph, 800, 600)} alt={ph.alt} width="800" height="600" loading="lazy" />)}
       </div>
       <p class="eyebrow">Available in every town</p>
       <ul class="rows">

@@ -1,0 +1,167 @@
+{
+  "order": 3,
+  "nav": "Postpartum Doula",
+  "name": "Postpartum doula",
+  "summary": "Practical help and calm company at home in the first weeks with your baby.",
+  "description": "In-home postpartum doula care in Bend and Central Oregon. Newborn care, feeding support and rest for new parents. From $50 per hour. OHP accepted.",
+  "from": "$50 per hour",
+  "facts": [
+    {
+      "label": "Rate",
+      "value": "$50 per hour"
+    },
+    {
+      "label": "Visits",
+      "value": "Day or evening, overnight case by case"
+    },
+    {
+      "label": "Where",
+      "value": "Your home"
+    }
+  ],
+  "intro": [
+    "Welcoming a new baby is beautiful and often overwhelming. As your postpartum doula, I offer practical help, emotional support and guidance in a calm, nurturing way.",
+    "Whether you need help with newborn care, feeding support, or simply a chance to rest while I take care of things around the house, every visit is shaped around what your family needs. Overnight support is available case by case."
+  ],
+  "includesTitle": "What a visit can include",
+  "includes": [
+    {
+      "title": "Infant care",
+      "text": "Soothing, bathing, diapering and sleep routines."
+    },
+    {
+      "title": "Feeding support",
+      "text": "Help with breastfeeding, bottle feeding or pumping."
+    },
+    {
+      "title": "Practical help",
+      "text": "Light household tasks, sibling and pet support."
+    },
+    {
+      "title": "Emotional support",
+      "text": "Someone to listen and check in on how you are doing."
+    },
+    {
+      "title": "Local resources",
+      "text": "Referrals to lactation consultants, therapists and parent groups."
+    },
+    {
+      "title": "Sibling and pet support",
+      "text": "A hand with older children and pets so you can focus on the baby."
+    },
+    {
+      "title": "A calm environment",
+      "text": "A steady, reassuring presence in the house."
+    }
+  ],
+  "sections": [],
+  "pricing": [
+    {
+      "name": "A la carte",
+      "price": "$50 per hour",
+      "note": "Add hours as needed"
+    },
+    {
+      "name": "10 hours",
+      "price": "$500",
+      "note": ""
+    },
+    {
+      "name": "20 hours",
+      "price": "$975",
+      "note": ""
+    },
+    {
+      "name": "30 hours",
+      "price": "$1,425",
+      "note": ""
+    },
+    {
+      "name": "40 hours",
+      "price": "$1,800",
+      "note": ""
+    },
+    {
+      "name": "OHP",
+      "price": "No out-of-pocket cost",
+      "note": "OHP clients may qualify for four additional postpartum visits"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What is the difference between a postpartum doula and a nanny?",
+      "a": "A postpartum doula supports the whole family as you adjust, with education and guidance for parents. A nanny mainly provides childcare, usually long term."
+    },
+    {
+      "q": "When should I book a postpartum doula?",
+      "a": "During pregnancy is best, to make sure I am available. If you find you need support after your baby is born, I will do my best to fit you in."
+    },
+    {
+      "q": "Can a postpartum doula help with breastfeeding?",
+      "a": "Yes. I am also a Certified Lactation Counselor, and I refer to an IBCLC for more complex concerns."
+    },
+    {
+      "q": "Do you accept HSA and FSA?",
+      "a": "Yes, HSA and FSA are accepted, and I can provide a superbill for insurance."
+    },
+    {
+      "q": "What is a postpartum doula?",
+      "a": "A trained professional who provides physical, emotional and informational support to families after a baby arrives, with hands-on help, guidance and reassurance."
+    },
+    {
+      "q": "Why hire a postpartum doula?",
+      "a": "The postpartum period can be overwhelming. Families who work with a postpartum doula often report feeling more supported, less stressed and better able to enjoy the newborn stage."
+    },
+    {
+      "q": "How long does a postpartum doula provide support?",
+      "a": "It depends on your family. Some hire a doula for a few weeks, others for several months. You choose the frequency and length of visits."
+    },
+    {
+      "q": "Do you offer overnight support?",
+      "a": "On a case by case basis. During overnight shifts I care for your baby while you sleep and help with feeding and diaper changes. Overnight support is billed at a higher rate, so please reach out to discuss."
+    },
+    {
+      "q": "Are postpartum doulas only for first-time parents?",
+      "a": "No. Postpartum doulas support families with any number of children, and can be especially helpful with multiples, after a difficult birth, or when older children need attention too."
+    },
+    {
+      "q": "How do I find the right postpartum doula?",
+      "a": "Choosing a doula is a personal decision, and most Central Oregon doulas offer free consultations so you can meet a few. Start early, ask friends and your provider for recommendations, interview more than one, ask for references, and trust your instincts about who you feel comfortable with."
+    },
+    {
+      "q": "How do I get started?",
+      "a": "Book a free consultation, or call or text (541) 280-4048. We will talk through what you need and how I can best support you."
+    },
+    {
+      "q": "What areas do you serve?",
+      "a": "I provide in-person support across Central Oregon, including Bend, Redmond, Terrebonne, Culver, Madras, Sisters, Sunriver, La Pine and Prineville."
+    }
+  ],
+  "townLine": "Postpartum visits happen at your home in {town}, so you do not have to pack up a newborn and make the drive to Bend.",
+  "photo": {
+    "image": "",
+    "stock": "https://images.unsplash.com/photo-1542385151-efd9000785a0",
+    "alt": "A mother carrying her baby",
+    "credit": "Kelly Sikkema"
+  },
+  "gallery": [
+    {
+      "image": "",
+      "stock": "https://images.unsplash.com/photo-1583710457367-47de0ea21fef",
+      "alt": "A woman in a white shirt carrying a baby",
+      "credit": "Hollie Santos"
+    },
+    {
+      "image": "",
+      "stock": "https://images.unsplash.com/photo-1686668108595-3c2171a8fc78",
+      "alt": "A woman sitting on a bed holding a baby",
+      "credit": "Jennifer Kalenberg"
+    },
+    {
+      "image": "",
+      "stock": "https://images.unsplash.com/photo-1620737007484-2d3bd3079a35",
+      "alt": "A woman lying on a bed beside a baby",
+      "credit": "Apostolos Vamvouras"
+    }
+  ]
+}

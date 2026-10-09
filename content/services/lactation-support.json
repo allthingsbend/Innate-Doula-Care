@@ -1,0 +1,195 @@
+{
+  "order": 4,
+  "nav": "Lactation Support",
+  "name": "Lactation support",
+  "summary": "Evidence-based, judgment-free feeding help at home or by video.",
+  "description": "In-home and virtual lactation support in Bend and Central Oregon from a Certified Lactation Counselor (CLC). Visits from $60. Judgment-free feeding help.",
+  "from": "from $60",
+  "facts": [
+    {
+      "label": "Starts at",
+      "value": "$60"
+    },
+    {
+      "label": "Takes",
+      "value": "60 to 90 minutes"
+    },
+    {
+      "label": "Where",
+      "value": "Your home or by video"
+    }
+  ],
+  "intro": [
+    "As a Certified Lactation Counselor (CLC), I provide evidence-based, compassionate support to help your family meet its feeding goals.",
+    "Whether you are preparing during pregnancy, working through the early days, or facing a feeding challenge later on, you will get practical guidance tailored to you. If something is outside my scope, I will connect you with an IBCLC or another provider."
+  ],
+  "includesTitle": "What I can help with",
+  "includes": [
+    {
+      "title": "Latch and positioning",
+      "text": "Comfortable, effective feeding for you and your baby."
+    },
+    {
+      "title": "Pain and discomfort",
+      "text": "Sore nipples, engorgement and plugged ducts."
+    },
+    {
+      "title": "Milk supply",
+      "text": "Concerns about low supply or oversupply."
+    },
+    {
+      "title": "Pumping",
+      "text": "Pump setup, flange sizing and exclusive pumping."
+    },
+    {
+      "title": "Bottle and combination feeding",
+      "text": "Paced bottle feeding and mixing breast milk with formula."
+    }
+  ],
+  "sections": [
+    {
+      "title": "Ways to work together",
+      "items": [
+        {
+          "title": "Prenatal education",
+          "text": "A personal session before your baby arrives: breastfeeding basics, feeding cues, latch and positioning, milk production, pumping, partner support and what to expect in the early days."
+        },
+        {
+          "title": "In-home, hands-on support",
+          "text": "We work on latch and positioning, observe and assess a full feeding, do pre- and post-feed weight checks when appropriate, address pain or discomfort and build a feeding plan that fits you."
+        },
+        {
+          "title": "Virtual support",
+          "text": "We talk through your concerns, observe a feeding when possible and work on latch, positioning, pumping and milk supply from wherever you are."
+        },
+        {
+          "title": "Lactation package",
+          "text": "One virtual prenatal session and two in-home visits, for consistent support through pregnancy and postpartum. More sessions can be added at standard rates."
+        }
+      ],
+      "groups": [],
+      "list": []
+    },
+    {
+      "title": "A Certified Lactation Counselor can help with",
+      "items": [],
+      "groups": [],
+      "list": [
+        "Prenatal breastfeeding education",
+        "Latch and positioning",
+        "Painful breastfeeding and nipple discomfort",
+        "Low supply or oversupply",
+        "Pumping and flange sizing",
+        "Exclusive pumping",
+        "Combination feeding",
+        "Bottle feeding and paced feeding",
+        "Newborn feeding cues and patterns",
+        "Cluster feeding and developmental leaps",
+        "Feeding frequency and routines",
+        "Engorgement and common breast discomforts",
+        "Milk storage and handling",
+        "Returning to work or school",
+        "Weaning",
+        "Feeding multiples",
+        "NICU or early-term feeding transitions, within scope",
+        "Building confidence and realistic expectations",
+        "Referrals for medical concerns"
+      ]
+    }
+  ],
+  "pricing": [
+    {
+      "name": "In-home visit",
+      "price": "$100",
+      "note": "90 minutes"
+    },
+    {
+      "name": "Lactation package",
+      "price": "$250",
+      "note": "One virtual prenatal consultation and two in-home visits"
+    },
+    {
+      "name": "Virtual visit",
+      "price": "$75",
+      "note": "One hour"
+    },
+    {
+      "name": "Virtual prenatal education",
+      "price": "$60",
+      "note": ""
+    }
+  ],
+  "faqs": [
+    {
+      "q": "How is a CLC different from an IBCLC?",
+      "a": "Both support feeding families, but training and scope differ. As a CLC I provide education and hands-on help for common concerns. For complex medical situations I refer to an IBCLC or another provider."
+    },
+    {
+      "q": "When should I schedule a visit?",
+      "a": "You do not have to wait until you are struggling. Pregnancy, the first days after birth, returning to work and weaning are all good times."
+    },
+    {
+      "q": "Do you support formula and combination feeding?",
+      "a": "Yes. Every family's feeding journey is different, and you will get the same judgment-free support."
+    },
+    {
+      "q": "Will insurance cover lactation support?",
+      "a": "Coverage varies. I can provide a superbill to submit to your insurance."
+    },
+    {
+      "q": "What is a Certified Lactation Counselor (CLC)?",
+      "a": "A trained breastfeeding and infant feeding professional who has completed comprehensive education and demonstrated competency in lactation support, certified through the Academy of Lactation Policy and Practice (ALPP)."
+    },
+    {
+      "q": "Do I need a prenatal lactation consultation?",
+      "a": "It is not required, but it can make a real difference. We cover what to expect after birth, normal newborn feeding behavior, hand expression and common challenges, so you feel prepared."
+    },
+    {
+      "q": "What happens during a lactation visit?",
+      "a": "We talk about your goals, review your health and feeding history, observe a feeding when appropriate, answer your questions and make a practical plan."
+    },
+    {
+      "q": "What should I have ready for my appointment?",
+      "a": "If possible, have your baby ready to feed around the time of our visit, and your pump and accessories if you are pumping. No need to clean the house. I am there to support you, not judge your home."
+    },
+    {
+      "q": "How long are appointments?",
+      "a": "Most lactation consultations last between one and two hours."
+    },
+    {
+      "q": "Is everything we discuss confidential?",
+      "a": "Yes. Everything shared during our visits is kept confidential."
+    },
+    {
+      "q": "What if I need more than one visit?",
+      "a": "Many families benefit from follow-up visits as feeding changes over time. We make a plan based on your needs, and more visits can always be scheduled."
+    }
+  ],
+  "townLine": "Lactation visits come to you in {town}, and virtual visits are available on days when a home visit is not practical.",
+  "photo": {
+    "image": "",
+    "stock": "https://images.unsplash.com/photo-1567073931033-07972e6081bd",
+    "alt": "A mother breastfeeding her baby",
+    "credit": "Fanny Renaud"
+  },
+  "gallery": [
+    {
+      "image": "",
+      "stock": "https://images.unsplash.com/photo-1566906606688-642231fec1cf",
+      "alt": "A woman breastfeeding her baby",
+      "credit": "Janko Ferlic"
+    },
+    {
+      "image": "",
+      "stock": "https://images.unsplash.com/photo-1509115429432-e9b549ffb669",
+      "alt": "A woman holding a baby while sitting under a tree",
+      "credit": "Dave Clubb"
+    },
+    {
+      "image": "",
+      "stock": "https://images.unsplash.com/photo-1674637828373-3b8d7cded475",
+      "alt": "A woman holding a baby in her arms",
+      "credit": "Alina Matveycheva"
+    }
+  ]
+}

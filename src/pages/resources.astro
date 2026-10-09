@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { resources, photos, photoUrl } from '../data/site.js';
+import { resources, photoUrl } from '../data/site.js';
 ---
 <Base
   title="Pregnancy, Birth & Postpartum Resources | Innate Doula Care"
@@ -14,7 +14,7 @@ import { resources, photos, photoUrl } from '../data/site.js';
         <p class="lead">Apps, websites and handouts I often share with families.</p>
         <p class="soft" style="font-size:15px">These are third-party tools shared for information. I am not affiliated with or endorsed by them and do not control their content, policies or services.</p>
       </div>
-      <img src={photoUrl(photos.couch, 1000, 720)} alt={photos.couch.alt} width="1000" height="720" style="width:100%;aspect-ratio:10/7;object-fit:cover;background:var(--panel)" />
+      <img src={photoUrl(resources.photo, 1000, 720)} alt={resources.photo.alt} width="1000" height="720" style="width:100%;aspect-ratio:10/7;object-fit:cover;background:var(--panel)" />
     </div>
   </section>
 

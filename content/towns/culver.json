@@ -1,0 +1,39 @@
+{
+  "order": 8,
+  "name": "Culver",
+  "servicePages": false,
+  "lat": 44.526,
+  "lon": -121.213,
+  "minutes": 50,
+  "where": "north of Redmond in Jefferson County",
+  "note": "I travel to Culver for home visits and meet you wherever you plan to give birth, whether that is north in Madras or south in Bend.",
+  "faqQuestion": "",
+  "faqAnswer": "",
+  "serviceNotes": [],
+  "photo": {
+    "image": "",
+    "stock": "https://images.unsplash.com/photo-1566882526208-3856e4ac09d0",
+    "alt": "A green field with a mountain beyond",
+    "credit": "Dan Meyers"
+  },
+  "gallery": [
+    {
+      "image": "",
+      "stock": "https://images.unsplash.com/photo-1542425967-a2dd69fefbb9",
+      "alt": "Woodland with a mountain view",
+      "credit": "McKayla Crump"
+    },
+    {
+      "image": "",
+      "stock": "https://images.unsplash.com/photo-1580869318757-a6c605b061ed",
+      "alt": "Three pairs of hands held together in support",
+      "credit": "Joshua Hoehne"
+    },
+    {
+      "image": "",
+      "stock": "https://images.unsplash.com/photo-1586324304780-c9a5031a3599",
+      "alt": "Two people holding hands",
+      "credit": "Nani Chavez"
+    }
+  ]
+}

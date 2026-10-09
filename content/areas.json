@@ -1,0 +1,22 @@
+{
+  "photos": [
+    {
+      "image": "",
+      "stock": "https://images.unsplash.com/photo-1574180436207-ac91a1675462",
+      "alt": "A lake in a forest",
+      "credit": "McKayla Crump"
+    },
+    {
+      "image": "",
+      "stock": "https://images.unsplash.com/photo-1599430985024-742530f383ab",
+      "alt": "Green trees beside a river",
+      "credit": "Shawn"
+    },
+    {
+      "image": "",
+      "stock": "https://images.unsplash.com/photo-1565070003762-00bee3f68666",
+      "alt": "A mountain range in daylight",
+      "credit": "Dan Meyers"
+    }
+  ]
+}

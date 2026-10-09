@@ -1,0 +1,39 @@
+{
+  "order": 6,
+  "name": "La Pine",
+  "servicePages": true,
+  "lat": 43.67,
+  "lon": -121.504,
+  "minutes": 40,
+  "where": "south of Bend on Highway 97",
+  "note": "La Pine families often have the longest drive to give birth. We build that into your plan early, and postpartum and lactation visits come to you so you do not have to make the trip with a newborn.",
+  "faqQuestion": "",
+  "faqAnswer": "",
+  "serviceNotes": [],
+  "photo": {
+    "image": "",
+    "stock": "https://images.unsplash.com/photo-1587656421406-273a011cad8d",
+    "alt": "A lake with a mountain behind it",
+    "credit": "Clay Banks"
+  },
+  "gallery": [
+    {
+      "image": "",
+      "stock": "https://images.unsplash.com/photo-1599430985024-742530f383ab",
+      "alt": "Green trees beside a river",
+      "credit": "Shawn"
+    },
+    {
+      "image": "",
+      "stock": "https://images.unsplash.com/photo-1730577776817-4166006be437",
+      "alt": "A small child sitting in a car seat",
+      "credit": "Miah Dailey"
+    },
+    {
+      "image": "",
+      "stock": "https://images.unsplash.com/photo-1538678867871-8a43e7487746",
+      "alt": "A pregnant woman in a sunlit field",
+      "credit": "Devon Divine"
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "seoTitle": "Central Oregon Doula | Innate Doula Care | Bend, Redmond, Sisters & Beyond",
+  "seoDescription": "Innate Doula Care is a full spectrum doula serving all of Central Oregon: birth and postpartum doula care, lactation support, placenta services and in-home car seat help in Bend, Redmond, Sisters, Sunriver, La Pine, Prineville and Madras.",
+  "eyebrow": "Full spectrum doula · Serving all of Central Oregon",
+  "headline": "Central Oregon doula care for birth, postpartum and beyond",
+  "lead": "You can do hard things, and I am here to support you every step of the way.",
+  "trust": [
+    "State-certified, OHP-approved doula",
+    "Certified Lactation Counselor",
+    "Child Passenger Safety Technician"
+  ],
+  "facts": [
+    {
+      "title": "Free consultation",
+      "text": "Meet first, decide later"
+    },
+    {
+      "title": "OHP covered",
+      "text": "Birth doula care at no cost to you"
+    },
+    {
+      "title": "HSA and FSA accepted",
+      "text": "Superbill available for insurance"
+    },
+    {
+      "title": "On call 24 hours",
+      "text": "For current clients"
+    }
+  ],
+  "welcomeEyebrow": "Hey there!",
+  "welcomeHeading": "Welcome to your cozy corner of support",
+  "welcome": [
+    "Whether you are gearing up for the adventure of childbirth, navigating the early days of parenthood or exploring other big life moments, you have come to the right place.",
+    "As your Central Oregon doula, I am here to cheer you on, hold your hand (literally or figuratively) and make sure you feel empowered every step of the way. Let's do this together. You've got this, and I've got you!"
+  ],
+  "welcomePhoto": {
+    "image": "",
+    "stock": "https://images.unsplash.com/photo-1560707854-fb9a10eeaace",
+    "alt": "A smiling woman carrying a baby",
+    "credit": "Jonathan Borba"
+  },
+  "whatIsADoula": "A doula is a trained professional who offers non-medical emotional, informational, physical and advocacy support to individuals or families during transformative health experiences. Doulas can provide care through pregnancy, labor, birth and the postpartum period, and can also support individuals or families navigating experiences such as surrogacy, miscarriage, abortion, stillbirth or end-of-life transitions.",
+  "doulaDoes": [
+    {
+      "title": "Emotional support",
+      "items": [
+        "Encouraging words and reassurance",
+        "A listening ear for concerns and feelings",
+        "Creating a calm and positive environment",
+        "Helping build confidence in decisions",
+        "Support during unexpected changes"
+      ],
+      "photo": {
+        "image": "",
+        "stock": "https://images.unsplash.com/photo-1688053579473-51af77337561",
+        "alt": "Hands making a heart shape",
+        "credit": "Leo_Visions"
+      }
+    },
+    {
+      "title": "Informational support",
+      "items": [
+        "Explaining pregnancy, birth and postpartum options",
+        "Sharing evidence-based resources",
+        "Helping you understand medical procedures and terms",
+        "Tips for newborn care and feeding",
+        "Guidance in creating birth and postpartum plans"
+      ],
+      "photo": {
+        "image": "",
+        "stock": "https://images.unsplash.com/photo-1705746401439-cefe49abb9cd",
+        "alt": "A couple sitting together on a couch",
+        "credit": "Febe Vanermen"
+      }
+    },
+    {
+      "title": "Physical support",
+      "items": [
+        "Massage and comfort measures during labor",
+        "Suggesting and demonstrating positions for labor and birth",
+        "Help with newborn care techniques",
+        "Light household tasks in the postpartum period",
+        "Nourishment and hydration reminders"
+      ],
+      "photo": {
+        "image": "",
+        "stock": "https://images.unsplash.com/photo-1651083230817-481f3c3895a4",
+        "alt": "A person holding a baby",
+        "credit": "Olivia Anne Snyder"
+      }
+    },
+    {
+      "title": "Advocacy support",
+      "items": [
+        "Making sure your preferences reach your providers",
+        "Encouraging informed decision-making",
+        "Helping you navigate discussions with medical staff",
+        "Supporting your right to ask questions",
+        "Affirming your role as the decision-maker in your care"
+      ],
+      "photo": {
+        "image": "",
+        "stock": "https://images.unsplash.com/photo-1564020435666-f67ed5319a32",
+        "alt": "Two people holding hands",
+        "credit": "Nguyen Tan"
+      }
+    }
+  ],
+  "aboutPhoto": {
+    "image": "",
+    "stock": "https://images.unsplash.com/photo-1582486225644-aeacf6aa0b1b",
+    "alt": "An adult hand holding a tiny baby hand",
+    "credit": "Nathan Dumlao"
+  },
+  "regionPhoto": {
+    "image": "",
+    "stock": "https://images.unsplash.com/photo-1587656421406-273a011cad8d",
+    "alt": "A lake with a mountain behind it",
+    "credit": "Clay Banks"
+  }
+}

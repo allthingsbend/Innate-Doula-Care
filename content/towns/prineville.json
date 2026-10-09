@@ -1,0 +1,39 @@
+{
+  "order": 7,
+  "name": "Prineville",
+  "servicePages": true,
+  "lat": 44.3,
+  "lon": -120.834,
+  "minutes": 50,
+  "where": "east of Bend by way of Redmond",
+  "note": "I travel to Prineville for prenatal, postpartum, lactation and car seat visits, and I meet you wherever you plan to give birth.",
+  "faqQuestion": "",
+  "faqAnswer": "",
+  "serviceNotes": [],
+  "photo": {
+    "image": "",
+    "stock": "https://images.unsplash.com/photo-1568666062525-111347cc88e4",
+    "alt": "Brown high desert mountains",
+    "credit": "Derek Sears"
+  },
+  "gallery": [
+    {
+      "image": "",
+      "stock": "https://images.unsplash.com/photo-1565070003762-00bee3f68666",
+      "alt": "A mountain range in daylight",
+      "credit": "Dan Meyers"
+    },
+    {
+      "image": "",
+      "stock": "https://images.unsplash.com/photo-1566906606688-642231fec1cf",
+      "alt": "A woman breastfeeding her baby",
+      "credit": "Janko Ferlic"
+    },
+    {
+      "image": "",
+      "stock": "https://images.unsplash.com/photo-1626856295349-6f21d6e6cfef",
+      "alt": "A baby lying on a white bed",
+      "credit": "Bia Octavia"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "order": 2,
+  "name": "Redmond",
+  "servicePages": true,
+  "lat": 44.273,
+  "lon": -121.174,
+  "minutes": 25,
+  "where": "north of Bend on Highway 97",
+  "note": "The hospital in Redmond stopped delivering babies in 2019, so most Redmond families give birth in Bend or Madras. I meet you wherever you deliver, and postpartum, lactation and car seat visits all happen at your home in Redmond.",
+  "faqQuestion": "Where do Redmond families give birth?",
+  "faqAnswer": "St. Charles Redmond closed its Family Birthing Center in 2019. Most families deliver at St. Charles Bend, at a birth center, or at home. I support all of those.",
+  "serviceNotes": [
+    {
+      "service": "car-seat-installation",
+      "note": "Redmond Fire & Rescue offers free car seat checks by appointment on set days. I offer a private session at your home in Redmond on a day that suits you, with as much time as you need to practice.",
+      "faqQuestion": "How is this different from the free car seat checks in Redmond?",
+      "faqAnswer": "Redmond Fire & Rescue holds free car seat check days by appointment, and they are a great resource. My sessions are private, at your home, on a day you choose, and built around teaching you to do it yourself."
+    },
+    {
+      "service": "birth-doula",
+      "note": "The hospital in Redmond stopped delivering babies in 2019, so most Redmond families give birth in Bend or Madras. We plan the drive and the timing together, and I meet you wherever you deliver.",
+      "faqQuestion": "Where do Redmond families give birth?",
+      "faqAnswer": "St. Charles Redmond closed its Family Birthing Center in 2019. Most families deliver at St. Charles Bend, at a birth center, or at home. I support all of those."
+    }
+  ],
+  "photo": {
+    "image": "",
+    "stock": "https://images.unsplash.com/photo-1599015358183-1491f78bd55b",
+    "alt": "Rock cliffs beside a river",
+    "credit": "josh ludahl"
+  },
+  "gallery": [
+    {
+      "image": "",
+      "stock": "https://images.unsplash.com/photo-1599430985024-742530f383ab",
+      "alt": "Green trees beside a river",
+      "credit": "Shawn"
+    },
+    {
+      "image": "",
+      "stock": "https://images.unsplash.com/photo-1626856295349-6f21d6e6cfef",
+      "alt": "A baby lying on a white bed",
+      "credit": "Bia Octavia"
+    },
+    {
+      "image": "",
+      "stock": "https://images.unsplash.com/photo-1543342384-1f1350e27861",
+      "alt": "A woman holding a baby beside a smiling man",
+      "credit": "Kelly Sikkema"
+    }
+  ]
+}

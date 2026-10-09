@@ -1,0 +1,39 @@
+{
+  "order": 1,
+  "name": "Bend",
+  "servicePages": true,
+  "lat": 44.058,
+  "lon": -121.315,
+  "minutes": 0,
+  "where": "",
+  "note": "",
+  "faqQuestion": "",
+  "faqAnswer": "",
+  "serviceNotes": [],
+  "photo": {
+    "image": "",
+    "stock": "https://images.unsplash.com/photo-1637109716852-63355bcba580",
+    "alt": "A river running through green forest",
+    "credit": "Daniel Herron"
+  },
+  "gallery": [
+    {
+      "image": "",
+      "stock": "https://images.unsplash.com/photo-1574180436207-ac91a1675462",
+      "alt": "A lake in a forest",
+      "credit": "McKayla Crump"
+    },
+    {
+      "image": "",
+      "stock": "https://images.unsplash.com/photo-1538678867871-8a43e7487746",
+      "alt": "A pregnant woman in a sunlit field",
+      "credit": "Devon Divine"
+    },
+    {
+      "image": "",
+      "stock": "https://images.unsplash.com/photo-1686668108595-3c2171a8fc78",
+      "alt": "A woman sitting on a bed holding a baby",
+      "credit": "Jennifer Kalenberg"
+    }
+  ]
+}

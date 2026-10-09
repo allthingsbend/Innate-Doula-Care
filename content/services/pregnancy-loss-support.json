@@ -1,0 +1,134 @@
+{
+  "order": 7,
+  "nav": "Pregnancy Loss Support",
+  "name": "Pregnancy loss support",
+  "summary": "Tender, trauma-informed support before, during and after a loss.",
+  "description": "Gentle, trauma-informed doula support in Bend and Central Oregon for miscarriage, stillbirth and TFMR. In person or virtual. Sliding scale available.",
+  "from": "sliding scale",
+  "facts": [
+    {
+      "label": "Cost",
+      "value": "Flexible, sliding scale"
+    },
+    {
+      "label": "When",
+      "value": "Before, during or after"
+    },
+    {
+      "label": "Where",
+      "value": "In person or virtual"
+    }
+  ],
+  "intro": [
+    "I offer tender, trauma-informed support for individuals, surrogates, intended parents and families experiencing pregnancy loss at any stage, including miscarriage, stillbirth and termination for medical reasons.",
+    "Whether your loss was expected or sudden, early or late, you deserve to be met with care and understanding. You do not have to move through this alone."
+  ],
+  "includesTitle": "How I can support you",
+  "includes": [
+    {
+      "title": "A safe space",
+      "text": "Somewhere to talk through what you are experiencing, without judgment."
+    },
+    {
+      "title": "Understanding your options",
+      "text": "Information on what to expect and help communicating with providers."
+    },
+    {
+      "title": "Presence during care",
+      "text": "Emotional support during procedures, induction or delivery if you want it."
+    },
+    {
+      "title": "After a loss",
+      "text": "Follow-up when you are ready, support for grief, and ideas for remembrance."
+    },
+    {
+      "title": "Referrals",
+      "text": "Connections to grief therapists, specialists and peer support."
+    }
+  ],
+  "sections": [
+    {
+      "title": "What support can look like",
+      "items": [],
+      "groups": [
+        {
+          "heading": "Before, during and after a loss",
+          "items": [
+            "A safe, nonjudgmental space to talk through your experience",
+            "Guidance on your options for managing miscarriage or stillbirth",
+            "Support navigating medical systems, appointments and providers",
+            "Advocacy so your voice and needs are respected",
+            "Emotional support during procedures, induction or delivery if you want it",
+            "Comfort techniques for pain, anxiety and overwhelm",
+            "Referrals to grief therapists, loss specialists and peer support"
+          ]
+        },
+        {
+          "heading": "After a loss",
+          "items": [
+            "Follow-up within 24 to 72 hours, or when you are ready",
+            "What to expect physically after miscarriage or stillbirth",
+            "Support for processing grief, guilt, relief, confusion or numbness",
+            "Guidance on rituals, memory-making and honoring your baby",
+            "Resources for partners, family or children coping with loss"
+          ]
+        },
+        {
+          "heading": "Additional support",
+          "items": [
+            "Continued postpartum-style care, check-ins or home visits",
+            "Light household help",
+            "Help with practical logistics such as memorial planning",
+            "Support in returning to daily life, work or future pregnancy planning",
+            "Referrals to trauma-informed therapy, support groups or spiritual care"
+          ]
+        }
+      ],
+      "list": []
+    }
+  ],
+  "pricing": [
+    {
+      "name": "Support packages",
+      "price": "Flexible",
+      "note": "Full support, virtual-only sessions and sliding scale are all available"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Is support available virtually?",
+      "a": "Yes. Support is available in person across Central Oregon or virtually."
+    },
+    {
+      "q": "What does it cost?",
+      "a": "Pricing is flexible, with sliding scale availability. Please reach out and we will find something that works."
+    }
+  ],
+  "townLine": "Support is available at your home in {town} or virtually, whichever feels right to you.",
+  "photo": {
+    "image": "",
+    "stock": "https://images.unsplash.com/photo-1604881991720-f91add269bed",
+    "alt": "Two people holding hands across a table",
+    "credit": "Priscilla Du Preez"
+  },
+  "gallery": [
+    {
+      "image": "",
+      "stock": "https://images.unsplash.com/photo-1604881991575-dfb1003d8811",
+      "alt": "Two people holding hands on a white table",
+      "credit": "Priscilla Du Preez"
+    },
+    {
+      "image": "",
+      "stock": "https://images.unsplash.com/photo-1580869318757-a6c605b061ed",
+      "alt": "Three pairs of hands held together in support",
+      "credit": "Joshua Hoehne"
+    },
+    {
+      "image": "",
+      "stock": "https://images.unsplash.com/photo-1724536523240-1cfdf382f590",
+      "alt": "The sun setting over a mountain range",
+      "credit": "James Sestric"
+    }
+  ]
+}

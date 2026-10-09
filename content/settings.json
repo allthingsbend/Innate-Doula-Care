@@ -1,0 +1,34 @@
+{
+  "name": "Innate Doula Care",
+  "owner": "Aleah Hancock",
+  "phone": "(541) 280-4048",
+  "email": "aleah@innatedoulacare.com",
+  "booking": "https://calendly.com/innate-doula-care",
+  "hours": "Office hours 8:00 am to 5:00 pm. On call for clients 24 hours a day.",
+  "social": [
+    {
+      "label": "Instagram",
+      "url": "https://www.instagram.com/innatedoulacare"
+    },
+    {
+      "label": "Facebook",
+      "url": "https://www.facebook.com/197241490144371"
+    },
+    {
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@AleahHancock"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/aleah-hancock-7637572b9/"
+    }
+  ],
+  "credentials": [
+    "Certified Doula (THW), Oregon Health Authority",
+    "Certified Lactation Counselor (CLC)",
+    "Child Passenger Safety Technician, Safe Kids Worldwide",
+    "Certified Placenta Specialist",
+    "OHP-approved doula",
+    "Oregon Doula Association member"
+  ]
+}

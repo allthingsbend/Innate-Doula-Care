@@ -1,0 +1,119 @@
+{
+  "order": 8,
+  "nav": "Abortion Support",
+  "name": "Abortion doula support",
+  "summary": "Compassionate, judgment-free support before, during and after.",
+  "description": "Compassionate, judgment-free doula support before, during and after an abortion in Bend and Central Oregon. In person or virtual. Sliding scale available.",
+  "from": "sliding scale",
+  "facts": [
+    {
+      "label": "Cost",
+      "value": "Flexible, sliding scale"
+    },
+    {
+      "label": "When",
+      "value": "Before, during and after"
+    },
+    {
+      "label": "Where",
+      "value": "In person or virtual"
+    }
+  ],
+  "intro": [
+    "I offer compassionate, judgment-free support before, during and after the procedure. Whether you want emotional reassurance, practical guidance or someone by your side, I am here to help you feel informed and supported."
+  ],
+  "includesTitle": "How I can support you",
+  "includes": [
+    {
+      "title": "Before",
+      "text": "A private space to talk through feelings and logistics, with help planning transportation, childcare and comfort."
+    },
+    {
+      "title": "During",
+      "text": "A calming presence in person, or virtual and text support."
+    },
+    {
+      "title": "After",
+      "text": "A follow-up within 24 to 72 hours and support for your recovery."
+    }
+  ],
+  "sections": [
+    {
+      "title": "What support can look like",
+      "items": [],
+      "groups": [
+        {
+          "heading": "Before",
+          "items": [
+            "A private, supportive space to discuss your feelings, options and logistics",
+            "Evidence-based information about medication and procedures",
+            "Help planning transportation, childcare and comfort measures",
+            "Help connecting to funds and practical support resources"
+          ]
+        },
+        {
+          "heading": "During",
+          "items": [
+            "A calming presence for in-clinic procedures or an at-home medication process",
+            "Virtual or text support for reassurance and check-ins",
+            "Comfort techniques, including breathwork and guided relaxation"
+          ]
+        },
+        {
+          "heading": "After",
+          "items": [
+            "A follow-up session within 24 to 72 hours",
+            "Personal guidance on recovery and self-care",
+            "Emotional support for processing your experience",
+            "Additional virtual or in-person check-ins"
+          ]
+        }
+      ],
+      "list": []
+    }
+  ],
+  "pricing": [
+    {
+      "name": "Support packages",
+      "price": "Flexible",
+      "note": "Package rates, tiered support and sliding scale are available"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Is this confidential?",
+      "a": "Yes. Everything you share with me is kept private."
+    },
+    {
+      "q": "What does it cost?",
+      "a": "Pricing is flexible, with sliding scale availability, so you can get the care you need."
+    }
+  ],
+  "townLine": "Support is available in person for {town} families, or by phone, text and video.",
+  "photo": {
+    "image": "",
+    "stock": "https://images.unsplash.com/photo-1610986719243-7cdf28a29772",
+    "alt": "One person holding another person's hand",
+    "credit": "Zoe"
+  },
+  "gallery": [
+    {
+      "image": "",
+      "stock": "https://images.unsplash.com/photo-1586324304780-c9a5031a3599",
+      "alt": "Two people holding hands",
+      "credit": "Nani Chavez"
+    },
+    {
+      "image": "",
+      "stock": "https://images.unsplash.com/photo-1682352689072-7b2c0b8580c2",
+      "alt": "A close up of two people holding hands",
+      "credit": "Saulo Meza"
+    },
+    {
+      "image": "",
+      "stock": "https://images.unsplash.com/photo-1574180436207-ac91a1675462",
+      "alt": "A lake in a forest",
+      "credit": "McKayla Crump"
+    }
+  ]
+}

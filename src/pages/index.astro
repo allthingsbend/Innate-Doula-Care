@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import AreaMap from '../components/AreaMap.astro';
 import Ridgeline from '../components/Ridgeline.astro';
 import Cta from '../components/Cta.astro';
-import { business, services, towns, svcUrl, photos, photoUrl, whatIsADoula, doulaDoes, serviceTowns } from '../data/site.js';
+import { business, services, towns, svcUrl, home, photoUrl, serviceTowns } from '../data/site.js';
 const svc = (path) => services.find((s) => s.path === path);
 // The hero collage: one photo per main service, plus the place.
 const collage = [
@@ -11,25 +11,23 @@ const collage = [
   { cls: 't-b', photo: svc('birth-doula').photo, label: 'Birth doula', href: svcUrl(svc('birth-doula')), w: 700, h: 520 },
   { cls: 't-c', photo: svc('car-seat-installation').photo, label: 'Car seat help', href: svcUrl(svc('car-seat-installation')), w: 700, h: 520 },
   { cls: 't-d', photo: svc('lactation-support').photo, label: 'Lactation support', href: svcUrl(svc('lactation-support')), w: 700, h: 420 },
-  { cls: 't-e', photo: photos.lake, label: 'All of Central Oregon', href: '/central-oregon/', w: 900, h: 420 },
+  { cls: 't-e', photo: home.regionPhoto, label: 'All of Central Oregon', href: '/central-oregon/', w: 900, h: 420 },
 ];
 ---
 <Base
-  title="Central Oregon Doula | Innate Doula Care | Bend, Redmond, Sisters & Beyond"
-  description="Innate Doula Care is a full spectrum doula serving all of Central Oregon: birth and postpartum doula care, lactation support, placenta services and in-home car seat help in Bend, Redmond, Sisters, Sunriver, La Pine, Prineville and Madras."
+  title={home.seoTitle}
+  description={home.seoDescription}
 >
   <section class="home-hero">
     <div class="wrap hero-grid">
       <div class="hero-copy stack">
-        <p class="eyebrow">Full spectrum doula · Serving all of Central Oregon</p>
-        <h1>Central Oregon doula care for birth, postpartum and beyond</h1>
-        <p class="lead">You can do hard things, and I am here to support you every step of the way.</p>
+        <p class="eyebrow">{home.eyebrow}</p>
+        <h1>{home.headline}</h1>
+        <p class="lead">{home.lead}</p>
         <Cta big />
         <p class="hero-towns">In-home visits in {towns.filter((t) => serviceTowns.includes(t.slug)).map((t, i, a) => <><a href={`/${t.slug}/`}>{t.name}</a>{i < a.length - 2 ? ', ' : i === a.length - 2 ? ' and ' : '.'}</>)}</p>
         <ul class="trust">
-          <li>State-certified, OHP-approved doula</li>
-          <li>Certified Lactation Counselor</li>
-          <li>Child Passenger Safety Technician</li>
+          {home.trust.map((x) => <li>{x}</li>)}
         </ul>
       </div>
       <div class="collage">
@@ -43,10 +41,7 @@ const collage = [
     </div>
     <div class="wrap">
       <ul class="hero-facts">
-        <li><b>Free consultation</b><span>Meet first, decide later</span></li>
-        <li><b>OHP covered</b><span>Birth doula care at no cost to you</span></li>
-        <li><b>HSA and FSA accepted</b><span>Superbill available for insurance</span></li>
-        <li><b>On call 24 hours</b><span>For current clients</span></li>
+        {home.facts.map((f) => <li><b>{f.title}</b><span>{f.text}</span></li>)}
       </ul>
     </div>
   </section>
@@ -54,12 +49,12 @@ const collage = [
   <section class="section">
     <div class="wrap two" style="align-items:center">
       <div class="stack">
-        <p class="eyebrow">Hey there!</p>
-        <h2>Welcome to your cozy corner of support</h2>
-        {business.welcome.map((p, i) => <p class={i === 0 ? 'lead' : ''}>{p}</p>)}
+        <p class="eyebrow">{home.welcomeEyebrow}</p>
+        <h2>{home.welcomeHeading}</h2>
+        {home.welcome.map((p, i) => <p class={i === 0 ? 'lead' : ''}>{p}</p>)}
         <p><a href="/about/">More about Aleah</a></p>
       </div>
-      <img class="tall-img" src={photoUrl(photos.mother, 1000, 1150)} alt={photos.mother.alt} width="1000" height="1150" loading="lazy" />
+      <img class="tall-img" src={photoUrl(home.welcomePhoto, 1000, 1150)} alt={home.welcomePhoto.alt} width="1000" height="1150" loading="lazy" />
     </div>
   </section>
 
@@ -89,11 +84,11 @@ const collage = [
       <div class="stack narrow">
         <p class="eyebrow">New to doulas?</p>
         <h2>What is a doula?</h2>
-        <p class="lead">{whatIsADoula}</p>
+        <p class="lead">{home.whatIsADoula}</p>
       </div>
       <h2 style="margin-top:28px">What does a doula do?</h2>
       <ul class="does">
-        {doulaDoes.map((d) => (
+        {home.doulaDoes.map((d) => (
           <li>
             <img src={photoUrl(d.photo, 700, 480)} alt={d.photo.alt} width="700" height="480" loading="lazy" />
             <h3>{d.title}</h3>
@@ -141,7 +136,7 @@ const collage = [
 
   <section class="section alt">
     <div class="wrap two" style="align-items:center">
-      <img class="tall-img" src={photoUrl(photos.hands, 1000, 1100)} alt={photos.hands.alt} width="1000" height="1100" loading="lazy" />
+      <img class="tall-img" src={photoUrl(home.aboutPhoto, 1000, 1100)} alt={home.aboutPhoto.alt} width="1000" height="1100" loading="lazy" />
       <div class="stack">
         <p class="eyebrow">About Aleah</p>
         <h2>A doula who has been on every side of birth</h2>

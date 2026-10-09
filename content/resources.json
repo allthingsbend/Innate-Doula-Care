@@ -1,0 +1,83 @@
+{
+  "photo": {
+    "image": "",
+    "stock": "https://images.unsplash.com/photo-1705746401439-cefe49abb9cd",
+    "alt": "A couple sitting together on a couch",
+    "credit": "Febe Vanermen"
+  },
+  "apps": [
+    {
+      "name": "Count the Kicks",
+      "note": "Kick counter. Records how long it takes your baby to reach 10 movements and tracks changes over time.",
+      "url": "https://countthekicks.org/download-app/"
+    },
+    {
+      "name": "Full Term",
+      "note": "Contraction timer.",
+      "url": "http://www.fulltermapp.com/"
+    },
+    {
+      "name": "Huckleberry",
+      "note": "Sleep help, from short naps to sleep transitions.",
+      "url": "https://huckleberrycare.com/pricing"
+    }
+  ],
+  "sites": [
+    {
+      "name": "Evidence Based Birth",
+      "note": "Research-backed information, classes and support for expecting parents.",
+      "url": "https://evidencebasedbirth.com/"
+    },
+    {
+      "name": "The VBAC Link",
+      "note": "Education, support and community for vaginal birth after cesarean.",
+      "url": "https://www.thevbaclink.com/"
+    },
+    {
+      "name": "Our Milky Way",
+      "note": "Breastfeeding blog from the Healthy Children Project.",
+      "url": "https://www.ourmilkyway.org/"
+    },
+    {
+      "name": "ACOG",
+      "note": "The American College of Obstetricians and Gynecologists: guidelines and patient information.",
+      "url": "https://www.acog.org/"
+    },
+    {
+      "name": "National Child Passenger Safety Board",
+      "note": "Help installing car seats and boosters correctly.",
+      "url": "https://www.cpsboard.org/"
+    },
+    {
+      "name": "CDC: Pregnancy",
+      "note": "Steps to take before, during and after pregnancy.",
+      "url": "https://www.cdc.gov/pregnancy/index.html"
+    }
+  ],
+  "handouts": [
+    {
+      "name": "Questions to ask during a consultation: birth doula",
+      "url": "https://img1.wsimg.com/blobby/go/acc61bdb-dc0d-4e3c-846a-f7946ebecbb4/downloads/7a462d31-3e4e-405d-9956-574018b4c83d/Questions%20To%20Ask%20During%20A%20Consultation%20-%20Birth.pdf"
+    },
+    {
+      "name": "Questions to ask during a consultation: postpartum doula",
+      "url": "https://img1.wsimg.com/blobby/go/acc61bdb-dc0d-4e3c-846a-f7946ebecbb4/downloads/1340ecd8-cf5c-467e-afae-c1d0a5a4a1c2/Questions%20To%20Ask%20During%20A%20Consultation%20-%20Postp.pdf"
+    },
+    {
+      "name": "DONA International interview guide for parents",
+      "url": "https://img1.wsimg.com/blobby/go/acc61bdb-dc0d-4e3c-846a-f7946ebecbb4/downloads/d949afef-5b81-479b-bcfa-3ee0b4a5a823/DONA%20International%20-%20Interview%20Guide%20for%20Paren.pdf"
+    },
+    {
+      "name": "DONA International interview guide: postpartum doula",
+      "url": "https://img1.wsimg.com/blobby/go/acc61bdb-dc0d-4e3c-846a-f7946ebecbb4/downloads/22ec7f28-1321-4d31-8855-ce3d9e7c3886/DONA%20International%20-%20Interview%20Guide%20for%20Paren.pdf"
+    },
+    {
+      "name": "St. Charles Mommy and Me breastfeeding support group",
+      "url": "https://img1.wsimg.com/blobby/go/acc61bdb-dc0d-4e3c-846a-f7946ebecbb4/downloads/d9659fb1-197b-4bac-a2d4-f1fa85b0fdac/St%20Charles%20Mommy%20and%20Me%20Breastfeeding%20Support%20.pdf"
+    },
+    {
+      "name": "Summary of perinatal mental health conditions",
+      "url": "https://img1.wsimg.com/blobby/go/acc61bdb-dc0d-4e3c-846a-f7946ebecbb4/downloads/6dc96b62-9d2f-42e2-8aae-2eb90cd4fb5e/Summary%20of%20Perinatal%20Mental%20Health%20Conditions.pdf"
+    }
+  ]
+}

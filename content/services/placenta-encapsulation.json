@@ -1,0 +1,180 @@
+{
+  "order": 5,
+  "nav": "Placenta Services",
+  "name": "Placenta encapsulation",
+  "summary": "Capsules, tinctures, prints and keepsakes, prepared with strict safety practices.",
+  "description": "Placenta encapsulation, tinctures, prints and keepsakes in Bend and Central Oregon from a Certified Placenta Specialist. Pickup and delivery included.",
+  "from": "from $25",
+  "facts": [
+    {
+      "label": "Starts at",
+      "value": "$25"
+    },
+    {
+      "label": "Book by",
+      "value": "Your third trimester"
+    },
+    {
+      "label": "Includes",
+      "value": "Pickup and delivery"
+    }
+  ],
+  "intro": [
+    "Whether you want capsules, a tincture, or a keepsake to honor your pregnancy, I offer placenta services with care, from pickup after your birth to delivery of your chosen preparation.",
+    "Some people find that placenta consumption supports their recovery. Scientific research is limited, so I always recommend talking with your healthcare provider first. Non-consumption options like prints and cord keepsakes are available too, including in times of loss."
+  ],
+  "includesTitle": "How it works",
+  "includes": [
+    {
+      "title": "Pickup",
+      "text": "I arrange timely pickup of your placenta after delivery."
+    },
+    {
+      "title": "Preparation",
+      "text": "Your placenta is inspected, cleaned and prepared in the method you chose."
+    },
+    {
+      "title": "Safety",
+      "text": "I follow OSHA bloodborne pathogen and food safety guidelines in a controlled space."
+    },
+    {
+      "title": "Delivery",
+      "text": "Your preparation is returned with usage and storage instructions."
+    }
+  ],
+  "sections": [
+    {
+      "title": "Preparation options",
+      "items": [
+        {
+          "title": "Encapsulation",
+          "text": "The placenta is steamed, dehydrated, ground into a powder and placed in easy-to-take capsules."
+        },
+        {
+          "title": "Powder",
+          "text": "The dehydrated, ground placenta as a loose powder, to mix into food or smoothies."
+        },
+        {
+          "title": "Tincture",
+          "text": "A portion of the placenta steeped in alcohol for extended use."
+        },
+        {
+          "title": "Prints and keepsakes",
+          "text": "A placenta print made with natural, non-toxic methods, or a dried umbilical cord keepsake."
+        }
+      ],
+      "groups": [],
+      "list": []
+    }
+  ],
+  "pricing": [
+    {
+      "name": "Encapsulation (capsules only)",
+      "price": "$250",
+      "note": ""
+    },
+    {
+      "name": "Placenta powder",
+      "price": "$175",
+      "note": ""
+    },
+    {
+      "name": "Placenta tinctures (3)",
+      "price": "$100",
+      "note": ""
+    },
+    {
+      "name": "Placenta print and cord keepsake",
+      "price": "$40",
+      "note": ""
+    },
+    {
+      "name": "Placenta prints (2)",
+      "price": "$25",
+      "note": ""
+    },
+    {
+      "name": "Cord keepsake only",
+      "price": "$25",
+      "note": ""
+    },
+    {
+      "name": "Complete package",
+      "price": "$300",
+      "note": "Capsules, one tincture, one print and a cord keepsake"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Is placenta consumption safe?",
+      "a": "When properly handled and prepared it is generally considered safe for healthy individuals, but research is limited. Please talk with your healthcare provider before deciding."
+    },
+    {
+      "q": "How should I store my placenta until pickup?",
+      "a": "Place it in a clean sealed container or double bag and refrigerate or keep it in a cooler within two to four hours of birth. I provide detailed instructions when you book."
+    },
+    {
+      "q": "When should I book?",
+      "a": "In your third trimester or earlier. A deposit holds your spot."
+    },
+    {
+      "q": "What is placenta consumption?",
+      "a": "Preparing and ingesting the placenta after delivery, most often through encapsulation, tinctures or powder. Many people choose it to support postpartum recovery."
+    },
+    {
+      "q": "What are the potential benefits?",
+      "a": "Scientific research is limited. Many parents report more energy, mood support, help with milk supply and a smoother recovery. Please talk with your healthcare provider about whether it is right for you."
+    },
+    {
+      "q": "Can anyone consume their placenta?",
+      "a": "Most healthy people can, but some conditions may make it unsafe, such as infections during labor or placenta abnormalities. I am happy to help you think it through."
+    },
+    {
+      "q": "How long do capsules and powder last?",
+      "a": "Stored in a cool, dry place, several months to a year. Some people freeze a portion for later."
+    },
+    {
+      "q": "How do I use a placenta tincture?",
+      "a": "Typically in small doses, a few drops under the tongue or in a drink. Stored in a cool, dark place, a tincture keeps for years."
+    },
+    {
+      "q": "Are there risks to consuming raw placenta?",
+      "a": "Yes. There is a higher risk of bacterial contamination with raw placenta than with encapsulation. Always consult your care provider first."
+    },
+    {
+      "q": "What is a placenta print?",
+      "a": "A keepsake made by pressing the placenta onto paper, which captures its \"tree of life\" shape."
+    },
+    {
+      "q": "Can I keep a keepsake and still encapsulate?",
+      "a": "Yes. You can have a print, a cord keepsake or a tincture and still encapsulate the rest."
+    }
+  ],
+  "townLine": "I arrange pickup after your birth and deliver your finished preparation to your home in {town}.",
+  "photo": {
+    "image": "",
+    "stock": "https://images.unsplash.com/photo-1664956618021-73c47736845e",
+    "alt": "Capsules beside green pine needles",
+    "credit": "Supliful"
+  },
+  "gallery": [
+    {
+      "image": "",
+      "stock": "https://images.unsplash.com/photo-1596252732610-fce5ac542f8e",
+      "alt": "A person holding a baby's hand",
+      "credit": "Jill Sauve"
+    },
+    {
+      "image": "",
+      "stock": "https://images.unsplash.com/photo-1626856295349-6f21d6e6cfef",
+      "alt": "A baby lying on a white bed",
+      "credit": "Bia Octavia"
+    },
+    {
+      "image": "",
+      "stock": "https://images.unsplash.com/photo-1651663303138-4dc283e15992",
+      "alt": "A pregnant woman touching her belly by a window",
+      "credit": "Taisiia Stupak"
+    }
+  ]
+}
