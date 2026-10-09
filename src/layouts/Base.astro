@@ -17,6 +17,8 @@ const localBusiness = {
   sameAs: Object.values(business.social),
 };
 const allSchema = [localBusiness, ...schema];
+// Phone-only bar with the two main actions. Left off the questionnaire so it does not distract Aleah.
+const showBar = !Astro.url.pathname.startsWith('/questions');
 ---
 <!doctype html>
 <html lang="en">
@@ -26,6 +28,10 @@ const allSchema = [localBusiness, ...schema];
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <!-- Test site: keep it out of Google so it never competes with the live site. -->
     <meta name="robots" content="noindex, nofollow" />
     <meta property="og:title" content={title} />
@@ -106,6 +112,21 @@ const allSchema = [localBusiness, ...schema];
         </div>
       </div>
     </footer>
+    {showBar && (
+      <div class="mobile-bar">
+        <a class="btn ghost" href={business.phoneHref}>Call or text</a>
+        <a class="btn" href={business.booking}>Free consultation</a>
+      </div>
+      <script is:inline>
+        (function () {
+          // Show the bar once the visitor has scrolled past the first screen.
+          var bar = document.querySelector('.mobile-bar');
+          function check() { bar.classList.toggle('show', window.scrollY > 420); }
+          window.addEventListener('scroll', check, { passive: true });
+          check();
+        })();
+      </script>
+    )}
   </body>
 </html>
 
@@ -119,6 +140,7 @@ const allSchema = [localBusiness, ...schema];
     --body: 'DM Sans Variable', 'Helvetica Neue', Arial, sans-serif;
   }
   * { box-sizing: border-box; }
+  section[id] { scroll-margin-top: 96px; }
   body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 17.5px; line-height: 1.6; }
   img { max-width: 100%; height: auto; display: block; }
   a { color: var(--river); text-underline-offset: 3px; text-decoration-thickness: 1px; }
@@ -235,6 +257,13 @@ const allSchema = [localBusiness, ...schema];
   .cta { background: var(--tint); }
   .cta .lead { color: var(--soft); }
 
+  .mobile-bar { display: none; }
+  @media (max-width: 860px) {
+    .mobile-bar { display: grid; grid-template-columns: 1fr 1.25fr; gap: 10px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 25; background: var(--bg); border-top: 1px solid var(--line); padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); transform: translateY(110%); transition: transform 0.25s ease; }
+    .mobile-bar.show { transform: none; }
+    .mobile-bar .btn { text-align: center; padding: 12px 10px; font-size: 16px; }
+    body:has(.mobile-bar) { padding-bottom: 72px; }
+  }
   .site-footer { border-top: 1px solid var(--line); padding-block: 56px; font-size: 15.5px; }
   .footer-brand { font-family: var(--display); font-size: 25px; }
   .footer-grid { display: grid; grid-template-columns: 1.4fr 1.2fr 1fr 0.8fr; gap: 36px; }

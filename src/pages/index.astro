@@ -3,24 +3,53 @@ import Base from '../layouts/Base.astro';
 import AreaMap from '../components/AreaMap.astro';
 import Ridgeline from '../components/Ridgeline.astro';
 import { business, services, towns, svcUrl, photos, photoUrl, whatIsADoula, doulaDoes } from '../data/site.js';
+const svc = (path) => services.find((s) => s.path === path);
+// The hero collage: one photo per main service, plus the place.
+const collage = [
+  { cls: 't-a', photo: svc('postpartum-doula').photo, label: 'Postpartum care', href: svcUrl(svc('postpartum-doula')), w: 760, h: 1000 },
+  { cls: 't-b', photo: svc('birth-doula').photo, label: 'Birth doula', href: svcUrl(svc('birth-doula')), w: 700, h: 520 },
+  { cls: 't-c', photo: svc('car-seat-installation').photo, label: 'Car seat help', href: svcUrl(svc('car-seat-installation')), w: 700, h: 520 },
+  { cls: 't-d', photo: svc('lactation-support').photo, label: 'Lactation support', href: svcUrl(svc('lactation-support')), w: 700, h: 420 },
+  { cls: 't-e', photo: photos.lake, label: 'All of Central Oregon', href: '/central-oregon/', w: 900, h: 420 },
+];
 ---
 <Base
   title="Bend Doula | Innate Doula Care | Birth, Postpartum & Car Seat Help"
   description="Innate Doula Care is a full spectrum doula in Bend, Oregon: birth and postpartum doula care, lactation support, placenta services and in-home car seat installation help across Central Oregon."
 >
   <section class="home-hero">
-    <img class="hero-img" src={photoUrl(photos.lake, 2400, 1100)} alt={photos.lake.alt} width="2400" height="1100" fetchpriority="high" />
-    <div class="wrap">
-      <div class="hero-card stack">
-        <p class="eyebrow">Full spectrum doula serving Central Oregon</p>
+    <div class="wrap hero-grid">
+      <div class="hero-copy stack">
+        <p class="eyebrow">Full spectrum doula · Bend, Oregon</p>
         <h1>Bend doula care for birth, postpartum and beyond</h1>
         <p class="lead">You can do hard things, and I am here to support you every step of the way.</p>
-        <div class="btn-row">
-          <a class="btn" href={business.booking}>Get started with a free consultation</a>
-          <a class="btn ghost" href="#services">Services and prices</a>
+        <div class="hero-cta">
+          <a class="btn big" href={business.booking}>Book a free consultation</a>
+          <a class="btn big ghost" href={business.phoneHref}>Call or text {business.phone}</a>
         </div>
-        <p class="creds">OHP-approved doula · Certified Lactation Counselor · Child Passenger Safety Technician</p>
+        <p class="hero-note">Free, with no obligation. Or <a href="#contact">send a message</a>.</p>
+        <ul class="trust">
+          <li>State-certified, OHP-approved doula</li>
+          <li>Certified Lactation Counselor</li>
+          <li>Child Passenger Safety Technician</li>
+        </ul>
       </div>
+      <div class="collage">
+        {collage.map((c) => (
+          <a class={`tile ${c.cls}`} href={c.href}>
+            <img src={photoUrl(c.photo, c.w, c.h)} alt={c.photo.alt} width={c.w} height={c.h} fetchpriority={c.cls === 't-a' ? 'high' : undefined} />
+            <span>{c.label}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+    <div class="wrap">
+      <ul class="hero-facts">
+        <li><b>Free consultation</b><span>Meet first, decide later</span></li>
+        <li><b>OHP covered</b><span>Birth doula care at no cost to you</span></li>
+        <li><b>HSA and FSA accepted</b><span>Superbill available for insurance</span></li>
+        <li><b>On call 24 hours</b><span>For current clients</span></li>
+      </ul>
     </div>
   </section>
 
@@ -157,11 +186,38 @@ import { business, services, towns, svcUrl, photos, photoUrl, whatIsADoula, doul
 </Base>
 
 <style>
-  .home-hero { position: relative; }
-  .hero-img { width: 100%; height: clamp(300px, 46vw, 600px); object-fit: cover; background: var(--panel); }
-  .hero-card { background: var(--bg); max-width: 780px; padding: clamp(22px, 4vw, 48px) clamp(20px, 4vw, 48px) clamp(8px, 2vw, 16px); margin-top: clamp(-220px, -17vw, -70px); position: relative; }
-  .hero-card h1 { max-width: 15ch; }
-  .creds { font-size: 14.5px; color: var(--soft); border-top: 1px solid var(--line); padding-top: 16px; }
+  .home-hero { background: var(--panel); border-bottom: 1px solid var(--line); padding-block: clamp(24px, 4.5vw, 60px) clamp(22px, 3vw, 36px); }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); align-items: center; }
+  .hero-copy h1 { font-size: clamp(36px, 5vw, 62px); max-width: 14ch; }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn.big { padding: 16px 26px; font-size: 18px; }
+  .hero-note { font-size: 15px; color: var(--soft); margin-top: -8px; }
+  .trust { list-style: none; padding: 16px 0 0; margin: 0; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: 15px; color: var(--soft); }
+  .trust li::before { content: ''; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--river); margin-right: 9px; vertical-align: middle; }
+
+  .collage { display: grid; grid-template-columns: 1.05fr 1fr; grid-template-rows: 1fr 1fr 0.72fr; gap: 10px; height: clamp(430px, 43vw, 540px); }
+  .tile { position: relative; display: block; overflow: hidden; background: var(--tint); color: #fff; text-decoration: none; min-height: 0; }
+  .tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+  .tile:hover img { transform: scale(1.04); }
+  .tile span { position: absolute; left: 0; right: 0; bottom: 0; padding: 26px 14px 11px; font-size: 14.5px; font-weight: 600; letter-spacing: 0.02em; background: linear-gradient(to top, rgba(20, 38, 36, 0.78), rgba(20, 38, 36, 0)); }
+  .tile span::after { content: ' \2192'; }
+  .t-a { grid-row: 1 / 3; }
+  @media (prefers-reduced-motion: reduce) { .tile img { transition: none; } }
+
+  .hero-facts { list-style: none; padding: 0; margin: clamp(22px, 3vw, 36px) 0 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); background: var(--field); border: 1px solid var(--line); }
+  .hero-facts li { padding: 16px 20px; display: flex; flex-direction: column; gap: 2px; border-left: 1px solid var(--line); }
+  .hero-facts li:first-child { border-left: 0; }
+  .hero-facts b { font-family: var(--display); font-weight: 400; font-size: 21px; line-height: 1.2; }
+  .hero-facts span { font-size: 14.5px; color: var(--soft); line-height: 1.4; }
+
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: minmax(0, 1fr); }
+    .hero-cta .btn { flex: 1 1 100%; text-align: center; }
+    .hero-facts { grid-template-columns: 1fr 1fr; }
+    .hero-facts li:nth-child(3) { border-left: 0; }
+    .hero-facts li:nth-child(n + 3) { border-top: 1px solid var(--line); }
+    .collage { height: 440px; }
+  }
   .tall-img { width: 100%; max-width: 480px; aspect-ratio: 10 / 11; object-fit: cover; background: var(--panel); justify-self: center; }
 
   .svc-cards { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 28px 24px; }
