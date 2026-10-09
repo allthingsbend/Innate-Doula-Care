@@ -2,6 +2,7 @@
 // Town hubs: /bend/, /redmond/, /sisters/ and so on.
 import Base from '../../layouts/Base.astro';
 import AreaMap from '../../components/AreaMap.astro';
+import Cta from '../../components/Cta.astro';
 import { business, services, towns, svcUrl, photoUrl } from '../../data/site.js';
 
 export function getStaticPaths() {
@@ -26,7 +27,7 @@ const nearby = towns.filter((x) => x.slug !== t.slug);
 const title = `Doula in ${t.name}, Oregon | Birth, Postpartum & Car Seat Help | ${business.name}`;
 const description = `Doula care in ${t.name}, Oregon from Innate Doula Care: birth and postpartum support, lactation help, placenta services and in-home car seat checks.${isBend ? '' : ` About ${t.min} minutes from Bend.`} OHP accepted.`;
 ---
-<Base title={title} description={description} schema={[faqSchema]}>
+<Base title={title} description={description} schema={[faqSchema]} town={t.name}>
   <section class="town-hero">
     <img src={photoUrl(t.photo, 2000, 760)} alt={t.photo.alt} width="2000" height="760" />
     <div class="wrap">
@@ -34,17 +35,14 @@ const description = `Doula care in ${t.name}, Oregon from Innate Doula Care: bir
         <p class="eyebrow"><a href="/">Home</a> / <a href="/central-oregon/">Central Oregon</a> / {t.name}</p>
         <h1>Doula in {t.name}, Oregon</h1>
         <p class="lead">Birth and postpartum doula care, lactation support and car seat help for {t.name} families{isBend ? ', from a Central Oregon doula who lives here.' : ', from a Central Oregon doula who comes to you.'}</p>
-        <div class="btn-row">
-          <a class="btn" href={business.booking}>Book a free consultation</a>
-          <span>or call or text <a href={business.phoneHref}>{business.phone}</a></span>
-        </div>
+        <Cta />
       </div>
     </div>
   </section>
 
   <section class="wrap">
     <div class="facts">
-      <div><span>{isBend ? 'Based in' : 'From Bend'}</span><b>{isBend ? 'Bend, Oregon' : `About ${t.min} minutes`}</b></div>
+      <div><span>Area</span><b>{t.name}, Central Oregon</b></div>
       <div><span>Visits</span><b>At your home in {t.name}</b></div>
       <div><span>Oregon Health Plan</span><b>Accepted</b></div>
     </div>
@@ -104,7 +102,7 @@ const description = `Doula care in ${t.name}, Oregon from Innate Doula Care: bir
     <div class="wrap stack">
       <p class="eyebrow">Other areas</p>
       <ul class="town-links">
-        {nearby.map((x) => <li><a href={`/${x.slug}/`}><b>{x.name}</b><small>{x.min ? `about ${x.min} min from Bend` : 'home base'}</small></a></li>)}
+        {nearby.map((x) => <li><a href={`/${x.slug}/`}><b>{x.name}</b></a></li>)}
       </ul>
     </div>
   </section>
@@ -113,6 +111,6 @@ const description = `Doula care in ${t.name}, Oregon from Innate Doula Care: bir
 <style>
   .town-hero { position: relative; }
   .town-hero img { width: 100%; height: clamp(300px, 46vw, 520px); object-fit: cover; background: var(--panel); }
-  .town-card { background: var(--bg); padding: clamp(22px, 4vw, 44px); max-width: 720px; margin-top: clamp(-200px, -16vw, -80px); position: relative; border-top: 3px solid var(--fg); }
+  .town-card { background: var(--bg); padding: clamp(22px, 4vw, 44px); max-width: 800px; margin-top: clamp(-200px, -16vw, -80px); position: relative; border-top: 3px solid var(--fg); }
   .town-card h1 { font-size: clamp(36px, 5vw, 60px); }
 </style>

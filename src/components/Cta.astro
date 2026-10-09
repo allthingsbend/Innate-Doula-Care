@@ -1,0 +1,13 @@
+---
+// The standard set of ways to reach Aleah. Used at the top of every page.
+// Desktop: book, call or text, send a request. Phone: book, then call and text side by side.
+import { business } from '../data/site.js';
+const { big = false } = Astro.props;
+---
+<div class={`cta-set${big ? ' big' : ''}`}>
+  <a class="btn" href={business.booking}>Book a free consultation</a>
+  <a class="btn ghost wide-only" href={business.phoneHref}>Call or text {business.phone}</a>
+  <a class="btn ghost phone-only" href={business.phoneHref}>Call</a>
+  <a class="btn ghost phone-only" href={business.smsHref}>Text</a>
+  <a class="btn ghost" href="#get-started">Send a request</a>
+</div>

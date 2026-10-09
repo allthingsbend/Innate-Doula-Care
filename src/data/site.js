@@ -452,7 +452,7 @@ Object.assign(servicePhotos, {
 services.forEach((s) => { s.photo = servicePhotos[s.path]; });
 
 const start = { q: 'How do I get started?', a: 'Book a free consultation, or call or text (541) 280-4048. We will talk through what you need and how I can best support you.' };
-const choose = 'Choosing a doula is a personal decision, and most Bend doulas offer free consultations so you can meet a few. Start early, ask friends and your provider for recommendations, interview more than one, ask for references, and trust your instincts about who you feel comfortable with.';
+const choose = 'Choosing a doula is a personal decision, and most Central Oregon doulas offer free consultations so you can meet a few. Start early, ask friends and your provider for recommendations, interview more than one, ask for references, and trust your instincts about who you feel comfortable with.';
 const more = {
   'birth-doula': {
     sections: [
@@ -644,3 +644,5 @@ towns.forEach((t, i) => {
   const sv = services[(i * 3 + 1) % services.length], sv2 = services[(i * 3 + 2) % services.length];
   t.gallery = [scenery[i % scenery.length], sv.gallery[i % 2], sv2.gallery[(i + 1) % 2]];
 });
+
+business.smsHref = 'sms:+15412804048';

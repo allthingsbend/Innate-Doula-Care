@@ -10,7 +10,8 @@ A preview site for Innate Doula Care (Bend, Oregon), built with Astro and deploy
 - `functions/api/answers.js` - saves questionnaire answers to Cloudflare KV and forwards them to a Google Sheet.
 - `google-sheet-script.gs` - the script to paste into the Google Sheet (Extensions > Apps Script).
 - `src/components/AreaMap.astro` - the service-area map, drawn from the town coordinates in `site.js`.
-- `functions/api/contact.js` - saves home page contact form messages to Cloudflare KV.
+- `src/components/Cta.astro` and `GetStarted.astro` - the button set at the top of each page and the "Get started" band with the request form at the bottom of every page.
+- `functions/api/contact.js` - saves request form messages to Cloudflare KV.
 - `functions/results.js` - private page that shows questionnaire answers and contact messages: `/results/?key=YOUR_KEY`.
 - `wrangler.toml` - Cloudflare Pages settings, including the KV storage binding.
 

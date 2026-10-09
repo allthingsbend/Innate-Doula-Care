@@ -26,9 +26,9 @@ export async function onRequestGet({ request, env }) {
   contacts.sort((a, b) => (a.at < b.at ? 1 : -1));
   const when = (d) => esc(new Date(d).toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));
   const contactHtml = contacts.length
-    ? `<h1 style="margin-top:56px">Contact form messages</h1>` +
+    ? `<h1 style="margin-top:56px">Requests from the site</h1>` +
       contacts
-        .map((c) => `<article><h2>${when(c.at)} Pacific</h2><p><b>${esc(c.name)}</b> · ${esc(c.email)}${c.phone ? ' · ' + esc(c.phone) : ''}${c.due ? ' · due ' + esc(c.due) : ''}</p><p>${esc(c.message).replace(/\n/g, '<br>') || '<i>no message</i>'}</p></article>`)
+        .map((c) => `<article><h2>${when(c.at)} Pacific</h2><p><b>${esc(c.name)}</b>${c.email ? ' · ' + esc(c.email) : ''}${c.phone ? ' · ' + esc(c.phone) : ''}${c.service ? ' · wants: ' + esc(c.service) : ''}${c.town ? ' · in ' + esc(c.town) : ''}${c.page ? ' · from page ' + esc(c.page) : ''}${c.due ? ' · due ' + esc(c.due) : ''}</p><p>${esc(c.message).replace(/\n/g, '<br>') || '<i>no message</i>'}</p></article>`)
         .join('\n')
     : '';
 

@@ -3,6 +3,7 @@
 // Which towns get service pages is set by `serviceTowns` in site.js.
 import Base from '../../layouts/Base.astro';
 import AreaMap from '../../components/AreaMap.astro';
+import Cta from '../../components/Cta.astro';
 import { business, services, towns, townServices, region, hasPage, localLine, svcUrl, photoUrl } from '../../data/site.js';
 
 export function getStaticPaths() {
@@ -19,6 +20,7 @@ export function getStaticPaths() {
 const { s, t } = Astro.props;
 // /central-oregon/<service>/ is the main page for each service. Town pages add a local note and a local question.
 const isRegion = Boolean(t.region);
+const regionTowns = towns.filter((x) => hasPage(x.slug, s.path) && x.slug !== region.slug && x.min !== undefined && ['bend','redmond','sisters','sunriver','la-pine','prineville','madras'].includes(x.slug));
 const isBend = t.slug === 'bend';
 const local = townServices[t.slug]?.[s.path];
 const h1 = isRegion ? `${s.name} in Central Oregon` : `${s.name} in ${t.name}, Oregon`;
@@ -62,17 +64,14 @@ const crumbs = {
 const others = services.filter((o) => o.path !== s.path).slice(0, 4);
 const ordered = ['car-seat-installation', 'placenta-encapsulation', 'abortion-doula-support'].includes(s.path);
 ---
-<Base title={`${h1} | ${business.name}`} description={description} schema={[serviceSchema, faqSchema, crumbs]}>
+<Base title={`${h1} | ${business.name}`} description={description} schema={[serviceSchema, faqSchema, crumbs]} service={s.path} town={isRegion ? '' : t.name}>
   <section class="page-hero">
     <div class="wrap hero-split">
       <div class="stack">
         <p class="eyebrow"><a href="/">Home</a> / <a href={`/${t.slug}/`}>{t.name}</a> / {s.nav}</p>
         <h1>{h1}</h1>
         <p class="lead">{s.summary}</p>
-        <div class="btn-row">
-          <a class="btn" href={business.booking}>Book a free consultation</a>
-          <span>or call or text <a href={business.phoneHref}>{business.phone}</a></span>
-        </div>
+        <Cta />
       </div>
       <img class="hero-photo" src={photoUrl(s.photo, 1100, 800)} alt={s.photo.alt} width="1100" height="800" />
     </div>
@@ -87,6 +86,12 @@ const ordered = ['car-seat-installation', 'placenta-encapsulation', 'abortion-do
     <div class="wrap two">
       <div class="stack">
         {s.intro.map((p, i) => <p class={i === 0 ? 'lead' : ''}>{p}</p>)}
+        {isRegion && (
+          <div class="local stack">
+            <p class="eyebrow">Where I offer this</p>
+            <p>I offer this across Central Oregon, in {regionTowns.map((x, i, a) => <><a href={`/${x.slug}/${s.path}/`}>{x.name}</a>{i < a.length - 2 ? ', ' : i === a.length - 2 ? ' and ' : ''}</>)}, and the smaller towns in between. Visits happen where you are.</p>
+          </div>
+        )}
         {!isRegion && (
           <div class="local stack">
             <p class="eyebrow">In {t.name}</p>
@@ -129,6 +134,8 @@ const ordered = ['car-seat-installation', 'placenta-encapsulation', 'abortion-do
         </table>
         <p class="soft" style="font-size:15.5px">HSA and FSA accepted. A superbill is available for insurance.</p>
         <a class="btn" href={business.booking}>Book a free consultation</a>
+        <a class="btn ghost" href="#get-started">Send a request</a>
+        <p class="soft" style="font-size:15px;text-align:center">or call or text <a href={business.phoneHref}>{business.phone}</a></p>
       </aside>
     </div>
   </section>
@@ -160,7 +167,7 @@ const ordered = ['car-seat-installation', 'placenta-encapsulation', 'abortion-do
           {towns.map((x) => (
             <li>
               <a href={hasPage(x.slug, s.path) ? `/${x.slug}/${s.path}/` : `/${x.slug}/`}>
-                <b>{x.name}</b><small>{x.min ? `about ${x.min} min from Bend` : 'home base'}</small>
+                <b>{x.name}</b>
               </a>
             </li>
           ))}

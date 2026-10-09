@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import AreaMap from '../components/AreaMap.astro';
 import Ridgeline from '../components/Ridgeline.astro';
+import Cta from '../components/Cta.astro';
 import { business, services, towns, svcUrl, photos, photoUrl, scenery } from '../data/site.js';
 ---
 <Base
@@ -12,7 +13,8 @@ import { business, services, towns, svcUrl, photos, photoUrl, scenery } from '..
     <div class="wrap stack" style="padding-block: clamp(36px, 6vw, 76px) clamp(20px, 3vw, 40px)">
       <p class="eyebrow"><a href="/">Home</a> / Central Oregon</p>
       <h1 style="max-width:16ch">Where I work in Central Oregon</h1>
-      <p class="lead" style="max-width:56ch">Based in Bend. I come to you, from La Pine in the south up to Madras in the north.</p>
+      <p class="lead" style="max-width:56ch">I come to you, from La Pine in the south up to Madras in the north.</p>
+      <Cta />
     </div>
     <Ridgeline />
   </section>
@@ -23,7 +25,7 @@ import { business, services, towns, svcUrl, photos, photoUrl, scenery } from '..
       <div class="stack">
         <h2>Towns I serve in person</h2>
         <ul class="town-links">
-          {towns.map((t) => <li><a href={`/${t.slug}/`}><b>{t.name}</b><small>{t.min ? `about ${t.min} min from Bend` : 'home base'}</small></a></li>)}
+          {towns.map((t) => <li><a href={`/${t.slug}/`}><b>{t.name}</b></a></li>)}
         </ul>
         <p>Visits happen in your home, at the hospital or at a birth center. Virtual support is available for families outside the area.</p>
         <p class="soft">Not sure if you are in range? Call or text <a href={business.phoneHref}>{business.phone}</a> and ask.</p>

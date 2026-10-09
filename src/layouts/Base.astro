@@ -2,8 +2,9 @@
 import '@fontsource-variable/newsreader/opsz.css';
 import '@fontsource-variable/newsreader/opsz-italic.css';
 import '@fontsource-variable/dm-sans/index.css';
+import GetStarted from '../components/GetStarted.astro';
 import { business, services, towns, svcUrl } from '../data/site.js';
-const { title, description, schema = [] } = Astro.props;
+const { title, description, schema = [], service = '', town = '' } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const localBusiness = {
   '@context': 'https://schema.org',
@@ -59,11 +60,12 @@ const showBar = !Astro.url.pathname.startsWith('/questions');
             <summary>Areas</summary>
             <ul>
               <li><a href="/central-oregon/">All of Central Oregon</a></li>
-              {towns.map((t) => <li><a href={`/${t.slug}/`}>{t.name}<small>{t.min ? `${t.min} min` : 'home base'}</small></a></li>)}
+              {towns.map((t) => <li><a href={`/${t.slug}/`}>{t.name}</a></li>)}
             </ul>
           </details>
           <a href="/about/">About</a>
           <a href="/resources/">Resources</a>
+          <a class="nav-phone" href={business.phoneHref}>Call or text {business.phone}</a>
           <a class="btn small" href={business.booking}>Free consultation</a>
         </nav>
       </div>
@@ -84,6 +86,7 @@ const showBar = !Astro.url.pathname.startsWith('/questions');
     </script>
     <main>
       <slot />
+      {showBar && <GetStarted service={service} town={town} />}
     </main>
     <footer class="site-footer">
       <div class="wrap footer-grid">
@@ -107,21 +110,26 @@ const showBar = !Astro.url.pathname.startsWith('/questions');
           <p class="label">Follow</p>
           <ul>{Object.entries(business.social).map(([k, v]) => <li><a href={v}>{k}</a></li>)}</ul>
           <p class="label" style="margin-top:10px">More</p>
-          <ul><li><a href="/about/">About Aleah</a></li><li><a href="/resources/">Resources</a></li><li><a href="/#contact">Contact</a></li></ul>
+          <ul><li><a href="/about/">About Aleah</a></li><li><a href="/resources/">Resources</a></li><li><a href="#get-started">Contact</a></li></ul>
           <p class="soft" style="font-size:13.5px">Stock photos from Unsplash, standing in until Aleah's own.</p>
         </div>
       </div>
     </footer>
     {showBar && (
       <div class="mobile-bar">
-        <a class="btn ghost" href={business.phoneHref}>Call or text</a>
-        <a class="btn" href={business.booking}>Free consultation</a>
+        <a class="btn ghost" href={business.phoneHref}>Call</a>
+        <a class="btn ghost" href={business.smsHref}>Text</a>
+        <a class="btn" href={business.booking}>Book free consult</a>
       </div>
       <script is:inline>
         (function () {
           // Show the bar once the visitor has scrolled past the first screen.
           var bar = document.querySelector('.mobile-bar');
-          function check() { bar.classList.toggle('show', window.scrollY > 420); }
+          function check() {
+            var gs = document.getElementById('get-started');
+            var atEnd = gs && gs.getBoundingClientRect().top < window.innerHeight * 0.6;
+            bar.classList.toggle('show', window.scrollY > 420 && !atEnd);
+          }
           window.addEventListener('scroll', check, { passive: true });
           check();
         })();
@@ -260,9 +268,22 @@ const showBar = !Astro.url.pathname.startsWith('/questions');
   .photo-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
   .photo-row img, .side-photo { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--tint); }
   .side-photo { max-width: 420px; margin-top: 12px; }
+  .price-card .btn { text-align: center; }
+  .cta-set { display: flex; flex-wrap: wrap; gap: 10px 12px; align-items: center; }
+  .cta-set.big .btn { padding: 16px 24px; font-size: 18px; }
+  .phone-only { display: none; }
+  .nav-phone { font-weight: 600; white-space: nowrap; }
+  @media (max-width: 1180px) and (min-width: 861px) { .nav-phone { display: none; } }
+  @media (max-width: 860px) {
+    .cta-set { display: grid; grid-template-columns: 1fr 1fr; }
+    .cta-set .btn { text-align: center; }
+    .cta-set .btn:first-child, .cta-set .btn:last-child { grid-column: 1 / -1; }
+    .cta-set .wide-only { display: none; }
+    .cta-set .phone-only { display: inline-block; }
+  }
   .mobile-bar { display: none; }
   @media (max-width: 860px) {
-    .mobile-bar { display: grid; grid-template-columns: 1fr 1.25fr; gap: 10px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 25; background: var(--bg); border-top: 1px solid var(--line); padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); transform: translateY(110%); transition: transform 0.25s ease; }
+    .mobile-bar { display: grid; grid-template-columns: 1fr 1fr 2fr; gap: 8px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 25; background: var(--bg); border-top: 1px solid var(--line); padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); transform: translateY(110%); transition: transform 0.25s ease; }
     .mobile-bar.show { transform: none; }
     .mobile-bar .btn { text-align: center; padding: 12px 10px; font-size: 16px; }
     body:has(.mobile-bar) { padding-bottom: 72px; }

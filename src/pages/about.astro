@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import Cta from '../components/Cta.astro';
 import { business, credentialsFull, family, scenery, photoUrl } from '../data/site.js';
 ---
 <Base
@@ -16,7 +17,7 @@ import { business, credentialsFull, family, scenery, photoUrl } from '../data/si
         <p>My path changed when someone close to me faced fertility challenges. That led me into the world of third-party reproduction and to being a surrogate twice. One of those journeys brought the gift of new life. The other brought lessons in resilience and compassion through loss. Both shape how I support families today.</p>
         <p>I believe every experience is unique and deserves personalized, inclusive and non-judgmental care. My job is to help you feel confident in your choices.</p>
         <p>When I am not doing birth work, you can find me being "Aunt Nutsy" to nine nieces and nephews, camping, hiking, dancing, playing board games, puzzling or reading.</p>
-        <div class="btn-row"><a class="btn" href={business.booking}>Book a free consultation</a></div>
+        <Cta />
       </div>
       <div class="stack">
         <div class="photo-slot portrait"><span>Photo: a portrait of Aleah goes here. People hire a person, so this is the most important image on the site.</span></div>
